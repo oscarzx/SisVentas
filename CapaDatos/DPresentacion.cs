@@ -153,7 +153,7 @@ namespace CapaDatos
                 Sqlcmd.CommandType = CommandType.StoredProcedure;
 
                 SqlParameter ParIdPresentacion = new SqlParameter();
-                ParIdPresentacion.ParameterName = "@idcategoria";
+                ParIdPresentacion.ParameterName = "@idpresentacion";
                 ParIdPresentacion.SqlDbType = SqlDbType.Int;
                 ParIdPresentacion.Value = Presentacion.IdPresentacion;
                 Sqlcmd.Parameters.Add(ParIdPresentacion);
