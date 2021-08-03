@@ -152,7 +152,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmVistaCategoria_articulo";
-            this.Text = "frmVista";
+            this.Text = "Buscar Categoría";
             this.Load += new System.EventHandler(this.frmVista_Load);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
