@@ -20,7 +20,7 @@ namespace CapaPresentacion
         public frmPresentacion()
         {
             InitializeComponent();
-            this.ttMensaje.SetToolTip(this.nombreTextBox, "Ingrse el nombre de la presentación");
+            this.ttMensaje.SetToolTip(this.nombreTextBox, "Ingrese el nombre de la presentación");
         }
 
         //Mostrar mensaje de confirmación

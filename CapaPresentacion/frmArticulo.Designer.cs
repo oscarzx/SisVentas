@@ -43,11 +43,21 @@ namespace CapaPresentacion
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.presentacionComboBox = new System.Windows.Forms.ComboBox();
+            this.limpiarImagenButton = new System.Windows.Forms.Button();
+            this.buscarCategoriaButton = new System.Windows.Forms.Button();
+            this.cargarButton = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.categoriaTextBox = new System.Windows.Forms.TextBox();
+            this.codigoTextBox = new System.Windows.Forms.TextBox();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.editarButton = new System.Windows.Forms.Button();
             this.guardarButton = new System.Windows.Forms.Button();
             this.nuevoButton = new System.Windows.Forms.Button();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
+            this.idCategoriaTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.idArticuloTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -56,17 +66,7 @@ namespace CapaPresentacion
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
-            this.codigoTextBox = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.imagenPictureBox = new System.Windows.Forms.PictureBox();
-            this.cargarButton = new System.Windows.Forms.Button();
-            this.limpiarButton = new System.Windows.Forms.Button();
-            this.idCategoriaTextBox = new System.Windows.Forms.TextBox();
-            this.categoriaTextBox = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.buscarCategoriaButton = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.presentacionComboBox = new System.Windows.Forms.ComboBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDataGridView)).BeginInit();
@@ -87,7 +87,7 @@ namespace CapaPresentacion
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1015, 481);
-            this.tabControl1.TabIndex = 5;
+            this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
             // 
@@ -125,6 +125,8 @@ namespace CapaPresentacion
             this.listadoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listadoDataGridView.Size = new System.Drawing.Size(995, 355);
             this.listadoDataGridView.TabIndex = 7;
+            this.listadoDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listadoDataGridView_CellContentClick);
+            this.listadoDataGridView.DoubleClick += new System.EventHandler(this.listadoDataGridView_DoubleClick);
             // 
             // Eliminar
             // 
@@ -150,6 +152,7 @@ namespace CapaPresentacion
             this.eliminarCheckBox.TabIndex = 5;
             this.eliminarCheckBox.Text = "Eliminar";
             this.eliminarCheckBox.UseVisualStyleBackColor = true;
+            this.eliminarCheckBox.CheckedChanged += new System.EventHandler(this.eliminarCheckBox_CheckedChanged);
             // 
             // imprimirButton
             // 
@@ -168,6 +171,7 @@ namespace CapaPresentacion
             this.eliminarButton.TabIndex = 3;
             this.eliminarButton.Text = "&Eliminar";
             this.eliminarButton.UseVisualStyleBackColor = true;
+            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
             // 
             // buscarButton
             // 
@@ -177,6 +181,7 @@ namespace CapaPresentacion
             this.buscarButton.TabIndex = 2;
             this.buscarButton.Text = "&Buscar";
             this.buscarButton.UseVisualStyleBackColor = true;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // buscarTextBox
             // 
@@ -184,6 +189,7 @@ namespace CapaPresentacion
             this.buscarTextBox.Name = "buscarTextBox";
             this.buscarTextBox.Size = new System.Drawing.Size(100, 20);
             this.buscarTextBox.TabIndex = 1;
+            this.buscarTextBox.TextChanged += new System.EventHandler(this.buscarTextBox_TextChanged);
             // 
             // label2
             // 
@@ -211,7 +217,7 @@ namespace CapaPresentacion
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.presentacionComboBox);
-            this.groupBox1.Controls.Add(this.limpiarButton);
+            this.groupBox1.Controls.Add(this.limpiarImagenButton);
             this.groupBox1.Controls.Add(this.buscarCategoriaButton);
             this.groupBox1.Controls.Add(this.cargarButton);
             this.groupBox1.Controls.Add(this.imagenPictureBox);
@@ -238,41 +244,128 @@ namespace CapaPresentacion
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Artículo";
             // 
+            // presentacionComboBox
+            // 
+            this.presentacionComboBox.FormattingEnabled = true;
+            this.presentacionComboBox.Location = new System.Drawing.Point(410, 91);
+            this.presentacionComboBox.Name = "presentacionComboBox";
+            this.presentacionComboBox.Size = new System.Drawing.Size(124, 21);
+            this.presentacionComboBox.TabIndex = 14;
+            // 
+            // limpiarImagenButton
+            // 
+            this.limpiarImagenButton.Location = new System.Drawing.Point(459, 153);
+            this.limpiarImagenButton.Name = "limpiarImagenButton";
+            this.limpiarImagenButton.Size = new System.Drawing.Size(75, 23);
+            this.limpiarImagenButton.TabIndex = 16;
+            this.limpiarImagenButton.Text = "Limpiar";
+            this.limpiarImagenButton.UseVisualStyleBackColor = true;
+            this.limpiarImagenButton.Click += new System.EventHandler(this.limpiarImagenButton_Click);
+            // 
+            // buscarCategoriaButton
+            // 
+            this.buscarCategoriaButton.Location = new System.Drawing.Point(660, 61);
+            this.buscarCategoriaButton.Name = "buscarCategoriaButton";
+            this.buscarCategoriaButton.Size = new System.Drawing.Size(75, 23);
+            this.buscarCategoriaButton.TabIndex = 12;
+            this.buscarCategoriaButton.Text = "Buscar";
+            this.buscarCategoriaButton.UseVisualStyleBackColor = true;
+            this.buscarCategoriaButton.Click += new System.EventHandler(this.buscarCategoriaButton_Click);
+            // 
+            // cargarButton
+            // 
+            this.cargarButton.Location = new System.Drawing.Point(459, 124);
+            this.cargarButton.Name = "cargarButton";
+            this.cargarButton.Size = new System.Drawing.Size(75, 23);
+            this.cargarButton.TabIndex = 15;
+            this.cargarButton.Text = "Cargar";
+            this.cargarButton.UseVisualStyleBackColor = true;
+            this.cargarButton.Click += new System.EventHandler(this.cargarButton_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(343, 98);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(69, 13);
+            this.label8.TabIndex = 13;
+            this.label8.Text = "Presentación";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(343, 65);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(54, 13);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "Categoría";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(15, 61);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(37, 13);
+            this.label6.TabIndex = 2;
+            this.label6.Text = "Barras";
+            // 
+            // categoriaTextBox
+            // 
+            this.categoriaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.categoriaTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.categoriaTextBox.Location = new System.Drawing.Point(410, 61);
+            this.categoriaTextBox.Name = "categoriaTextBox";
+            this.categoriaTextBox.Size = new System.Drawing.Size(230, 20);
+            this.categoriaTextBox.TabIndex = 11;
+            // 
+            // codigoTextBox
+            // 
+            this.codigoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.codigoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.codigoTextBox.Location = new System.Drawing.Point(82, 57);
+            this.codigoTextBox.Name = "codigoTextBox";
+            this.codigoTextBox.Size = new System.Drawing.Size(230, 20);
+            this.codigoTextBox.TabIndex = 3;
+            // 
             // cancelarButton
             // 
             this.cancelarButton.Location = new System.Drawing.Point(356, 213);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelarButton.TabIndex = 9;
+            this.cancelarButton.TabIndex = 0;
             this.cancelarButton.Text = "&Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // editarButton
             // 
             this.editarButton.Location = new System.Drawing.Point(265, 213);
             this.editarButton.Name = "editarButton";
             this.editarButton.Size = new System.Drawing.Size(75, 23);
-            this.editarButton.TabIndex = 8;
+            this.editarButton.TabIndex = 19;
             this.editarButton.Text = "E&ditar";
             this.editarButton.UseVisualStyleBackColor = true;
+            this.editarButton.Click += new System.EventHandler(this.editarButton_Click);
             // 
             // guardarButton
             // 
             this.guardarButton.Location = new System.Drawing.Point(169, 213);
             this.guardarButton.Name = "guardarButton";
             this.guardarButton.Size = new System.Drawing.Size(75, 23);
-            this.guardarButton.TabIndex = 7;
+            this.guardarButton.TabIndex = 18;
             this.guardarButton.Text = "&Guardar";
             this.guardarButton.UseVisualStyleBackColor = true;
+            this.guardarButton.Click += new System.EventHandler(this.guardarButton_Click);
             // 
             // nuevoButton
             // 
             this.nuevoButton.Location = new System.Drawing.Point(77, 213);
             this.nuevoButton.Name = "nuevoButton";
             this.nuevoButton.Size = new System.Drawing.Size(75, 23);
-            this.nuevoButton.TabIndex = 6;
+            this.nuevoButton.TabIndex = 17;
             this.nuevoButton.Text = "&Nuevo";
             this.nuevoButton.UseVisualStyleBackColor = true;
+            this.nuevoButton.Click += new System.EventHandler(this.nuevoButton_Click);
             // 
             // descripcionTextBox
             // 
@@ -283,7 +376,16 @@ namespace CapaPresentacion
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.descripcionTextBox.Size = new System.Drawing.Size(230, 83);
-            this.descripcionTextBox.TabIndex = 5;
+            this.descripcionTextBox.TabIndex = 7;
+            // 
+            // idCategoriaTextBox
+            // 
+            this.idCategoriaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.idCategoriaTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.idCategoriaTextBox.Location = new System.Drawing.Point(410, 28);
+            this.idCategoriaTextBox.Name = "idCategoriaTextBox";
+            this.idCategoriaTextBox.Size = new System.Drawing.Size(100, 20);
+            this.idCategoriaTextBox.TabIndex = 9;
             // 
             // nombreTextBox
             // 
@@ -292,7 +394,7 @@ namespace CapaPresentacion
             this.nombreTextBox.Location = new System.Drawing.Point(82, 91);
             this.nombreTextBox.Name = "nombreTextBox";
             this.nombreTextBox.Size = new System.Drawing.Size(230, 20);
-            this.nombreTextBox.TabIndex = 4;
+            this.nombreTextBox.TabIndex = 5;
             // 
             // idArticuloTextBox
             // 
@@ -301,7 +403,7 @@ namespace CapaPresentacion
             this.idArticuloTextBox.Location = new System.Drawing.Point(82, 24);
             this.idArticuloTextBox.Name = "idArticuloTextBox";
             this.idArticuloTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idArticuloTextBox.TabIndex = 3;
+            this.idArticuloTextBox.TabIndex = 1;
             // 
             // label5
             // 
@@ -309,7 +411,7 @@ namespace CapaPresentacion
             this.label5.Location = new System.Drawing.Point(15, 131);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(58, 13);
-            this.label5.TabIndex = 2;
+            this.label5.TabIndex = 6;
             this.label5.Text = "Decripción";
             // 
             // label4
@@ -318,7 +420,7 @@ namespace CapaPresentacion
             this.label4.Location = new System.Drawing.Point(15, 94);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
-            this.label4.TabIndex = 1;
+            this.label4.TabIndex = 4;
             this.label4.Text = "Nombre";
             // 
             // label3
@@ -338,7 +440,7 @@ namespace CapaPresentacion
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(114, 29);
-            this.label1.TabIndex = 4;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Artículos";
             // 
             // errorProvider1
@@ -349,102 +451,14 @@ namespace CapaPresentacion
             // 
             this.ttMensaje.IsBalloon = true;
             // 
-            // codigoTextBox
-            // 
-            this.codigoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.codigoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.codigoTextBox.Location = new System.Drawing.Point(82, 57);
-            this.codigoTextBox.Name = "codigoTextBox";
-            this.codigoTextBox.Size = new System.Drawing.Size(230, 20);
-            this.codigoTextBox.TabIndex = 10;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 61);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Barras";
-            // 
             // imagenPictureBox
             // 
+            this.imagenPictureBox.BackgroundImage = global::CapaPresentacion.Properties.Resources.ImagenBlanco;
             this.imagenPictureBox.Location = new System.Drawing.Point(318, 124);
             this.imagenPictureBox.Name = "imagenPictureBox";
             this.imagenPictureBox.Size = new System.Drawing.Size(135, 83);
             this.imagenPictureBox.TabIndex = 12;
             this.imagenPictureBox.TabStop = false;
-            // 
-            // cargarButton
-            // 
-            this.cargarButton.Location = new System.Drawing.Point(459, 124);
-            this.cargarButton.Name = "cargarButton";
-            this.cargarButton.Size = new System.Drawing.Size(75, 23);
-            this.cargarButton.TabIndex = 13;
-            this.cargarButton.Text = "Cargar";
-            this.cargarButton.UseVisualStyleBackColor = true;
-            // 
-            // limpiarButton
-            // 
-            this.limpiarButton.Location = new System.Drawing.Point(459, 153);
-            this.limpiarButton.Name = "limpiarButton";
-            this.limpiarButton.Size = new System.Drawing.Size(75, 23);
-            this.limpiarButton.TabIndex = 14;
-            this.limpiarButton.Text = "Limpiar";
-            this.limpiarButton.UseVisualStyleBackColor = true;
-            // 
-            // idCategoriaTextBox
-            // 
-            this.idCategoriaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.idCategoriaTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.idCategoriaTextBox.Location = new System.Drawing.Point(410, 28);
-            this.idCategoriaTextBox.Name = "idCategoriaTextBox";
-            this.idCategoriaTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idCategoriaTextBox.TabIndex = 3;
-            // 
-            // categoriaTextBox
-            // 
-            this.categoriaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.categoriaTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.categoriaTextBox.Location = new System.Drawing.Point(410, 61);
-            this.categoriaTextBox.Name = "categoriaTextBox";
-            this.categoriaTextBox.Size = new System.Drawing.Size(230, 20);
-            this.categoriaTextBox.TabIndex = 10;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(343, 65);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(54, 13);
-            this.label7.TabIndex = 11;
-            this.label7.Text = "Categoría";
-            // 
-            // buscarCategoriaButton
-            // 
-            this.buscarCategoriaButton.Location = new System.Drawing.Point(660, 61);
-            this.buscarCategoriaButton.Name = "buscarCategoriaButton";
-            this.buscarCategoriaButton.Size = new System.Drawing.Size(75, 23);
-            this.buscarCategoriaButton.TabIndex = 13;
-            this.buscarCategoriaButton.Text = "Buscar";
-            this.buscarCategoriaButton.UseVisualStyleBackColor = true;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(343, 98);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(69, 13);
-            this.label8.TabIndex = 11;
-            this.label8.Text = "Presentación";
-            // 
-            // presentacionComboBox
-            // 
-            this.presentacionComboBox.FormattingEnabled = true;
-            this.presentacionComboBox.Location = new System.Drawing.Point(410, 91);
-            this.presentacionComboBox.Name = "presentacionComboBox";
-            this.presentacionComboBox.Size = new System.Drawing.Size(124, 21);
-            this.presentacionComboBox.TabIndex = 15;
             // 
             // frmArticulo
             // 
@@ -456,6 +470,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.label1);
             this.Name = "frmArticulo";
             this.Text = "Articulos";
+            this.Load += new System.EventHandler(this.frmArticulo_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -502,7 +517,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.TextBox codigoTextBox;
         private System.Windows.Forms.PictureBox imagenPictureBox;
         private System.Windows.Forms.ComboBox presentacionComboBox;
-        private System.Windows.Forms.Button limpiarButton;
+        private System.Windows.Forms.Button limpiarImagenButton;
         private System.Windows.Forms.Button buscarCategoriaButton;
         private System.Windows.Forms.Button cargarButton;
         private System.Windows.Forms.Label label8;
