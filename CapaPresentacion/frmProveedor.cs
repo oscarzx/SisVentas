@@ -93,6 +93,7 @@ namespace CapaPresentacion
         //Ocultar columnas
         private void OcultarColumnas()
         {
+
             this.listadoDataGridView.Columns[0].Visible = false;
             this.listadoDataGridView.Columns[1].Visible = false;
         }
@@ -140,6 +141,181 @@ namespace CapaPresentacion
             {
                 this.BuscarNum_Documento();
             }
+        }
+
+        private void eliminarButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult;
+                dialogResult = MessageBox.Show("realmente desea eliminar los registros?", "Sistem de Ventas",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    string codigo;
+                    string rpta = "";
+
+                    foreach (DataGridViewRow row in listadoDataGridView.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            codigo = row.Cells[1].Value.ToString();
+                            rpta = NProveedor.Eliminar(Convert.ToInt32(codigo));
+
+                            if (rpta.Equals("OK"))
+                                this.MensajeOk("Se eliminó correctamente el registro");
+                            else
+                                this.MensajeError(rpta);
+                        }
+                    }
+                    this.Mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void eliminarCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (eliminarCheckBox.Checked)
+            {
+                this.listadoDataGridView.Columns[0].Visible = true;
+            }
+            else
+            {
+                this.listadoDataGridView.Columns[0].Visible = false;
+            }
+        }
+
+        private void nuevoButton_Click(object sender, EventArgs e)
+        {
+            this.IsNuevo = true;
+            this.IsEditar = false;
+            this.Botones();
+            this.Limpiar();
+            this.Habilitar(true);
+            this.razonSocialTextBox.Focus();
+        }
+
+        private void guardarButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                string rpta = "";
+                if (razonSocialTextBox.Text == string.Empty ||
+                    numeroDocumentoTextBox.Text==string.Empty ||
+                    direccionTextBox.Text==string.Empty)
+                {
+                    MensajeError("Falta ingresar algunos datos, serán remarcados");
+                    errorProvider1.SetError(razonSocialTextBox, "Ingrese un valor");
+                    errorProvider1.SetError(numeroDocumentoTextBox, "Ingrese un valor");
+                    errorProvider1.SetError(direccionTextBox, "Ingrese un valor");
+                }
+                else
+                {
+                    if (this.IsNuevo)
+                    {
+                        rpta = NProveedor.Insertar(razonSocialTextBox.Text.Trim().ToUpper(),
+                            sectorComercialComboBox.Text,
+                            tipoDocumentoComboBox.Text,
+                            numeroDocumentoTextBox.Text.Trim(),
+                            direccionTextBox.Text.Trim(),
+                            telefonoTextBox.Text.Trim(),
+                            emailTextBox.Text.Trim(),
+                            urlTextBox.Text.Trim());
+                    }
+                    else
+                    {
+                        rpta = NProveedor.Editar(Convert.ToInt32(idProveedorTextBox.Text), 
+                            razonSocialTextBox.Text.Trim().ToUpper(),
+                           sectorComercialComboBox.Text,
+                           tipoDocumentoComboBox.Text,
+                           numeroDocumentoTextBox.Text.Trim(),
+                           direccionTextBox.Text.Trim(),
+                           telefonoTextBox.Text.Trim(),
+                           emailTextBox.Text.Trim(),
+                           urlTextBox.Text.Trim());
+                    }
+
+                    if (rpta.Equals("OK"))
+                    {
+                        if (this.IsNuevo)
+                        {
+                            this.MensajeOk("Se insertó de forma correcta el registro");
+                        }
+                        else
+                        {
+                            this.MensajeOk("Se actualizó de forma correcta el registro");
+                        }
+                    }
+                    else
+                    {
+                        this.MensajeError(rpta);
+                    }
+
+                    this.IsNuevo = false;
+                    this.IsEditar = false;
+                    this.Botones();
+                    this.Limpiar();
+                    this.Mostrar();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private void editarButton_Click(object sender, EventArgs e)
+        {
+            if (!this.idProveedorTextBox.Text.Equals(""))
+            {
+                this.IsEditar = true;
+                this.Botones();
+                this.Habilitar(true);
+            }
+            else
+            {
+                this.MensajeError("Debe seleccionar primero el registro a modificar");
+            }
+        }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.IsNuevo = false;
+            this.IsEditar = false;
+            this.Botones();
+            this.Limpiar();
+            this.idProveedorTextBox.Text = string.Empty;
+        }
+
+        private void listadoDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == listadoDataGridView.Columns["Eliminar"].Index)
+            {
+                DataGridViewCheckBoxCell chkEliminar =
+                    (DataGridViewCheckBoxCell)listadoDataGridView.Rows[e.RowIndex].Cells["Eliminar"];
+
+                chkEliminar.Value = !Convert.ToBoolean(chkEliminar.Value);
+            }
+        }
+
+        private void listadoDataGridView_DoubleClick(object sender, EventArgs e)
+        {
+            idProveedorTextBox.Text = listadoDataGridView.CurrentRow.Cells["IdProveedor"].Value.ToString();
+            razonSocialTextBox.Text = listadoDataGridView.CurrentRow.Cells["Razon_social"].Value.ToString();
+            sectorComercialComboBox.Text= listadoDataGridView.CurrentRow.Cells["Sector_comercial"].Value.ToString();
+            tipoDocumentoComboBox.Text = listadoDataGridView.CurrentRow.Cells["Tipo_documento"].Value.ToString();
+            numeroDocumentoTextBox.Text = listadoDataGridView.CurrentRow.Cells["Num_documento"].Value.ToString();
+            direccionTextBox.Text = listadoDataGridView.CurrentRow.Cells["Direccion_proveedor"].Value.ToString();
+            telefonoTextBox.Text = listadoDataGridView.CurrentRow.Cells["Telefono"].Value.ToString();
+            emailTextBox.Text = listadoDataGridView.CurrentRow.Cells["Email"].Value.ToString();
+            urlTextBox.Text = listadoDataGridView.CurrentRow.Cells["Url"].Value.ToString();
+
+            this.tabControl1.SelectedIndex = 1;
         }
     }
 }

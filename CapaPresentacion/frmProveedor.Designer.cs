@@ -33,6 +33,7 @@ namespace CapaPresentacion
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buscarComboBox = new System.Windows.Forms.ComboBox();
             this.listadoDataGridView = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.totalLabel = new System.Windows.Forms.Label();
@@ -40,6 +41,7 @@ namespace CapaPresentacion
             this.imprimirButton = new System.Windows.Forms.Button();
             this.eliminarButton = new System.Windows.Forms.Button();
             this.buscarButton = new System.Windows.Forms.Button();
+            this.buscarTextBox = new System.Windows.Forms.TextBox();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.editarButton = new System.Windows.Forms.Button();
             this.guardarButton = new System.Windows.Forms.Button();
@@ -50,24 +52,22 @@ namespace CapaPresentacion
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tipoDocumentoComboBox = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.sectorComercialComboBox = new System.Windows.Forms.ComboBox();
+            this.urlTextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.numeroDocumentoTextBox = new System.Windows.Forms.TextBox();
+            this.telefonoTextBox = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
-            this.sectorComercialComboBox = new System.Windows.Forms.ComboBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tipoDocumentoComboBox = new System.Windows.Forms.ComboBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.telefonoTextBox = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.urlTextBox = new System.Windows.Forms.TextBox();
-            this.buscarTextBox = new System.Windows.Forms.TextBox();
-            this.buscarComboBox = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.numeroDocumentoTextBox = new System.Windows.Forms.TextBox();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDataGridView)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -107,6 +107,17 @@ namespace CapaPresentacion
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // buscarComboBox
+            // 
+            this.buscarComboBox.FormattingEnabled = true;
+            this.buscarComboBox.Items.AddRange(new object[] {
+            "Documento",
+            "Razón Social"});
+            this.buscarComboBox.Location = new System.Drawing.Point(21, 29);
+            this.buscarComboBox.Name = "buscarComboBox";
+            this.buscarComboBox.Size = new System.Drawing.Size(121, 21);
+            this.buscarComboBox.TabIndex = 0;
+            // 
             // listadoDataGridView
             // 
             this.listadoDataGridView.AllowUserToAddRows = false;
@@ -125,6 +136,8 @@ namespace CapaPresentacion
             this.listadoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listadoDataGridView.Size = new System.Drawing.Size(804, 263);
             this.listadoDataGridView.TabIndex = 7;
+            this.listadoDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listadoDataGridView_CellContentClick);
+            this.listadoDataGridView.DoubleClick += new System.EventHandler(this.listadoDataGridView_DoubleClick);
             // 
             // Eliminar
             // 
@@ -150,6 +163,7 @@ namespace CapaPresentacion
             this.eliminarCheckBox.TabIndex = 5;
             this.eliminarCheckBox.Text = "Eliminar";
             this.eliminarCheckBox.UseVisualStyleBackColor = true;
+            this.eliminarCheckBox.CheckedChanged += new System.EventHandler(this.eliminarCheckBox_CheckedChanged);
             // 
             // imprimirButton
             // 
@@ -168,6 +182,7 @@ namespace CapaPresentacion
             this.eliminarButton.TabIndex = 3;
             this.eliminarButton.Text = "&Eliminar";
             this.eliminarButton.UseVisualStyleBackColor = true;
+            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
             // 
             // buscarButton
             // 
@@ -179,6 +194,13 @@ namespace CapaPresentacion
             this.buscarButton.UseVisualStyleBackColor = true;
             this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
+            // buscarTextBox
+            // 
+            this.buscarTextBox.Location = new System.Drawing.Point(148, 29);
+            this.buscarTextBox.Name = "buscarTextBox";
+            this.buscarTextBox.Size = new System.Drawing.Size(100, 20);
+            this.buscarTextBox.TabIndex = 1;
+            // 
             // cancelarButton
             // 
             this.cancelarButton.Location = new System.Drawing.Point(356, 308);
@@ -187,6 +209,7 @@ namespace CapaPresentacion
             this.cancelarButton.TabIndex = 21;
             this.cancelarButton.Text = "&Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // editarButton
             // 
@@ -196,6 +219,7 @@ namespace CapaPresentacion
             this.editarButton.TabIndex = 20;
             this.editarButton.Text = "E&ditar";
             this.editarButton.UseVisualStyleBackColor = true;
+            this.editarButton.Click += new System.EventHandler(this.editarButton_Click);
             // 
             // guardarButton
             // 
@@ -205,6 +229,7 @@ namespace CapaPresentacion
             this.guardarButton.TabIndex = 19;
             this.guardarButton.Text = "&Guardar";
             this.guardarButton.UseVisualStyleBackColor = true;
+            this.guardarButton.Click += new System.EventHandler(this.guardarButton_Click);
             // 
             // nuevoButton
             // 
@@ -214,6 +239,7 @@ namespace CapaPresentacion
             this.nuevoButton.TabIndex = 18;
             this.nuevoButton.Text = "&Nuevo";
             this.nuevoButton.UseVisualStyleBackColor = true;
+            this.nuevoButton.Click += new System.EventHandler(this.nuevoButton_Click);
             // 
             // direccionTextBox
             // 
@@ -296,6 +322,121 @@ namespace CapaPresentacion
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Proveedores";
             // 
+            // tipoDocumentoComboBox
+            // 
+            this.tipoDocumentoComboBox.FormattingEnabled = true;
+            this.tipoDocumentoComboBox.Items.AddRange(new object[] {
+            "Cedula",
+            "Rut"});
+            this.tipoDocumentoComboBox.Location = new System.Drawing.Point(133, 71);
+            this.tipoDocumentoComboBox.Name = "tipoDocumentoComboBox";
+            this.tipoDocumentoComboBox.Size = new System.Drawing.Size(121, 21);
+            this.tipoDocumentoComboBox.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(41, 74);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(86, 13);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Tipo Documento";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(407, 49);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(87, 13);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Sector Comercial";
+            // 
+            // sectorComercialComboBox
+            // 
+            this.sectorComercialComboBox.FormattingEnabled = true;
+            this.sectorComercialComboBox.Items.AddRange(new object[] {
+            "Alimentos",
+            "Ropa",
+            "Salud",
+            "Servicios",
+            " tecnología"});
+            this.sectorComercialComboBox.Location = new System.Drawing.Point(500, 45);
+            this.sectorComercialComboBox.Name = "sectorComercialComboBox";
+            this.sectorComercialComboBox.Size = new System.Drawing.Size(121, 21);
+            this.sectorComercialComboBox.TabIndex = 5;
+            // 
+            // urlTextBox
+            // 
+            this.urlTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.urlTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.urlTextBox.Location = new System.Drawing.Point(133, 238);
+            this.urlTextBox.Name = "urlTextBox";
+            this.urlTextBox.Size = new System.Drawing.Size(230, 20);
+            this.urlTextBox.TabIndex = 17;
+            // 
+            // emailTextBox
+            // 
+            this.emailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.emailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.emailTextBox.Location = new System.Drawing.Point(133, 212);
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(230, 20);
+            this.emailTextBox.TabIndex = 15;
+            // 
+            // numeroDocumentoTextBox
+            // 
+            this.numeroDocumentoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.numeroDocumentoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.numeroDocumentoTextBox.Location = new System.Drawing.Point(133, 160);
+            this.numeroDocumentoTextBox.Name = "numeroDocumentoTextBox";
+            this.numeroDocumentoTextBox.Size = new System.Drawing.Size(230, 20);
+            this.numeroDocumentoTextBox.TabIndex = 11;
+            // 
+            // telefonoTextBox
+            // 
+            this.telefonoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.telefonoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.telefonoTextBox.Location = new System.Drawing.Point(133, 186);
+            this.telefonoTextBox.Name = "telefonoTextBox";
+            this.telefonoTextBox.Size = new System.Drawing.Size(230, 20);
+            this.telefonoTextBox.TabIndex = 13;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(105, 238);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(20, 13);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Url";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(95, 214);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(32, 13);
+            this.label9.TabIndex = 14;
+            this.label9.Text = "Email";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(25, 162);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(102, 13);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Número Documento";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(78, 188);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(49, 13);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Teléfono";
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -331,142 +472,9 @@ namespace CapaPresentacion
             this.label1.ForeColor = System.Drawing.Color.Maroon;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(140, 29);
+            this.label1.Size = new System.Drawing.Size(135, 29);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Categorías";
-            // 
-            // sectorComercialComboBox
-            // 
-            this.sectorComercialComboBox.FormattingEnabled = true;
-            this.sectorComercialComboBox.Items.AddRange(new object[] {
-            "Alimentos",
-            "Ropa",
-            "Salud",
-            "Servicios",
-            " tecnología"});
-            this.sectorComercialComboBox.Location = new System.Drawing.Point(500, 45);
-            this.sectorComercialComboBox.Name = "sectorComercialComboBox";
-            this.sectorComercialComboBox.Size = new System.Drawing.Size(121, 21);
-            this.sectorComercialComboBox.TabIndex = 5;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(407, 49);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(87, 13);
-            this.label6.TabIndex = 4;
-            this.label6.Text = "Sector Comercial";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(41, 74);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(86, 13);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Tipo Documento";
-            // 
-            // tipoDocumentoComboBox
-            // 
-            this.tipoDocumentoComboBox.FormattingEnabled = true;
-            this.tipoDocumentoComboBox.Items.AddRange(new object[] {
-            "Cedula",
-            "Rut"});
-            this.tipoDocumentoComboBox.Location = new System.Drawing.Point(133, 71);
-            this.tipoDocumentoComboBox.Name = "tipoDocumentoComboBox";
-            this.tipoDocumentoComboBox.Size = new System.Drawing.Size(121, 21);
-            this.tipoDocumentoComboBox.TabIndex = 7;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(78, 188);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(49, 13);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Teléfono";
-            // 
-            // telefonoTextBox
-            // 
-            this.telefonoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.telefonoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.telefonoTextBox.Location = new System.Drawing.Point(133, 186);
-            this.telefonoTextBox.Name = "telefonoTextBox";
-            this.telefonoTextBox.Size = new System.Drawing.Size(230, 20);
-            this.telefonoTextBox.TabIndex = 13;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(95, 214);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 13);
-            this.label9.TabIndex = 14;
-            this.label9.Text = "Email";
-            // 
-            // emailTextBox
-            // 
-            this.emailTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.emailTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.emailTextBox.Location = new System.Drawing.Point(133, 212);
-            this.emailTextBox.Name = "emailTextBox";
-            this.emailTextBox.Size = new System.Drawing.Size(230, 20);
-            this.emailTextBox.TabIndex = 15;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(105, 238);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(20, 13);
-            this.label10.TabIndex = 16;
-            this.label10.Text = "Url";
-            // 
-            // urlTextBox
-            // 
-            this.urlTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.urlTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.urlTextBox.Location = new System.Drawing.Point(133, 238);
-            this.urlTextBox.Name = "urlTextBox";
-            this.urlTextBox.Size = new System.Drawing.Size(230, 20);
-            this.urlTextBox.TabIndex = 17;
-            // 
-            // buscarTextBox
-            // 
-            this.buscarTextBox.Location = new System.Drawing.Point(148, 29);
-            this.buscarTextBox.Name = "buscarTextBox";
-            this.buscarTextBox.Size = new System.Drawing.Size(100, 20);
-            this.buscarTextBox.TabIndex = 1;
-            // 
-            // buscarComboBox
-            // 
-            this.buscarComboBox.FormattingEnabled = true;
-            this.buscarComboBox.Items.AddRange(new object[] {
-            "Documento",
-            "Razón Social"});
-            this.buscarComboBox.Location = new System.Drawing.Point(21, 29);
-            this.buscarComboBox.Name = "buscarComboBox";
-            this.buscarComboBox.Size = new System.Drawing.Size(121, 21);
-            this.buscarComboBox.TabIndex = 0;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 162);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 13);
-            this.label2.TabIndex = 10;
-            this.label2.Text = "Número Documento";
-            // 
-            // numeroDocumentoTextBox
-            // 
-            this.numeroDocumentoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.numeroDocumentoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numeroDocumentoTextBox.Location = new System.Drawing.Point(133, 160);
-            this.numeroDocumentoTextBox.Name = "numeroDocumentoTextBox";
-            this.numeroDocumentoTextBox.Size = new System.Drawing.Size(230, 20);
-            this.numeroDocumentoTextBox.TabIndex = 11;
+            this.label1.Text = "Proveedor";
             // 
             // frmProveedor
             // 
