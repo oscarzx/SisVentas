@@ -406,36 +406,6 @@ namespace CapaDatos
             return DtResultado;
         }
 
-        public DataTable BuscarNum_Documento(DCliente Cliente)
-        {
-            DataTable DtResultado = new DataTable("Cliente");
-            SqlConnection SqlCon = new SqlConnection();
-            try
-            {
-                SqlCon.ConnectionString = Conexion.Cn;
-                SqlCommand SqlCmd = new SqlCommand();
-                SqlCmd.Connection = SqlCon;
-                SqlCmd.CommandText = "spbuscar_proveedor_num_documento";
-                SqlCmd.CommandType = CommandType.StoredProcedure;
-
-                SqlParameter ParTextoBuscar = new SqlParameter();
-                ParTextoBuscar.ParameterName = "@textoBuscar";
-                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
-                ParTextoBuscar.Size = 50;
-                ParTextoBuscar.Value = Cliente.TextoBuscar;
-                SqlCmd.Parameters.Add(ParTextoBuscar);
-
-                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
-                SqlDat.Fill(DtResultado);
-            }
-            catch (Exception ex)
-            {
-                DtResultado = null;
-
-            }
-            return DtResultado;
-        }
-
         public DataTable BuscarApellido(DCliente Cliente)
         {
             DataTable DtResultado = new DataTable("Cliente");
