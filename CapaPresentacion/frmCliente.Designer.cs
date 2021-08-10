@@ -43,6 +43,7 @@ namespace CapaPresentacion
             this.buscarTextBox = new System.Windows.Forms.TextBox();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.tipoDocumentoComboBox = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -55,20 +56,19 @@ namespace CapaPresentacion
             this.emailTextBox = new System.Windows.Forms.TextBox();
             this.numeroDocumentoTextBox = new System.Windows.Forms.TextBox();
             this.telefonoTextBox = new System.Windows.Forms.TextBox();
+            this.apellidosTextBox = new System.Windows.Forms.TextBox();
             this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.idClienteTextBox = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
-            this.label11 = new System.Windows.Forms.Label();
-            this.apellidosTextBox = new System.Windows.Forms.TextBox();
-            this.fechaDateTimePicker = new System.Windows.Forms.DateTimePicker();
-            this.label12 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDataGridView)).BeginInit();
@@ -137,6 +137,8 @@ namespace CapaPresentacion
             this.listadoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listadoDataGridView.Size = new System.Drawing.Size(801, 238);
             this.listadoDataGridView.TabIndex = 7;
+            this.listadoDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listadoDataGridView_CellContentClick);
+            this.listadoDataGridView.DoubleClick += new System.EventHandler(this.listadoDataGridView_DoubleClick);
             // 
             // Eliminar
             // 
@@ -162,6 +164,7 @@ namespace CapaPresentacion
             this.eliminarCheckBox.TabIndex = 5;
             this.eliminarCheckBox.Text = "Eliminar";
             this.eliminarCheckBox.UseVisualStyleBackColor = true;
+            this.eliminarCheckBox.CheckedChanged += new System.EventHandler(this.eliminarCheckBox_CheckedChanged);
             // 
             // imprimirButton
             // 
@@ -180,6 +183,7 @@ namespace CapaPresentacion
             this.eliminarButton.TabIndex = 3;
             this.eliminarButton.Text = "&Eliminar";
             this.eliminarButton.UseVisualStyleBackColor = true;
+            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
             // 
             // buscarButton
             // 
@@ -189,6 +193,7 @@ namespace CapaPresentacion
             this.buscarButton.TabIndex = 2;
             this.buscarButton.Text = "&Buscar";
             this.buscarButton.UseVisualStyleBackColor = true;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // buscarTextBox
             // 
@@ -240,6 +245,13 @@ namespace CapaPresentacion
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Cliente";
             // 
+            // fechaDateTimePicker
+            // 
+            this.fechaDateTimePicker.Location = new System.Drawing.Point(328, 71);
+            this.fechaDateTimePicker.Name = "fechaDateTimePicker";
+            this.fechaDateTimePicker.Size = new System.Drawing.Size(200, 20);
+            this.fechaDateTimePicker.TabIndex = 9;
+            // 
             // tipoDocumentoComboBox
             // 
             this.tipoDocumentoComboBox.FormattingEnabled = true;
@@ -249,7 +261,7 @@ namespace CapaPresentacion
             this.tipoDocumentoComboBox.Location = new System.Drawing.Point(133, 98);
             this.tipoDocumentoComboBox.Name = "tipoDocumentoComboBox";
             this.tipoDocumentoComboBox.Size = new System.Drawing.Size(121, 21);
-            this.tipoDocumentoComboBox.TabIndex = 7;
+            this.tipoDocumentoComboBox.TabIndex = 11;
             // 
             // label7
             // 
@@ -257,7 +269,7 @@ namespace CapaPresentacion
             this.label7.Location = new System.Drawing.Point(41, 102);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(86, 13);
-            this.label7.TabIndex = 6;
+            this.label7.TabIndex = 10;
             this.label7.Text = "Tipo Documento";
             // 
             // label6
@@ -266,7 +278,7 @@ namespace CapaPresentacion
             this.label6.Location = new System.Drawing.Point(85, 75);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 13);
-            this.label6.TabIndex = 4;
+            this.label6.TabIndex = 6;
             this.label6.Text = "Genero";
             // 
             // generoComboBox
@@ -278,43 +290,47 @@ namespace CapaPresentacion
             this.generoComboBox.Location = new System.Drawing.Point(133, 71);
             this.generoComboBox.Name = "generoComboBox";
             this.generoComboBox.Size = new System.Drawing.Size(121, 21);
-            this.generoComboBox.TabIndex = 5;
+            this.generoComboBox.TabIndex = 7;
             // 
             // cancelarButton
             // 
             this.cancelarButton.Location = new System.Drawing.Point(412, 210);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelarButton.TabIndex = 21;
+            this.cancelarButton.TabIndex = 22;
             this.cancelarButton.Text = "&Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // editarButton
             // 
             this.editarButton.Location = new System.Drawing.Point(321, 210);
             this.editarButton.Name = "editarButton";
             this.editarButton.Size = new System.Drawing.Size(75, 23);
-            this.editarButton.TabIndex = 20;
+            this.editarButton.TabIndex = 21;
             this.editarButton.Text = "E&ditar";
             this.editarButton.UseVisualStyleBackColor = true;
+            this.editarButton.Click += new System.EventHandler(this.editarButton_Click);
             // 
             // guardarButton
             // 
             this.guardarButton.Location = new System.Drawing.Point(225, 210);
             this.guardarButton.Name = "guardarButton";
             this.guardarButton.Size = new System.Drawing.Size(75, 23);
-            this.guardarButton.TabIndex = 19;
+            this.guardarButton.TabIndex = 20;
             this.guardarButton.Text = "&Guardar";
             this.guardarButton.UseVisualStyleBackColor = true;
+            this.guardarButton.Click += new System.EventHandler(this.guardarButton_Click);
             // 
             // nuevoButton
             // 
             this.nuevoButton.Location = new System.Drawing.Point(133, 210);
             this.nuevoButton.Name = "nuevoButton";
             this.nuevoButton.Size = new System.Drawing.Size(75, 23);
-            this.nuevoButton.TabIndex = 18;
+            this.nuevoButton.TabIndex = 19;
             this.nuevoButton.Text = "&Nuevo";
             this.nuevoButton.UseVisualStyleBackColor = true;
+            this.nuevoButton.Click += new System.EventHandler(this.nuevoButton_Click);
             // 
             // direccionTextBox
             // 
@@ -325,7 +341,7 @@ namespace CapaPresentacion
             this.direccionTextBox.Name = "direccionTextBox";
             this.direccionTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.direccionTextBox.Size = new System.Drawing.Size(395, 53);
-            this.direccionTextBox.TabIndex = 9;
+            this.direccionTextBox.TabIndex = 14;
             // 
             // emailTextBox
             // 
@@ -334,7 +350,7 @@ namespace CapaPresentacion
             this.emailTextBox.Location = new System.Drawing.Point(301, 184);
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(230, 20);
-            this.emailTextBox.TabIndex = 15;
+            this.emailTextBox.TabIndex = 18;
             // 
             // numeroDocumentoTextBox
             // 
@@ -343,7 +359,7 @@ namespace CapaPresentacion
             this.numeroDocumentoTextBox.Location = new System.Drawing.Point(260, 98);
             this.numeroDocumentoTextBox.Name = "numeroDocumentoTextBox";
             this.numeroDocumentoTextBox.Size = new System.Drawing.Size(268, 20);
-            this.numeroDocumentoTextBox.TabIndex = 11;
+            this.numeroDocumentoTextBox.TabIndex = 12;
             // 
             // telefonoTextBox
             // 
@@ -352,7 +368,16 @@ namespace CapaPresentacion
             this.telefonoTextBox.Location = new System.Drawing.Point(133, 184);
             this.telefonoTextBox.Name = "telefonoTextBox";
             this.telefonoTextBox.Size = new System.Drawing.Size(121, 20);
-            this.telefonoTextBox.TabIndex = 13;
+            this.telefonoTextBox.TabIndex = 16;
+            // 
+            // apellidosTextBox
+            // 
+            this.apellidosTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.apellidosTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.apellidosTextBox.Location = new System.Drawing.Point(353, 45);
+            this.apellidosTextBox.Name = "apellidosTextBox";
+            this.apellidosTextBox.Size = new System.Drawing.Size(178, 20);
+            this.apellidosTextBox.TabIndex = 5;
             // 
             // nombreTextBox
             // 
@@ -369,7 +394,7 @@ namespace CapaPresentacion
             this.label9.Location = new System.Drawing.Point(263, 188);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(32, 13);
-            this.label9.TabIndex = 14;
+            this.label9.TabIndex = 17;
             this.label9.Text = "Email";
             // 
             // idClienteTextBox
@@ -387,8 +412,26 @@ namespace CapaPresentacion
             this.label8.Location = new System.Drawing.Point(78, 188);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(49, 13);
-            this.label8.TabIndex = 12;
+            this.label8.TabIndex = 15;
             this.label8.Text = "Teléfono";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(285, 75);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(37, 13);
+            this.label12.TabIndex = 8;
+            this.label12.Text = "Fecha";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(298, 49);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(49, 13);
+            this.label11.TabIndex = 4;
+            this.label11.Text = "Apellidos";
             // 
             // label5
             // 
@@ -396,7 +439,7 @@ namespace CapaPresentacion
             this.label5.Location = new System.Drawing.Point(75, 127);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(52, 13);
-            this.label5.TabIndex = 8;
+            this.label5.TabIndex = 13;
             this.label5.Text = "Dirección";
             // 
             // label4
@@ -425,7 +468,7 @@ namespace CapaPresentacion
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 29);
-            this.label1.TabIndex = 2;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Cliente";
             // 
             // errorProvider1
@@ -435,40 +478,6 @@ namespace CapaPresentacion
             // ttMensaje
             // 
             this.ttMensaje.IsBalloon = true;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(298, 49);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(49, 13);
-            this.label11.TabIndex = 2;
-            this.label11.Text = "Apellidos";
-            // 
-            // apellidosTextBox
-            // 
-            this.apellidosTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.apellidosTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.apellidosTextBox.Location = new System.Drawing.Point(353, 45);
-            this.apellidosTextBox.Name = "apellidosTextBox";
-            this.apellidosTextBox.Size = new System.Drawing.Size(178, 20);
-            this.apellidosTextBox.TabIndex = 3;
-            // 
-            // fechaDateTimePicker
-            // 
-            this.fechaDateTimePicker.Location = new System.Drawing.Point(328, 71);
-            this.fechaDateTimePicker.Name = "fechaDateTimePicker";
-            this.fechaDateTimePicker.Size = new System.Drawing.Size(200, 20);
-            this.fechaDateTimePicker.TabIndex = 22;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(285, 75);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(37, 13);
-            this.label12.TabIndex = 2;
-            this.label12.Text = "Fecha";
             // 
             // frmCliente
             // 
