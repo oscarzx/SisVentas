@@ -19,7 +19,7 @@ namespace SisVentas
             Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new frmArticulo());
             //Application.Run(frmArticulo.GetInstancia());
-            Application.Run(new frmCliente());
+            Application.Run(new frmPrincipal());
         }
     }
 }

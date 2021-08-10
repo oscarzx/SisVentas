@@ -172,7 +172,7 @@ namespace CapaDatos
                 Sqlcmd.Parameters.Add(ParNombre);
 
                 SqlParameter ParApellido = new SqlParameter();
-                ParApellido.ParameterName = "@apellido";
+                ParApellido.ParameterName = "@apellidos";
                 ParApellido.SqlDbType = SqlDbType.VarChar;
                 ParApellido.Size = 50;
                 ParApellido.Value = Empleado.Apellidos;
@@ -186,7 +186,7 @@ namespace CapaDatos
                 Sqlcmd.Parameters.Add(ParGenero);
 
                 SqlParameter ParFechaNacimiento = new SqlParameter();
-                ParFechaNacimiento.ParameterName = "@fecha_nacimiento";
+                ParFechaNacimiento.ParameterName = "@feha";
                 ParFechaNacimiento.SqlDbType = SqlDbType.DateTime;
                 ParFechaNacimiento.Value = Empleado.Fecha;
                 Sqlcmd.Parameters.Add(ParFechaNacimiento);
@@ -285,7 +285,7 @@ namespace CapaDatos
                 Sqlcmd.Parameters.Add(ParNombre);
 
                 SqlParameter ParApellido = new SqlParameter();
-                ParApellido.ParameterName = "@apellido";
+                ParApellido.ParameterName = "@apellidos";
                 ParApellido.SqlDbType = SqlDbType.VarChar;
                 ParApellido.Size = 50;
                 ParApellido.Value = Empleado.Apellidos;
@@ -299,7 +299,7 @@ namespace CapaDatos
                 Sqlcmd.Parameters.Add(ParGenero);
 
                 SqlParameter ParFechaNacimiento = new SqlParameter();
-                ParFechaNacimiento.ParameterName = "@fecha_nacimiento";
+                ParFechaNacimiento.ParameterName = "@feha";
                 ParFechaNacimiento.SqlDbType = SqlDbType.DateTime;
                 ParFechaNacimiento.Value = Empleado.Fecha;
                 Sqlcmd.Parameters.Add(ParFechaNacimiento);
