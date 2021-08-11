@@ -14,6 +14,11 @@ namespace CapaPresentacion
     {
         private int childFormNumber = 0;
 
+        public string IdEmpleado { get; set; }
+        public string Apellido { get; set; }
+        public string Nombre { get; set; }
+        public string Acceso { get; set; }
+
         public frmPrincipal()
         {
             InitializeComponent();
@@ -145,6 +150,67 @@ namespace CapaPresentacion
             frmEmpleado miForm = new frmEmpleado();
             miForm.MdiParent = this;
             miForm.Show();
+        }
+
+        private void frmPrincipal_Load(object sender, EventArgs e)
+        {
+            GestionPermisoUsuario();
+        }
+
+        private void GestionPermisoUsuario()
+        {
+            if (Acceso == "Administrador")
+            {
+                archivoMenu.Enabled = true;
+                almacenMenu.Enabled = true;
+                comprasMenu.Enabled = true;
+                ventasMenu.Enabled = true;
+                verMenu.Enabled = true;
+                mantenimientoMenu.Enabled = true;
+                consultasMenu.Enabled = true;
+                herramientasMenu.Enabled = true;
+            }
+
+            else if (Acceso == "Vendedor")
+            {
+                archivoMenu.Enabled = true;
+                almacenMenu.Enabled = false;
+                comprasMenu.Enabled = false;
+                ventasMenu.Enabled = true;
+                verMenu.Enabled = true;
+                mantenimientoMenu.Enabled = false;
+                consultasMenu.Enabled = true;
+                herramientasMenu.Enabled = false;
+            }
+
+            else if (Acceso == "Bodeguero")
+            {
+                archivoMenu.Enabled = true;
+                almacenMenu.Enabled = false;
+                comprasMenu.Enabled = false;
+                ventasMenu.Enabled = false;
+                verMenu.Enabled = true;
+                mantenimientoMenu.Enabled = false;
+                consultasMenu.Enabled = true;
+                herramientasMenu.Enabled = false;
+            }
+
+            else
+            {
+                archivoMenu.Enabled = false;
+                almacenMenu.Enabled = false;
+                comprasMenu.Enabled = false;
+                ventasMenu.Enabled = false;
+                verMenu.Enabled = false;
+                mantenimientoMenu.Enabled = false;
+                consultasMenu.Enabled = false;
+                herramientasMenu.Enabled = false;
+            }
+        }
+
+        private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

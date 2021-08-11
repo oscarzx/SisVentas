@@ -85,5 +85,13 @@ namespace CapaNegocio
             return Obj.BuscarApellido_Empleado(Obj);
         }
 
+        public static DataTable Login(string usuario, string password)
+        {
+            DEmpleado Obj = new DEmpleado();
+            Obj.Password = password;
+            Obj.Usuario = usuario;
+            return Obj.Login(Obj);
+        }
+
     }
 }
