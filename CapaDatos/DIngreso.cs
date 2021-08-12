@@ -190,14 +190,28 @@ namespace CapaDatos
                 if (rpta.Equals("OK"))
                 {
                     //Obtener el código del ingreso generado
-                    this.idIngreso = Convert.ToInt32(Sqlcmd.Parameters["@idingreso"].Value);
+                    this.IdIngreso = Convert.ToInt32(Sqlcmd.Parameters["@idingreso"].Value);
 
                     foreach (DDetalle_Ingreso item in Detalle)
                     {
+                        item.IdIngreso = this.IdIngreso;
+                        //Llamar al método insertar de la clase DDetalle_ingreso
+                        rpta = item.Insertar(item, ref SqlCon, ref sqlTransaction);
 
+                        if (!rpta.Equals("OK"))
+                        {
+                            break;
+                        }
                     }
                 }
-
+                if (rpta.Equals("OK"))
+                {
+                    sqlTransaction.Commit();
+                }
+                else
+                {
+                    sqlTransaction.Rollback();
+                }
 
             }
             catch (Exception ex)
@@ -210,6 +224,139 @@ namespace CapaDatos
             }
             return rpta;
         }
+
+
+        public string Anular(DIngreso Ingreso)
+        {
+            string rpta = "";
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                //Código
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+
+                //Establecer comando
+                SqlCommand Sqlcmd = new SqlCommand();
+                Sqlcmd.Connection = SqlCon;
+                Sqlcmd.CommandText = "spanular_ingreso";
+                Sqlcmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParIdingreso = new SqlParameter();
+                ParIdingreso.ParameterName = "@idingreso";
+                ParIdingreso.SqlDbType = SqlDbType.Int;
+                ParIdingreso.Value = Ingreso.IdIngreso;
+                Sqlcmd.Parameters.Add(ParIdingreso);
+
+                //Ejecutamos nuestro comando
+                rpta = Sqlcmd.ExecuteNonQuery() == 1 ? "OK" : "No se anuló el registro";
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return rpta;
+        }
+
+
+        //Buscar Mostrar
+        public DataTable Mostrar()
+        {
+            DataTable DtResultado = new DataTable("Ingreso");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spmostrar_ingreso";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+
+            }
+            return DtResultado;
+        }
+
+        //Buscar Fechas
+        public DataTable BuscarFechas(string _textobuscar, string _textobuscar2)
+        {
+            DataTable DtResultado = new DataTable("Ingreso");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spbuscar_ingreso_fecha";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParTextoBuscar = new SqlParameter();
+                ParTextoBuscar.ParameterName = "@textobuscar";
+                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
+                ParTextoBuscar.Size = 20;
+                ParTextoBuscar.Value = _textobuscar;
+                SqlCmd.Parameters.Add(ParTextoBuscar);
+
+                SqlParameter ParTextoBuscar2 = new SqlParameter();
+                ParTextoBuscar2.ParameterName = "@textobuscar2";
+                ParTextoBuscar2.SqlDbType = SqlDbType.VarChar;
+                ParTextoBuscar2.Size = 20;
+                ParTextoBuscar2.Value = _textobuscar2;
+                SqlCmd.Parameters.Add(ParTextoBuscar2);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+
+            }
+            return DtResultado;
+        }
+
+
+        public DataTable MostrarDetalle(string _textobuscar)
+        {
+            DataTable DtResultado = new DataTable("Detalle_ingreso");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spmostrar_detalle_ingreso";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter ParTextoBuscar = new SqlParameter();
+                ParTextoBuscar.ParameterName = "@textobuscar";
+                ParTextoBuscar.SqlDbType = SqlDbType.VarChar;
+                ParTextoBuscar.Size = 20;
+                ParTextoBuscar.Value = _textobuscar;
+                SqlCmd.Parameters.Add(ParTextoBuscar);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+
+            }
+            return DtResultado;
+        }
+
+
 
     }
 }
