@@ -212,5 +212,13 @@ namespace CapaPresentacion
         {
             Application.Exit();
         }
+
+        private void ingresosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmIngreso miForm = frmIngreso.GetInstance();
+            miForm.MdiParent = this;
+            miForm.Show();
+            miForm.IdEmpleado = Convert.ToInt32(this.IdEmpleado);
+        }
     }
 }
