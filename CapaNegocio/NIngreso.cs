@@ -33,7 +33,7 @@ namespace CapaNegocio
                 detalle.Precio_compra = Convert.ToDecimal(row["Precio_compra"].ToString());
                 detalle.Precio_venta = Convert.ToDecimal(row["Precio_venta"].ToString());
                 detalle.Stock_inicial = float.Parse(row["Stock_inicial"].ToString());
-                detalle.Stock_actual = float.Parse(row["Stock_actual"].ToString());
+                detalle.Stock_actual = float.Parse(row["Stock_inicial"].ToString());
                 detalle.Fecha_produccion = Convert.ToDateTime(row["Fecha_produccion"].ToString());
                 detalle.Fecha_vencimiento = Convert.ToDateTime(row["Fecha_vencimiento"].ToString());
                 misDetalles.Add(detalle);

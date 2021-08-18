@@ -167,7 +167,7 @@ namespace CapaDatos
                 Sqlcmd.Parameters.Add(ParFechaProduccion);
 
                 SqlParameter ParFechaVencimiento = new SqlParameter();
-                ParFechaVencimiento.ParameterName = "@fecha_produccion";
+                ParFechaVencimiento.ParameterName = "@fecha_vencimiento";
                 ParFechaVencimiento.SqlDbType = SqlDbType.Date;
                 ParFechaVencimiento.Value = Detalle_Ingreso.Fecha_vencimiento;//Esta fecha está como nchar en la db
                 Sqlcmd.Parameters.Add(ParFechaVencimiento);
