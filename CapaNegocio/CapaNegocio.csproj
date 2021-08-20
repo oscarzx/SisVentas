@@ -49,6 +49,7 @@
     <Compile Include="NIngreso.cs" />
     <Compile Include="NPresentacion.cs" />
     <Compile Include="NProveedor.cs" />
+    <Compile Include="NVenta.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -220,5 +220,13 @@ namespace CapaPresentacion
             miForm.Show();
             miForm.IdEmpleado = Convert.ToInt32(this.IdEmpleado);
         }
+
+        private void ventasToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmVenta miForm = frmVenta.GetInstance();
+            miForm.MdiParent = this;
+            miForm.Show();
+            miForm.IdEmpleado = Convert.ToInt32(this.IdEmpleado);
+        }
     }
 }
