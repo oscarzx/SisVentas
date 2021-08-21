@@ -48,7 +48,11 @@ namespace CapaPresentacion
             this.precioCompraTextBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.stockActualTextBox = new System.Windows.Forms.TextBox();
+            this.descuentoTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.cantidadTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.articuloTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -78,6 +82,7 @@ namespace CapaPresentacion
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.totalRegistrosLabel = new System.Windows.Forms.Label();
             this.eliminarCheckBox = new System.Windows.Forms.CheckBox();
+            this.comprobanteButton = new System.Windows.Forms.Button();
             this.imprimirButton = new System.Windows.Forms.Button();
             this.eliminarButton = new System.Windows.Forms.Button();
             this.buscarButton = new System.Windows.Forms.Button();
@@ -86,11 +91,6 @@ namespace CapaPresentacion
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
-            this.comprobanteButton = new System.Windows.Forms.Button();
-            this.stockActualTextBox = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDetalleDataGridView)).BeginInit();
@@ -222,7 +222,7 @@ namespace CapaPresentacion
             this.groupBox2.Controls.Add(this.label18);
             this.groupBox2.Controls.Add(this.label15);
             this.groupBox2.Controls.Add(this.stockActualTextBox);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.descuentoTextBox);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.cantidadTextBox);
             this.groupBox2.Controls.Add(this.label8);
@@ -269,6 +269,7 @@ namespace CapaPresentacion
             this.borrarButton.TabIndex = 12;
             this.borrarButton.Text = "Borrar";
             this.borrarButton.UseVisualStyleBackColor = true;
+            this.borrarButton.Click += new System.EventHandler(this.borrarButton_Click);
             // 
             // agregarButton
             // 
@@ -278,6 +279,7 @@ namespace CapaPresentacion
             this.agregarButton.TabIndex = 12;
             this.agregarButton.Text = "Agregar";
             this.agregarButton.UseVisualStyleBackColor = true;
+            this.agregarButton.Click += new System.EventHandler(this.agregarButton_Click);
             // 
             // precioCompraTextBox
             // 
@@ -306,6 +308,33 @@ namespace CapaPresentacion
             this.label15.TabIndex = 10;
             this.label15.Text = "Precio Compra";
             // 
+            // stockActualTextBox
+            // 
+            this.stockActualTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.stockActualTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.stockActualTextBox.Location = new System.Drawing.Point(197, 68);
+            this.stockActualTextBox.Name = "stockActualTextBox";
+            this.stockActualTextBox.Size = new System.Drawing.Size(74, 20);
+            this.stockActualTextBox.TabIndex = 11;
+            // 
+            // descuentoTextBox
+            // 
+            this.descuentoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.descuentoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.descuentoTextBox.Location = new System.Drawing.Point(677, 68);
+            this.descuentoTextBox.Name = "descuentoTextBox";
+            this.descuentoTextBox.Size = new System.Drawing.Size(65, 20);
+            this.descuentoTextBox.TabIndex = 11;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(612, 72);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(59, 13);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Descuento";
+            // 
             // cantidadTextBox
             // 
             this.cantidadTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
@@ -314,6 +343,15 @@ namespace CapaPresentacion
             this.cantidadTextBox.Name = "cantidadTextBox";
             this.cantidadTextBox.Size = new System.Drawing.Size(74, 20);
             this.cantidadTextBox.TabIndex = 11;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(161, 72);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(35, 13);
+            this.label8.TabIndex = 10;
+            this.label8.Text = "Stock";
             // 
             // label14
             // 
@@ -383,6 +421,7 @@ namespace CapaPresentacion
             this.cancelarButton.TabIndex = 0;
             this.cancelarButton.Text = "&Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // totalPagadoLabel
             // 
@@ -410,6 +449,7 @@ namespace CapaPresentacion
             this.guardarButton.TabIndex = 18;
             this.guardarButton.Text = "&Guardar";
             this.guardarButton.UseVisualStyleBackColor = true;
+            this.guardarButton.Click += new System.EventHandler(this.guardarButton_Click);
             // 
             // nuevoButton
             // 
@@ -419,6 +459,7 @@ namespace CapaPresentacion
             this.nuevoButton.TabIndex = 17;
             this.nuevoButton.Text = "&Nuevo";
             this.nuevoButton.UseVisualStyleBackColor = true;
+            this.nuevoButton.Click += new System.EventHandler(this.nuevoButton_Click);
             // 
             // idClienteTextBox
             // 
@@ -576,6 +617,8 @@ namespace CapaPresentacion
             this.listadoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listadoDataGridView.Size = new System.Drawing.Size(995, 460);
             this.listadoDataGridView.TabIndex = 7;
+            this.listadoDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listadoDataGridView_CellContentClick);
+            this.listadoDataGridView.DoubleClick += new System.EventHandler(this.listadoDataGridView_DoubleClick);
             // 
             // Eliminar
             // 
@@ -601,6 +644,16 @@ namespace CapaPresentacion
             this.eliminarCheckBox.TabIndex = 5;
             this.eliminarCheckBox.Text = "Eliminar";
             this.eliminarCheckBox.UseVisualStyleBackColor = true;
+            this.eliminarCheckBox.CheckedChanged += new System.EventHandler(this.eliminarCheckBox_CheckedChanged);
+            // 
+            // comprobanteButton
+            // 
+            this.comprobanteButton.Location = new System.Drawing.Point(612, 31);
+            this.comprobanteButton.Name = "comprobanteButton";
+            this.comprobanteButton.Size = new System.Drawing.Size(86, 23);
+            this.comprobanteButton.TabIndex = 4;
+            this.comprobanteButton.Text = "Comprobante";
+            this.comprobanteButton.UseVisualStyleBackColor = true;
             // 
             // imprimirButton
             // 
@@ -619,6 +672,7 @@ namespace CapaPresentacion
             this.eliminarButton.TabIndex = 3;
             this.eliminarButton.Text = "Eliminar";
             this.eliminarButton.UseVisualStyleBackColor = true;
+            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
             // 
             // buscarButton
             // 
@@ -666,51 +720,6 @@ namespace CapaPresentacion
             // 
             this.ttMensaje.IsBalloon = true;
             // 
-            // comprobanteButton
-            // 
-            this.comprobanteButton.Location = new System.Drawing.Point(612, 31);
-            this.comprobanteButton.Name = "comprobanteButton";
-            this.comprobanteButton.Size = new System.Drawing.Size(86, 23);
-            this.comprobanteButton.TabIndex = 4;
-            this.comprobanteButton.Text = "Comprobante";
-            this.comprobanteButton.UseVisualStyleBackColor = true;
-            // 
-            // stockActualTextBox
-            // 
-            this.stockActualTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.stockActualTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.stockActualTextBox.Location = new System.Drawing.Point(197, 68);
-            this.stockActualTextBox.Name = "stockActualTextBox";
-            this.stockActualTextBox.Size = new System.Drawing.Size(74, 20);
-            this.stockActualTextBox.TabIndex = 11;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(612, 72);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 13);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Descuento";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Location = new System.Drawing.Point(677, 68);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(65, 20);
-            this.textBox1.TabIndex = 11;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(161, 72);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 10;
-            this.label8.Text = "Stock";
-            // 
             // frmVenta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -722,6 +731,7 @@ namespace CapaPresentacion
             this.Name = "frmVenta";
             this.Text = "Venta";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmVenta_FormClosing);
+            this.Load += new System.EventHandler(this.frmVenta_Load);
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -759,7 +769,7 @@ namespace CapaPresentacion
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox stockActualTextBox;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox descuentoTextBox;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox cantidadTextBox;
         private System.Windows.Forms.Label label14;
