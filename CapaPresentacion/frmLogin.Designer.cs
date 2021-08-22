@@ -126,6 +126,7 @@ namespace CapaPresentacion
             // 
             // usuarioTextBox
             // 
+            this.usuarioTextBox.BackColor = System.Drawing.SystemColors.Window;
             this.usuarioTextBox.Location = new System.Drawing.Point(109, 55);
             this.usuarioTextBox.Name = "usuarioTextBox";
             this.usuarioTextBox.Size = new System.Drawing.Size(238, 20);

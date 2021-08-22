@@ -167,7 +167,7 @@ namespace CapaDatos
                 SqlParameter ParIdCliente = new SqlParameter();
                 ParIdCliente.ParameterName = "@idcliente";
                 ParIdCliente.SqlDbType = SqlDbType.Int;
-                ParIdCliente.Value = Venta.IdEmpleado;
+                ParIdCliente.Value = Venta.IdCliente;
                 Sqlcmd.Parameters.Add(ParIdCliente);
 
                 SqlParameter ParIdEmpleado = new SqlParameter();

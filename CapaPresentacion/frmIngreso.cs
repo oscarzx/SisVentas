@@ -175,10 +175,10 @@ namespace CapaPresentacion
         {
             this.Top = 0;
             this.Left = 0;
-            this.Mostrar();
             this.Habilitar(false);
             this.Botones();
             this.CrearTabla();
+            this.Mostrar();
         }
 
         private void buscarProveedorButton_Click(object sender, EventArgs e)

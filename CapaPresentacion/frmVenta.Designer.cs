@@ -654,6 +654,7 @@ namespace CapaPresentacion
             this.comprobanteButton.TabIndex = 4;
             this.comprobanteButton.Text = "Comprobante";
             this.comprobanteButton.UseVisualStyleBackColor = true;
+            this.comprobanteButton.Click += new System.EventHandler(this.comprobanteButton_Click);
             // 
             // imprimirButton
             // 

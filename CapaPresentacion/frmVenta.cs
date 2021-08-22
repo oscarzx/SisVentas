@@ -209,10 +209,11 @@ namespace CapaPresentacion
         {
             this.Top = 0;
             this.Left = 0;
-            this.Mostrar();
+            
             this.Habilitar(false);
             this.Botones();
             this.CrearTabla();
+            this.Mostrar();
         }
 
         private void eliminarButton_Click(object sender, EventArgs e)
@@ -314,13 +315,15 @@ namespace CapaPresentacion
                 if (idClienteTextBox.Text == string.Empty ||
                     serieTextBox.Text == string.Empty ||
                     correlativoTextBox.Text == string.Empty ||
-                    ivaTextBox.Text == string.Empty)
+                    ivaTextBox.Text == string.Empty||
+                    comprobanteComboBox.SelectedIndex == -1)
                 {
                     MensajeError("Falta ingresar algunos datos, serán remarcados");
                     errorProvider1.SetError(idClienteTextBox, "Ingrese un valor");
                     errorProvider1.SetError(serieTextBox, "Ingrese un valor");
+                    errorProvider1.SetError(ivaTextBox, "Ingrese un valor");
                     errorProvider1.SetError(correlativoTextBox, "Ingrese un valor");
-                    errorProvider1.SetError(correlativoTextBox, "Ingrese un valor");
+                    errorProvider1.SetError(comprobanteComboBox, "Ingrese un valor");
                 }
                 else
                 {
@@ -436,6 +439,13 @@ namespace CapaPresentacion
             {
                 MensajeError("No hay fila para remover");
             }
+        }
+
+        private void comprobanteButton_Click(object sender, EventArgs e)
+        {
+            frmReporteFactura miForm = new frmReporteFactura();
+            miForm.IdVenta = Convert.ToInt32(listadoDataGridView.CurrentRow.Cells["IdVenta"].Value);
+            miForm.ShowDialog();
         }
     }
 }
