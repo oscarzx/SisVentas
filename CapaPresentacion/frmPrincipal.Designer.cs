@@ -182,14 +182,14 @@ namespace CapaPresentacion
             // ventasToolStripMenuItem1
             // 
             this.ventasToolStripMenuItem1.Name = "ventasToolStripMenuItem1";
-            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.ventasToolStripMenuItem1.Size = new System.Drawing.Size(116, 22);
             this.ventasToolStripMenuItem1.Text = "Ventas";
             this.ventasToolStripMenuItem1.Click += new System.EventHandler(this.ventasToolStripMenuItem1_Click);
             // 
             // clientesToolStripMenuItem
             // 
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             this.clientesToolStripMenuItem.Click += new System.EventHandler(this.clientesToolStripMenuItem_Click);
             // 
@@ -250,20 +250,21 @@ namespace CapaPresentacion
             // ventasPorFechaToolStripMenuItem
             // 
             this.ventasPorFechaToolStripMenuItem.Name = "ventasPorFechaToolStripMenuItem";
-            this.ventasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.ventasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ventasPorFechaToolStripMenuItem.Text = "Ventas por Fecha";
             // 
             // comprasPorFechaToolStripMenuItem
             // 
             this.comprasPorFechaToolStripMenuItem.Name = "comprasPorFechaToolStripMenuItem";
-            this.comprasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.comprasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.comprasPorFechaToolStripMenuItem.Text = "Compras por Fecha";
             // 
             // stockDeArtículosToolStripMenuItem
             // 
             this.stockDeArtículosToolStripMenuItem.Name = "stockDeArtículosToolStripMenuItem";
-            this.stockDeArtículosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.stockDeArtículosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.stockDeArtículosToolStripMenuItem.Text = "Stock de Artículos";
+            this.stockDeArtículosToolStripMenuItem.Click += new System.EventHandler(this.stockDeArtículosToolStripMenuItem_Click);
             // 
             // herramientasMenu
             // 

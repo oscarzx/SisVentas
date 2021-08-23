@@ -47,6 +47,7 @@ namespace CapaPresentacion
             this.limpiarImagenButton = new System.Windows.Forms.Button();
             this.buscarCategoriaButton = new System.Windows.Forms.Button();
             this.cargarButton = new System.Windows.Forms.Button();
+            this.imagenPictureBox = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -66,14 +67,13 @@ namespace CapaPresentacion
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
-            this.imagenPictureBox = new System.Windows.Forms.PictureBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagenPictureBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -162,6 +162,7 @@ namespace CapaPresentacion
             this.imprimirButton.TabIndex = 4;
             this.imprimirButton.Text = "&Imprimir";
             this.imprimirButton.UseVisualStyleBackColor = true;
+            this.imprimirButton.Click += new System.EventHandler(this.imprimirButton_Click);
             // 
             // eliminarButton
             // 
@@ -281,6 +282,15 @@ namespace CapaPresentacion
             this.cargarButton.Text = "Cargar";
             this.cargarButton.UseVisualStyleBackColor = true;
             this.cargarButton.Click += new System.EventHandler(this.cargarButton_Click);
+            // 
+            // imagenPictureBox
+            // 
+            this.imagenPictureBox.BackgroundImage = global::CapaPresentacion.Properties.Resources.ImagenBlanco;
+            this.imagenPictureBox.Location = new System.Drawing.Point(318, 124);
+            this.imagenPictureBox.Name = "imagenPictureBox";
+            this.imagenPictureBox.Size = new System.Drawing.Size(135, 83);
+            this.imagenPictureBox.TabIndex = 12;
+            this.imagenPictureBox.TabStop = false;
             // 
             // label8
             // 
@@ -451,15 +461,6 @@ namespace CapaPresentacion
             // 
             this.ttMensaje.IsBalloon = true;
             // 
-            // imagenPictureBox
-            // 
-            this.imagenPictureBox.BackgroundImage = global::CapaPresentacion.Properties.Resources.ImagenBlanco;
-            this.imagenPictureBox.Location = new System.Drawing.Point(318, 124);
-            this.imagenPictureBox.Name = "imagenPictureBox";
-            this.imagenPictureBox.Size = new System.Drawing.Size(135, 83);
-            this.imagenPictureBox.TabIndex = 12;
-            this.imagenPictureBox.TabStop = false;
-            // 
             // frmArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -478,8 +479,8 @@ namespace CapaPresentacion
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imagenPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

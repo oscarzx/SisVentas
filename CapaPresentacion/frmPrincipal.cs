@@ -228,5 +228,12 @@ namespace CapaPresentacion
             miForm.Show();
             miForm.IdEmpleado = Convert.ToInt32(this.IdEmpleado);
         }
+
+        private void stockDeArtículosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Consultas.frmConsulta_Stock_Articulos miForm = new Consultas.frmConsulta_Stock_Articulos();
+            miForm.MdiParent = this;
+            miForm.Show();
+        }
     }
 }
