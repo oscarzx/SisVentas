@@ -179,6 +179,7 @@ namespace CapaPresentacion
             this.Botones();
             this.CrearTabla();
             this.Mostrar();
+            this.PersonalizarGrillaListado();
         }
 
         private void buscarProveedorButton_Click(object sender, EventArgs e)
@@ -196,6 +197,7 @@ namespace CapaPresentacion
         private void buscarButton_Click(object sender, EventArgs e)
         {
             BuscarFechas();
+            PersonalizarGrillaListado();
         }
 
         private void anularButton_Click(object sender, EventArgs e)
@@ -225,6 +227,7 @@ namespace CapaPresentacion
                         }
                     }
                     this.Mostrar();
+                    PersonalizarGrillaListado();
                 }
             }
             catch (Exception ex)
@@ -243,6 +246,7 @@ namespace CapaPresentacion
             {
                 this.listadoDataGridView.Columns[0].Visible = false;
             }
+            PersonalizarGrillaListado();
         }
 
         private void listadoDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -284,50 +288,39 @@ namespace CapaPresentacion
 
         private void guardarButton_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampos()) return;
+            string rpta = "";
+
             try
             {
-                string rpta = "";
-                if (idProveedorTextBox.Text == string.Empty ||
-                    serieTextBox.Text == string.Empty ||
-                    correlativoTextBox.Text == string.Empty ||
-                    ivaTextBox.Text == string.Empty)
+                if (this.IsNuevo)
                 {
-                    MensajeError("Falta ingresar algunos datos, serán remarcados");
-                    errorProvider1.SetError(idProveedorTextBox, "Ingrese un valor");
-                    errorProvider1.SetError(serieTextBox, "Ingrese un valor");
-                    errorProvider1.SetError(correlativoTextBox, "Ingrese un valor");
-                    errorProvider1.SetError(correlativoTextBox, "Ingrese un valor");
+                    rpta = NIngreso.Insertar(IdEmpleado, Convert.ToInt32(idProveedorTextBox.Text.Trim()),
+                        fechaIngresodateTimePicker.Value, comprobanteComboBox.Text,
+                        serieTextBox.Text, correlativoTextBox.Text, Convert.ToDecimal(ivaTextBox.Text),
+                        "ACTIVO", dtDetalle);
                 }
-                else
+
+
+                if (rpta.Equals("OK"))
                 {
                     if (this.IsNuevo)
                     {
-                        rpta = NIngreso.Insertar(IdEmpleado, Convert.ToInt32(idProveedorTextBox.Text.Trim()),
-                            fechaIngresodateTimePicker.Value, comprobanteComboBox.Text,
-                            serieTextBox.Text, correlativoTextBox.Text, Convert.ToDecimal(ivaTextBox.Text),
-                            "ACTIVO", dtDetalle);
-                    }
-                    
-
-                    if (rpta.Equals("OK"))
-                    {
-                        if (this.IsNuevo)
-                        {
-                            this.MensajeOk("Se insertó de forma correcta el registro");
-                        }
-                        
-                    }
-                    else
-                    {
-                        this.MensajeError(rpta);
+                        this.MensajeOk("Se insertó de forma correcta el registro");
                     }
 
-                    this.IsNuevo = false;
-                    this.Botones();
-                    this.Limpiar();
-                    this.LimpiarDetalle();
-                    this.Mostrar();
                 }
+                else
+                {
+                    this.MensajeError(rpta);
+                }
+
+                this.IsNuevo = false;
+                this.Botones();
+                this.Limpiar();
+                this.LimpiarDetalle();
+                this.Mostrar();
+                this.PersonalizarGrillaListado();
             }
             catch (Exception ex)
             {
@@ -336,13 +329,60 @@ namespace CapaPresentacion
 
         }
 
+        private bool ValidarCampos()
+        {
+            bool respuesta = true;
+
+            if (string.IsNullOrEmpty(proveedorTextBox.Text))
+            {
+                errorProvider1.SetError(proveedorTextBox, "Debe seleccionar un proveedor");
+                proveedorTextBox.Focus();
+                respuesta = false;
+            }
+            errorProvider1.Clear();
+
+            if (string.IsNullOrEmpty(serieTextBox.Text))
+            {
+                errorProvider1.SetError(serieTextBox, "Debe ingresar una serie");
+                serieTextBox.Focus();
+                respuesta = false;
+            }
+            errorProvider1.Clear();
+
+            if (string.IsNullOrEmpty(correlativoTextBox.Text))
+            {
+                errorProvider1.SetError(correlativoTextBox, "Debe ingresar un correlativo");
+                correlativoTextBox.Focus();
+                respuesta = false;
+            }
+            errorProvider1.Clear();
+
+            if (comprobanteComboBox.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(comprobanteComboBox, "Debe seleccionar un comprpobante de ingreso");
+                comprobanteComboBox.Focus();
+                respuesta = false;
+            }
+            errorProvider1.Clear();
+
+            if (string.IsNullOrEmpty(ivaTextBox.Text))
+            {
+                errorProvider1.SetError(ivaTextBox, "Debe ingresar un impuesto");
+                ivaTextBox.Focus();
+                respuesta = false;
+            }
+            errorProvider1.Clear();
+
+            return respuesta;
+        }
+
         private void nuevoButton_Click(object sender, EventArgs e)
         {
             this.IsNuevo = true;
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.serieTextBox.Focus();
+            this.comprobanteComboBox.Focus();
             this.LimpiarDetalle();
         }
 
@@ -432,11 +472,77 @@ namespace CapaPresentacion
             this.fechaIngresodateTimePicker.Value = 
                 Convert.ToDateTime(this.listadoDataGridView.CurrentRow.Cells["Fecha"].Value);
             this.comprobanteComboBox.Text = this.listadoDataGridView.CurrentRow.Cells["Tipo_comprobante"].Value.ToString();
+            this.proveedorTextBox.Text = this.listadoDataGridView.CurrentRow.Cells["Proveedor"].Value.ToString();
             this.serieTextBox.Text = this.listadoDataGridView.CurrentRow.Cells["Serie"].Value.ToString();
             this.correlativoTextBox.Text = this.listadoDataGridView.CurrentRow.Cells["Correlativo"].Value.ToString();
+            this.ivaTextBox.Text = this.listadoDataGridView.CurrentRow.Cells["Impuesto"].Value.ToString();
             this.totalRegistrosLabel.Text = this.listadoDataGridView.CurrentRow.Cells["Total"].Value.ToString();
             this.MostrarDetalle();
             this.tabControl1.SelectedIndex = 1;
+        }
+
+        private void PersonalizarGrillaListado()
+        {
+            //listadoDataGridView.Columns["Imprimir"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Eliminar"].HeaderText = "Eliminar";
+            listadoDataGridView.Columns["Eliminar"].Width = 60;
+            listadoDataGridView.Columns["Eliminar"].ReadOnly = false;
+
+            listadoDataGridView.Columns["IdIngreso"].HeaderText = "Id";
+            listadoDataGridView.Columns["IdIngreso"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["IdIngreso"].Width = 80;
+            listadoDataGridView.Columns["IdIngreso"].ReadOnly = true;
+
+            listadoDataGridView.Columns["Empleado"].HeaderText = "Empleado";
+            listadoDataGridView.Columns["Empleado"].Width = 150;
+            listadoDataGridView.Columns["Empleado"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Fecha"].HeaderText = "Fecha";
+            listadoDataGridView.Columns["Fecha"].Width = 80;
+            listadoDataGridView.Columns["Fecha"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Tipo_comprobante"].HeaderText = "Tipo Comprobante";
+            listadoDataGridView.Columns["Tipo_comprobante"].Width = 100;
+            listadoDataGridView.Columns["Tipo_comprobante"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Proveedor"].HeaderText = "Proveedor";
+            listadoDataGridView.Columns["Proveedor"].Width = 150;
+            listadoDataGridView.Columns["Proveedor"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Serie"].HeaderText = "Serie";
+            listadoDataGridView.Columns["Serie"].Width = 50;
+            listadoDataGridView.Columns["Serie"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Serie"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Correlativo"].HeaderText = "Correlativo";
+            listadoDataGridView.Columns["Correlativo"].Width = 80;
+            listadoDataGridView.Columns["Correlativo"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Correlativo"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Impuesto"].HeaderText = "Impuesto";
+            listadoDataGridView.Columns["Impuesto"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Impuesto"].DefaultCellStyle.Format = "C2";
+            listadoDataGridView.Columns["Impuesto"].Width = 80;
+            listadoDataGridView.Columns["Impuesto"].ReadOnly = true;
+
+            listadoDataGridView.Columns["Total"].HeaderText = "Total";
+            listadoDataGridView.Columns["Total"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Total"].DefaultCellStyle.Format = "C2";
+            listadoDataGridView.Columns["Total"].Width = 100;
+            listadoDataGridView.Columns["Total"].ReadOnly = true;
+
+            listadoDataGridView.EnableHeadersVisualStyles = false;
+            listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
         }
     }
 }
