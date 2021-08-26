@@ -17,7 +17,10 @@ namespace CapaDatos
         private byte[] _Imagen;
         private int _IdCategoria;
         private int _IdPresentacion;
+        private string _Referencia;
+        private string _Talla;
         private string _TextoBuscar;
+        
 
         public int IdArticulo { get => _IdArticulo; set => _IdArticulo = value; }
         public string Codigo { get => _Codigo; set => _Codigo = value; }
@@ -26,6 +29,8 @@ namespace CapaDatos
         public byte[] Imagen { get => _Imagen; set => _Imagen = value; }
         public int IdCategoria { get => _IdCategoria; set => _IdCategoria = value; }
         public int IdPresentacion { get => _IdPresentacion; set => _IdPresentacion = value; }
+        public string Referencia { get => _Referencia; set => _Referencia = value; }
+        public string Talla { get => _Talla; set => _Talla = value; }
         public string TextoBuscar { get => _TextoBuscar; set => _TextoBuscar = value; }
 
         public DArticulo()
@@ -34,7 +39,8 @@ namespace CapaDatos
         }
 
         public DArticulo(int idarticulo, string codigo, string nombre, string descripcion, 
-            byte[] imagen, int idcategoria, int idpresentacion, string textobuscar)
+            byte[] imagen, int idcategoria, int idpresentacion, string referencia, string talla, 
+            string textobuscar)
         {
             this.Codigo = codigo;
             this.Descripcion = descripcion;
@@ -43,6 +49,8 @@ namespace CapaDatos
             this.IdPresentacion = idpresentacion;
             this.Imagen = imagen;
             this.Nombre = nombre;
+            this.Referencia = referencia;
+            this.Talla = talla;
             this.TextoBuscar = textobuscar;
         }
 
@@ -107,6 +115,20 @@ namespace CapaDatos
                 ParIdPresentacion.SqlDbType = SqlDbType.Int;
                 ParIdPresentacion.Value = Articulo.IdPresentacion;
                 Sqlcmd.Parameters.Add(ParIdPresentacion);
+
+                SqlParameter ParReferencia = new SqlParameter();
+                ParReferencia.ParameterName = "@referencia";
+                ParReferencia.SqlDbType = SqlDbType.VarChar;
+                ParReferencia.Size = 20;
+                ParReferencia.Value = Articulo.Referencia;
+                Sqlcmd.Parameters.Add(ParReferencia);
+
+                SqlParameter ParTalla = new SqlParameter();
+                ParTalla.ParameterName = "@talla";
+                ParTalla.SqlDbType = SqlDbType.VarChar;
+                ParTalla.Size = 4;
+                ParTalla.Value = Articulo.Talla;
+                Sqlcmd.Parameters.Add(ParTalla);
 
                 //Ejecutamos nuestro comando
                 rpta = Sqlcmd.ExecuteNonQuery() == 1 ? "OK" : "No se ingresó el registro";
@@ -183,6 +205,20 @@ namespace CapaDatos
                 ParIdPresentacion.SqlDbType = SqlDbType.Int;
                 ParIdPresentacion.Value = Articulo.IdPresentacion;
                 Sqlcmd.Parameters.Add(ParIdPresentacion);
+
+                SqlParameter ParReferencia = new SqlParameter();
+                ParReferencia.ParameterName = "@referencia";
+                ParReferencia.SqlDbType = SqlDbType.VarChar;
+                ParReferencia.Size = 20;
+                ParReferencia.Value = Articulo.Referencia;
+                Sqlcmd.Parameters.Add(ParReferencia);
+
+                SqlParameter ParTalla = new SqlParameter();
+                ParTalla.ParameterName = "@talla";
+                ParTalla.SqlDbType = SqlDbType.VarChar;
+                ParTalla.Size = 4;
+                ParTalla.Value = Articulo.Talla;
+                Sqlcmd.Parameters.Add(ParTalla);
 
                 //Ejecutamos nuestro comando
                 rpta = Sqlcmd.ExecuteNonQuery() == 1 ? "OK" : "No se actualizó el registro";
@@ -292,6 +328,7 @@ namespace CapaDatos
         {
             DataTable DtResultado = new DataTable("Articulo");
             SqlConnection SqlCon = new SqlConnection();
+
             try
             {
                 SqlCon.ConnectionString = Conexion.Cn;
@@ -306,10 +343,8 @@ namespace CapaDatos
             catch (Exception ex)
             {
                 DtResultado = null;
-
             }
             return DtResultado;
         }
-
     }
 }

@@ -106,11 +106,13 @@ namespace CapaPresentacion
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
+            PersonalizarGrilla();
         }
 
         private void buscarButton_Click(object sender, EventArgs e)
         {
             this.BuscarNombre();
+            PersonalizarGrilla();
         }
 
         private void buscarTextBox_TextChanged(object sender, EventArgs e)
@@ -172,6 +174,7 @@ namespace CapaPresentacion
                     this.Botones();
                     this.Limpiar();
                     this.Mostrar();
+                    PersonalizarGrilla();
                 }
             }
             catch (Exception ex)
@@ -202,6 +205,7 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(false);
+            PersonalizarGrilla();
         }
 
         private void eliminarCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -214,6 +218,7 @@ namespace CapaPresentacion
             {
                 this.listadoDataGridView.Columns[0].Visible = false;
             }
+            PersonalizarGrilla();
         }
 
         private void eliminarButton_Click(object sender, EventArgs e)
@@ -243,6 +248,7 @@ namespace CapaPresentacion
                         }
                     }
                     this.Mostrar();
+                    PersonalizarGrilla();
                 }
             }
             catch (Exception ex)
@@ -271,5 +277,29 @@ namespace CapaPresentacion
 
             this.tabControl1.SelectedIndex = 1;
         }
+
+        private void PersonalizarGrilla()
+        {
+            listadoDataGridView.Columns["Eliminar"].HeaderText = "Eliminar";
+            listadoDataGridView.Columns["Eliminar"].Width = 60;
+            listadoDataGridView.Columns["Eliminar"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Nombre"].HeaderText = "Nombre Categoría";
+            listadoDataGridView.Columns["Nombre"].Width = 150;
+            listadoDataGridView.Columns["Nombre"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Descripcion"].HeaderText = "Descripción";
+            listadoDataGridView.Columns["Descripcion"].Width = 300;
+            listadoDataGridView.Columns["Descripcion"].ReadOnly = false;
+
+            listadoDataGridView.EnableHeadersVisualStyles = false;
+            listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
+        }
+
     }
 }

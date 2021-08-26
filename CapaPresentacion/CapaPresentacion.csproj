@@ -295,6 +295,16 @@
     <None Include="Resources\if_Log Out_27856 %281%29.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Buscar.png" />
+    <None Include="Resources\Delete1.png" />
+    <None Include="Resources\printer-.png" />
+    <None Include="Resources\x-mark-2-48.png" />
+    <None Include="Resources\nuevo1.png" />
+    <None Include="Resources\Guardar1.png" />
+    <None Include="Resources\Edit1.png" />
+    <None Include="Resources\Cancel1.png" />
+    <None Include="Resources\agregar.png" />
+    <None Include="Resources\minimazar.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

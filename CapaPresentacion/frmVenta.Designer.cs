@@ -68,11 +68,9 @@ namespace CapaPresentacion
             this.correlativoTextBox = new System.Windows.Forms.TextBox();
             this.ivaTextBox = new System.Windows.Forms.TextBox();
             this.serieTextBox = new System.Windows.Forms.TextBox();
-            this.nombreTextBox = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.idVentaTextBox = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
@@ -105,33 +103,33 @@ namespace CapaPresentacion
             // 
             this.idArticuloTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.idArticuloTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.idArticuloTextBox.Location = new System.Drawing.Point(17, 110);
+            this.idArticuloTextBox.Location = new System.Drawing.Point(881, 46);
             this.idArticuloTextBox.Name = "idArticuloTextBox";
             this.idArticuloTextBox.Size = new System.Drawing.Size(60, 20);
-            this.idArticuloTextBox.TabIndex = 9;
+            this.idArticuloTextBox.TabIndex = 15;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(554, 35);
+            this.label10.Location = new System.Drawing.Point(270, 29);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(75, 13);
-            this.label10.TabIndex = 13;
+            this.label10.TabIndex = 4;
             this.label10.Text = "Fecha Ingreso";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(367, 66);
+            this.label7.Location = new System.Drawing.Point(306, 55);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 13);
-            this.label7.TabIndex = 10;
+            this.label7.TabIndex = 6;
             this.label7.Text = "Cliente";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(15, 61);
+            this.label6.Location = new System.Drawing.Point(27, 55);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(73, 13);
             this.label6.TabIndex = 2;
@@ -141,10 +139,10 @@ namespace CapaPresentacion
             // 
             this.clienteTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.clienteTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.clienteTextBox.Location = new System.Drawing.Point(434, 62);
+            this.clienteTextBox.Location = new System.Drawing.Point(351, 51);
             this.clienteTextBox.Name = "clienteTextBox";
-            this.clienteTextBox.Size = new System.Drawing.Size(230, 20);
-            this.clienteTextBox.TabIndex = 11;
+            this.clienteTextBox.Size = new System.Drawing.Size(244, 20);
+            this.clienteTextBox.TabIndex = 7;
             // 
             // tabPage2
             // 
@@ -152,16 +150,15 @@ namespace CapaPresentacion
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1007, 560);
+            this.tabPage2.Size = new System.Drawing.Size(976, 560);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.listadoDetalleDataGridView);
             this.groupBox1.Controls.Add(this.fechaIngresodateTimePicker);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -181,15 +178,13 @@ namespace CapaPresentacion
             this.groupBox1.Controls.Add(this.correlativoTextBox);
             this.groupBox1.Controls.Add(this.ivaTextBox);
             this.groupBox1.Controls.Add(this.serieTextBox);
-            this.groupBox1.Controls.Add(this.nombreTextBox);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.idVentaTextBox);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(995, 542);
+            this.groupBox1.Size = new System.Drawing.Size(958, 542);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ventas";
@@ -199,17 +194,17 @@ namespace CapaPresentacion
             this.listadoDetalleDataGridView.AllowUserToAddRows = false;
             this.listadoDetalleDataGridView.AllowUserToDeleteRows = false;
             this.listadoDetalleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.listadoDetalleDataGridView.Location = new System.Drawing.Point(18, 258);
+            this.listadoDetalleDataGridView.Location = new System.Drawing.Point(18, 224);
             this.listadoDetalleDataGridView.Name = "listadoDetalleDataGridView";
-            this.listadoDetalleDataGridView.Size = new System.Drawing.Size(923, 235);
-            this.listadoDetalleDataGridView.TabIndex = 22;
+            this.listadoDetalleDataGridView.Size = new System.Drawing.Size(923, 269);
+            this.listadoDetalleDataGridView.TabIndex = 17;
             // 
             // fechaIngresodateTimePicker
             // 
-            this.fechaIngresodateTimePicker.Location = new System.Drawing.Point(635, 29);
+            this.fechaIngresodateTimePicker.Location = new System.Drawing.Point(351, 25);
             this.fechaIngresodateTimePicker.Name = "fechaIngresodateTimePicker";
             this.fechaIngresodateTimePicker.Size = new System.Drawing.Size(146, 20);
-            this.fechaIngresodateTimePicker.TabIndex = 21;
+            this.fechaIngresodateTimePicker.TabIndex = 5;
             // 
             // groupBox2
             // 
@@ -230,10 +225,10 @@ namespace CapaPresentacion
             this.groupBox2.Controls.Add(this.articuloTextBox);
             this.groupBox2.Controls.Add(this.label13);
             this.groupBox2.Controls.Add(this.buscarArticuloButton);
-            this.groupBox2.Location = new System.Drawing.Point(17, 136);
+            this.groupBox2.Location = new System.Drawing.Point(18, 102);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(923, 116);
-            this.groupBox2.TabIndex = 20;
+            this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             // 
             // fechaVencimientoDateTimePicker
@@ -241,7 +236,7 @@ namespace CapaPresentacion
             this.fechaVencimientoDateTimePicker.Location = new System.Drawing.Point(677, 39);
             this.fechaVencimientoDateTimePicker.Name = "fechaVencimientoDateTimePicker";
             this.fechaVencimientoDateTimePicker.Size = new System.Drawing.Size(146, 20);
-            this.fechaVencimientoDateTimePicker.TabIndex = 21;
+            this.fechaVencimientoDateTimePicker.TabIndex = 12;
             // 
             // precioVentaTextBox
             // 
@@ -250,7 +245,7 @@ namespace CapaPresentacion
             this.precioVentaTextBox.Location = new System.Drawing.Point(445, 68);
             this.precioVentaTextBox.Name = "precioVentaTextBox";
             this.precioVentaTextBox.Size = new System.Drawing.Size(105, 20);
-            this.precioVentaTextBox.TabIndex = 11;
+            this.precioVentaTextBox.TabIndex = 10;
             // 
             // label16
             // 
@@ -258,7 +253,7 @@ namespace CapaPresentacion
             this.label16.Location = new System.Drawing.Point(371, 72);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(68, 13);
-            this.label16.TabIndex = 10;
+            this.label16.TabIndex = 9;
             this.label16.Text = "Precio Venta";
             // 
             // borrarButton
@@ -266,7 +261,7 @@ namespace CapaPresentacion
             this.borrarButton.Location = new System.Drawing.Point(829, 67);
             this.borrarButton.Name = "borrarButton";
             this.borrarButton.Size = new System.Drawing.Size(75, 23);
-            this.borrarButton.TabIndex = 12;
+            this.borrarButton.TabIndex = 16;
             this.borrarButton.Text = "Borrar";
             this.borrarButton.UseVisualStyleBackColor = true;
             this.borrarButton.Click += new System.EventHandler(this.borrarButton_Click);
@@ -276,7 +271,7 @@ namespace CapaPresentacion
             this.agregarButton.Location = new System.Drawing.Point(829, 38);
             this.agregarButton.Name = "agregarButton";
             this.agregarButton.Size = new System.Drawing.Size(75, 23);
-            this.agregarButton.TabIndex = 12;
+            this.agregarButton.TabIndex = 15;
             this.agregarButton.Text = "Agregar";
             this.agregarButton.UseVisualStyleBackColor = true;
             this.agregarButton.Click += new System.EventHandler(this.agregarButton_Click);
@@ -288,7 +283,7 @@ namespace CapaPresentacion
             this.precioCompraTextBox.Location = new System.Drawing.Point(445, 39);
             this.precioCompraTextBox.Name = "precioCompraTextBox";
             this.precioCompraTextBox.Size = new System.Drawing.Size(105, 20);
-            this.precioCompraTextBox.TabIndex = 11;
+            this.precioCompraTextBox.TabIndex = 8;
             // 
             // label18
             // 
@@ -296,7 +291,7 @@ namespace CapaPresentacion
             this.label18.Location = new System.Drawing.Point(573, 43);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(98, 13);
-            this.label18.TabIndex = 13;
+            this.label18.TabIndex = 11;
             this.label18.Text = "Fecha Vencimiento";
             // 
             // label15
@@ -305,7 +300,7 @@ namespace CapaPresentacion
             this.label15.Location = new System.Drawing.Point(363, 43);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(76, 13);
-            this.label15.TabIndex = 10;
+            this.label15.TabIndex = 7;
             this.label15.Text = "Precio Compra";
             // 
             // stockActualTextBox
@@ -315,7 +310,7 @@ namespace CapaPresentacion
             this.stockActualTextBox.Location = new System.Drawing.Point(197, 68);
             this.stockActualTextBox.Name = "stockActualTextBox";
             this.stockActualTextBox.Size = new System.Drawing.Size(74, 20);
-            this.stockActualTextBox.TabIndex = 11;
+            this.stockActualTextBox.TabIndex = 6;
             // 
             // descuentoTextBox
             // 
@@ -324,7 +319,7 @@ namespace CapaPresentacion
             this.descuentoTextBox.Location = new System.Drawing.Point(677, 68);
             this.descuentoTextBox.Name = "descuentoTextBox";
             this.descuentoTextBox.Size = new System.Drawing.Size(65, 20);
-            this.descuentoTextBox.TabIndex = 11;
+            this.descuentoTextBox.TabIndex = 14;
             // 
             // label5
             // 
@@ -332,7 +327,7 @@ namespace CapaPresentacion
             this.label5.Location = new System.Drawing.Point(612, 72);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(59, 13);
-            this.label5.TabIndex = 10;
+            this.label5.TabIndex = 13;
             this.label5.Text = "Descuento";
             // 
             // cantidadTextBox
@@ -342,7 +337,7 @@ namespace CapaPresentacion
             this.cantidadTextBox.Location = new System.Drawing.Point(83, 68);
             this.cantidadTextBox.Name = "cantidadTextBox";
             this.cantidadTextBox.Size = new System.Drawing.Size(74, 20);
-            this.cantidadTextBox.TabIndex = 11;
+            this.cantidadTextBox.TabIndex = 4;
             // 
             // label8
             // 
@@ -350,7 +345,7 @@ namespace CapaPresentacion
             this.label8.Location = new System.Drawing.Point(161, 72);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(35, 13);
-            this.label8.TabIndex = 10;
+            this.label8.TabIndex = 5;
             this.label8.Text = "Stock";
             // 
             // label14
@@ -359,7 +354,7 @@ namespace CapaPresentacion
             this.label14.Location = new System.Drawing.Point(28, 72);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(49, 13);
-            this.label14.TabIndex = 10;
+            this.label14.TabIndex = 3;
             this.label14.Text = "Cantidad";
             // 
             // articuloTextBox
@@ -369,7 +364,7 @@ namespace CapaPresentacion
             this.articuloTextBox.Location = new System.Drawing.Point(83, 39);
             this.articuloTextBox.Name = "articuloTextBox";
             this.articuloTextBox.Size = new System.Drawing.Size(188, 20);
-            this.articuloTextBox.TabIndex = 11;
+            this.articuloTextBox.TabIndex = 1;
             // 
             // label13
             // 
@@ -377,7 +372,7 @@ namespace CapaPresentacion
             this.label13.Location = new System.Drawing.Point(33, 43);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(44, 13);
-            this.label13.TabIndex = 10;
+            this.label13.TabIndex = 0;
             this.label13.Text = "Artículo";
             // 
             // buscarArticuloButton
@@ -385,7 +380,7 @@ namespace CapaPresentacion
             this.buscarArticuloButton.Location = new System.Drawing.Point(277, 38);
             this.buscarArticuloButton.Name = "buscarArticuloButton";
             this.buscarArticuloButton.Size = new System.Drawing.Size(75, 23);
-            this.buscarArticuloButton.TabIndex = 12;
+            this.buscarArticuloButton.TabIndex = 2;
             this.buscarArticuloButton.Text = "Buscar";
             this.buscarArticuloButton.UseVisualStyleBackColor = true;
             this.buscarArticuloButton.Click += new System.EventHandler(this.buscarArticuloButton_Click);
@@ -398,17 +393,17 @@ namespace CapaPresentacion
             "Boleta",
             "Factura",
             "Remisión"});
-            this.comprobanteComboBox.Location = new System.Drawing.Point(106, 58);
+            this.comprobanteComboBox.Location = new System.Drawing.Point(106, 51);
             this.comprobanteComboBox.Name = "comprobanteComboBox";
             this.comprobanteComboBox.Size = new System.Drawing.Size(124, 21);
-            this.comprobanteComboBox.TabIndex = 14;
+            this.comprobanteComboBox.TabIndex = 3;
             // 
             // buscarClienteButton
             // 
-            this.buscarClienteButton.Location = new System.Drawing.Point(670, 61);
+            this.buscarClienteButton.Location = new System.Drawing.Point(601, 50);
             this.buscarClienteButton.Name = "buscarClienteButton";
             this.buscarClienteButton.Size = new System.Drawing.Size(75, 23);
-            this.buscarClienteButton.TabIndex = 12;
+            this.buscarClienteButton.TabIndex = 8;
             this.buscarClienteButton.Text = "Buscar";
             this.buscarClienteButton.UseVisualStyleBackColor = true;
             this.buscarClienteButton.Click += new System.EventHandler(this.buscarClienteButton_Click);
@@ -418,7 +413,7 @@ namespace CapaPresentacion
             this.cancelarButton.Location = new System.Drawing.Point(866, 506);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(75, 23);
-            this.cancelarButton.TabIndex = 0;
+            this.cancelarButton.TabIndex = 22;
             this.cancelarButton.Text = "&Cancelar";
             this.cancelarButton.UseVisualStyleBackColor = true;
             this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
@@ -429,7 +424,7 @@ namespace CapaPresentacion
             this.totalPagadoLabel.Location = new System.Drawing.Point(104, 511);
             this.totalPagadoLabel.Name = "totalPagadoLabel";
             this.totalPagadoLabel.Size = new System.Drawing.Size(22, 13);
-            this.totalPagadoLabel.TabIndex = 10;
+            this.totalPagadoLabel.TabIndex = 19;
             this.totalPagadoLabel.Text = "0.0";
             // 
             // label19
@@ -438,7 +433,7 @@ namespace CapaPresentacion
             this.label19.Location = new System.Drawing.Point(15, 511);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(83, 13);
-            this.label19.TabIndex = 10;
+            this.label19.TabIndex = 18;
             this.label19.Text = "Total Pagado: $";
             // 
             // guardarButton
@@ -446,7 +441,7 @@ namespace CapaPresentacion
             this.guardarButton.Location = new System.Drawing.Point(776, 506);
             this.guardarButton.Name = "guardarButton";
             this.guardarButton.Size = new System.Drawing.Size(75, 23);
-            this.guardarButton.TabIndex = 18;
+            this.guardarButton.TabIndex = 21;
             this.guardarButton.Text = "&Guardar";
             this.guardarButton.UseVisualStyleBackColor = true;
             this.guardarButton.Click += new System.EventHandler(this.guardarButton_Click);
@@ -456,7 +451,7 @@ namespace CapaPresentacion
             this.nuevoButton.Location = new System.Drawing.Point(684, 506);
             this.nuevoButton.Name = "nuevoButton";
             this.nuevoButton.Size = new System.Drawing.Size(75, 23);
-            this.nuevoButton.TabIndex = 17;
+            this.nuevoButton.TabIndex = 20;
             this.nuevoButton.Text = "&Nuevo";
             this.nuevoButton.UseVisualStyleBackColor = true;
             this.nuevoButton.Click += new System.EventHandler(this.nuevoButton_Click);
@@ -465,54 +460,45 @@ namespace CapaPresentacion
             // 
             this.idClienteTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.idClienteTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.idClienteTextBox.Location = new System.Drawing.Point(434, 29);
+            this.idClienteTextBox.Location = new System.Drawing.Point(881, 20);
             this.idClienteTextBox.Name = "idClienteTextBox";
             this.idClienteTextBox.Size = new System.Drawing.Size(60, 20);
-            this.idClienteTextBox.TabIndex = 9;
+            this.idClienteTextBox.TabIndex = 14;
             // 
             // correlativoTextBox
             // 
             this.correlativoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.correlativoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.correlativoTextBox.Location = new System.Drawing.Point(500, 87);
+            this.correlativoTextBox.Location = new System.Drawing.Point(404, 76);
             this.correlativoTextBox.Name = "correlativoTextBox";
-            this.correlativoTextBox.Size = new System.Drawing.Size(164, 20);
-            this.correlativoTextBox.TabIndex = 5;
+            this.correlativoTextBox.Size = new System.Drawing.Size(93, 20);
+            this.correlativoTextBox.TabIndex = 11;
             // 
             // ivaTextBox
             // 
             this.ivaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.ivaTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ivaTextBox.Location = new System.Drawing.Point(715, 87);
+            this.ivaTextBox.Location = new System.Drawing.Point(533, 76);
             this.ivaTextBox.Name = "ivaTextBox";
             this.ivaTextBox.Size = new System.Drawing.Size(60, 20);
-            this.ivaTextBox.TabIndex = 5;
+            this.ivaTextBox.TabIndex = 13;
             // 
             // serieTextBox
             // 
             this.serieTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
             this.serieTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.serieTextBox.Location = new System.Drawing.Point(434, 87);
+            this.serieTextBox.Location = new System.Drawing.Point(351, 76);
             this.serieTextBox.Name = "serieTextBox";
-            this.serieTextBox.Size = new System.Drawing.Size(60, 20);
-            this.serieTextBox.TabIndex = 5;
-            // 
-            // nombreTextBox
-            // 
-            this.nombreTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            this.nombreTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nombreTextBox.Location = new System.Drawing.Point(106, 92);
-            this.nombreTextBox.Name = "nombreTextBox";
-            this.nombreTextBox.Size = new System.Drawing.Size(230, 20);
-            this.nombreTextBox.TabIndex = 5;
+            this.serieTextBox.Size = new System.Drawing.Size(47, 20);
+            this.serieTextBox.TabIndex = 10;
             // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(685, 92);
+            this.label12.Location = new System.Drawing.Point(503, 80);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(24, 13);
-            this.label12.TabIndex = 4;
+            this.label12.TabIndex = 12;
             this.label12.Text = "IVA";
             // 
             // idVentaTextBox
@@ -527,25 +513,16 @@ namespace CapaPresentacion
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(384, 92);
+            this.label11.Location = new System.Drawing.Point(301, 80);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(44, 13);
-            this.label11.TabIndex = 4;
+            this.label11.TabIndex = 9;
             this.label11.Text = "Número";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(15, 94);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(44, 13);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "Nombre";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 27);
+            this.label3.Location = new System.Drawing.Point(60, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
             this.label3.TabIndex = 0;
@@ -558,11 +535,11 @@ namespace CapaPresentacion
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(14, 61);
+            this.tabControl1.Location = new System.Drawing.Point(14, 57);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1015, 586);
-            this.tabControl1.TabIndex = 4;
+            this.tabControl1.Size = new System.Drawing.Size(984, 586);
+            this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -580,7 +557,7 @@ namespace CapaPresentacion
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1007, 560);
+            this.tabPage1.Size = new System.Drawing.Size(976, 560);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -590,14 +567,14 @@ namespace CapaPresentacion
             this.fechaFinalDateTimePicker.Location = new System.Drawing.Point(155, 31);
             this.fechaFinalDateTimePicker.Name = "fechaFinalDateTimePicker";
             this.fechaFinalDateTimePicker.Size = new System.Drawing.Size(113, 20);
-            this.fechaFinalDateTimePicker.TabIndex = 8;
+            this.fechaFinalDateTimePicker.TabIndex = 3;
             // 
             // fechaInicioDateTimePicker
             // 
             this.fechaInicioDateTimePicker.Location = new System.Drawing.Point(23, 31);
             this.fechaInicioDateTimePicker.Name = "fechaInicioDateTimePicker";
             this.fechaInicioDateTimePicker.Size = new System.Drawing.Size(113, 20);
-            this.fechaInicioDateTimePicker.TabIndex = 8;
+            this.fechaInicioDateTimePicker.TabIndex = 1;
             // 
             // listadoDataGridView
             // 
@@ -615,8 +592,8 @@ namespace CapaPresentacion
             this.listadoDataGridView.Name = "listadoDataGridView";
             this.listadoDataGridView.ReadOnly = true;
             this.listadoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.listadoDataGridView.Size = new System.Drawing.Size(995, 460);
-            this.listadoDataGridView.TabIndex = 7;
+            this.listadoDataGridView.Size = new System.Drawing.Size(964, 460);
+            this.listadoDataGridView.TabIndex = 10;
             this.listadoDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listadoDataGridView_CellContentClick);
             this.listadoDataGridView.DoubleClick += new System.EventHandler(this.listadoDataGridView_DoubleClick);
             // 
@@ -632,7 +609,7 @@ namespace CapaPresentacion
             this.totalRegistrosLabel.Location = new System.Drawing.Point(481, 75);
             this.totalRegistrosLabel.Name = "totalRegistrosLabel";
             this.totalRegistrosLabel.Size = new System.Drawing.Size(35, 13);
-            this.totalRegistrosLabel.TabIndex = 6;
+            this.totalRegistrosLabel.TabIndex = 9;
             this.totalRegistrosLabel.Text = "label3";
             // 
             // eliminarCheckBox
@@ -641,7 +618,7 @@ namespace CapaPresentacion
             this.eliminarCheckBox.Location = new System.Drawing.Point(23, 71);
             this.eliminarCheckBox.Name = "eliminarCheckBox";
             this.eliminarCheckBox.Size = new System.Drawing.Size(62, 17);
-            this.eliminarCheckBox.TabIndex = 5;
+            this.eliminarCheckBox.TabIndex = 8;
             this.eliminarCheckBox.Text = "Eliminar";
             this.eliminarCheckBox.UseVisualStyleBackColor = true;
             this.eliminarCheckBox.CheckedChanged += new System.EventHandler(this.eliminarCheckBox_CheckedChanged);
@@ -651,7 +628,7 @@ namespace CapaPresentacion
             this.comprobanteButton.Location = new System.Drawing.Point(612, 31);
             this.comprobanteButton.Name = "comprobanteButton";
             this.comprobanteButton.Size = new System.Drawing.Size(86, 23);
-            this.comprobanteButton.TabIndex = 4;
+            this.comprobanteButton.TabIndex = 6;
             this.comprobanteButton.Text = "Comprobante";
             this.comprobanteButton.UseVisualStyleBackColor = true;
             this.comprobanteButton.Click += new System.EventHandler(this.comprobanteButton_Click);
@@ -661,7 +638,7 @@ namespace CapaPresentacion
             this.imprimirButton.Location = new System.Drawing.Point(704, 31);
             this.imprimirButton.Name = "imprimirButton";
             this.imprimirButton.Size = new System.Drawing.Size(86, 23);
-            this.imprimirButton.TabIndex = 4;
+            this.imprimirButton.TabIndex = 7;
             this.imprimirButton.Text = "&Imprimir";
             this.imprimirButton.UseVisualStyleBackColor = true;
             // 
@@ -670,7 +647,7 @@ namespace CapaPresentacion
             this.eliminarButton.Location = new System.Drawing.Point(520, 31);
             this.eliminarButton.Name = "eliminarButton";
             this.eliminarButton.Size = new System.Drawing.Size(86, 23);
-            this.eliminarButton.TabIndex = 3;
+            this.eliminarButton.TabIndex = 5;
             this.eliminarButton.Text = "Eliminar";
             this.eliminarButton.UseVisualStyleBackColor = true;
             this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
@@ -680,9 +657,10 @@ namespace CapaPresentacion
             this.buscarButton.Location = new System.Drawing.Point(428, 31);
             this.buscarButton.Name = "buscarButton";
             this.buscarButton.Size = new System.Drawing.Size(86, 23);
-            this.buscarButton.TabIndex = 2;
+            this.buscarButton.TabIndex = 4;
             this.buscarButton.Text = "&Buscar";
             this.buscarButton.UseVisualStyleBackColor = true;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // label9
             // 
@@ -690,7 +668,7 @@ namespace CapaPresentacion
             this.label9.Location = new System.Drawing.Point(152, 12);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 13);
-            this.label9.TabIndex = 0;
+            this.label9.TabIndex = 2;
             this.label9.Text = "Fecha Final:";
             // 
             // label2
@@ -714,7 +692,7 @@ namespace CapaPresentacion
             this.label1.Location = new System.Drawing.Point(9, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 29);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Ventas";
             // 
             // ttMensaje
@@ -726,7 +704,7 @@ namespace CapaPresentacion
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1038, 655);
+            this.ClientSize = new System.Drawing.Size(1004, 655);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.label1);
             this.Name = "frmVenta";
@@ -788,11 +766,9 @@ namespace CapaPresentacion
         private System.Windows.Forms.TextBox correlativoTextBox;
         private System.Windows.Forms.TextBox ivaTextBox;
         private System.Windows.Forms.TextBox serieTextBox;
-        private System.Windows.Forms.TextBox nombreTextBox;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox idVentaTextBox;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;

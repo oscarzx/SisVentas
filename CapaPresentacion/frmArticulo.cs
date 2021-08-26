@@ -38,12 +38,13 @@ namespace CapaPresentacion
         public frmArticulo()
         {
             InitializeComponent();
-            this.ttMensaje.SetToolTip(this.nombreTextBox, "Ingrese el nombre del artículo");
-            this.ttMensaje.SetToolTip(this.imagenPictureBox, "Seleccione la imagen del artículo");
-            this.ttMensaje.SetToolTip(this.categoriaTextBox, "Seleccione la categoría del artículo");
-            this.ttMensaje.SetToolTip(this.presentacionComboBox, "seleccione la presentación del artículo");
+            //this.ttMensaje.SetToolTip(this.nombreTextBox, "Ingrese el nombre del artículo");
+            //this.ttMensaje.SetToolTip(this.imagenPictureBox, "Seleccione la imagen del artículo");
+            //this.ttMensaje.SetToolTip(this.categoriaTextBox, "Seleccione la categoría del artículo");
+            //this.ttMensaje.SetToolTip(this.presentacionComboBox, "seleccione la presentación del artículo");
 
             this.idCategoriaTextBox.Visible = false;
+            this.idArticuloTextBox.ReadOnly = true;
             this.categoriaTextBox.ReadOnly = true;
             this.LlenarComboBoxPresentacion();
                 
@@ -71,6 +72,8 @@ namespace CapaPresentacion
             this.idArticuloTextBox.Text = string.Empty;
             this.codigoTextBox.Text = string.Empty;
             this.categoriaTextBox.Text = string.Empty;
+            this.referenciaTextBox.Text = string.Empty;
+            this.tallaTextBox.Text = string.Empty;
             this.imagenPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             this.imagenPictureBox.Image = global::CapaPresentacion.Properties.Resources.ImagenBlanco;
         }
@@ -87,6 +90,8 @@ namespace CapaPresentacion
             this.cargarButton.Enabled = valor;
             this.limpiarImagenButton.Enabled = valor;
             this.presentacionComboBox.SelectedIndex = -1;
+            this.referenciaTextBox.ReadOnly = !valor;
+            this.tallaTextBox.ReadOnly = !valor;
             this.idArticuloTextBox.ReadOnly = !valor;
         }
 
@@ -116,8 +121,11 @@ namespace CapaPresentacion
         {
             this.listadoDataGridView.Columns[0].Visible = false;
             this.listadoDataGridView.Columns[1].Visible = false;
+            //this.listadoDataGridView.Columns[2].Visible = false;
             this.listadoDataGridView.Columns[6].Visible = false;
+            this.listadoDataGridView.Columns[7].Visible = false;
             this.listadoDataGridView.Columns[8].Visible = false;
+            this.listadoDataGridView.Columns[10].Visible = false;
         }
 
         //Método mostrar
@@ -169,11 +177,13 @@ namespace CapaPresentacion
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
+            PersonalizarGrilla();
         }
 
         private void buscarButton_Click(object sender, EventArgs e)
         {
             this.BuscarNombre();
+            PersonalizarGrilla();
         }
 
         private void buscarTextBox_TextChanged(object sender, EventArgs e)
@@ -188,70 +198,139 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.codigoTextBox.Focus();
+            this.nombreTextBox.Focus();
         }
 
         private void guardarButton_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampos()) return;
             try
             {
                 string rpta = "";
-                if (nombreTextBox.Text == string.Empty || 
-                    idCategoriaTextBox.Text == string.Empty || 
-                    codigoTextBox.Text == string.Empty)
+
+                MemoryStream memoryStream = new MemoryStream();
+                this.imagenPictureBox.Image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+                byte[] imagen = memoryStream.GetBuffer();
+
+                if (this.IsNuevo)
                 {
-                    MensajeError("Falta ingresar algunos datos, serán remarcados");
-                    errorProvider1.SetError(nombreTextBox, "Ingrese un valor");
-                    errorProvider1.SetError(idCategoriaTextBox, "Ingrese un valor");
-                    errorProvider1.SetError(codigoTextBox, "Ingrese un valor");
+                    rpta = NArticulo.Insertar(codigoTextBox.Text.Trim(), nombreTextBox.Text.Trim().ToUpper(),
+                        descripcionTextBox.Text.Trim(), imagen, Convert.ToInt32(idCategoriaTextBox.Text),
+                        Convert.ToInt32(presentacionComboBox.SelectedValue), referenciaTextBox.Text.Trim(),
+                        tallaTextBox.Text.Trim());
                 }
                 else
                 {
-                    MemoryStream memoryStream = new MemoryStream();
-                    this.imagenPictureBox.Image.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
-                    byte[] imagen = memoryStream.GetBuffer();
+                    rpta = NArticulo.Editar(Convert.ToInt32(idArticuloTextBox.Text),
+                        codigoTextBox.Text.Trim(), nombreTextBox.Text.Trim().ToUpper(),
+                        descripcionTextBox.Text.Trim(), imagen, Convert.ToInt32(idCategoriaTextBox.Text),
+                        Convert.ToInt32(presentacionComboBox.SelectedValue), referenciaTextBox.Text.Trim(),
+                        tallaTextBox.Text.Trim());
+                }
 
+                if (rpta.Equals("OK"))
+                {
                     if (this.IsNuevo)
                     {
-                        rpta = NArticulo.Insertar(codigoTextBox.Text.Trim(), nombreTextBox.Text.Trim().ToUpper(), 
-                            descripcionTextBox.Text.Trim(), imagen, Convert.ToInt32(idCategoriaTextBox.Text), 
-                            Convert.ToInt32(presentacionComboBox.SelectedValue));
+                        this.MensajeOk("Se insertó de forma correcta el registro");
                     }
                     else
                     {
-                        rpta = NArticulo.Editar(Convert.ToInt32(idArticuloTextBox.Text), 
-                            codigoTextBox.Text.Trim(), nombreTextBox.Text.Trim().ToUpper(),
-                            descripcionTextBox.Text.Trim(), imagen, Convert.ToInt32(idCategoriaTextBox.Text),
-                            Convert.ToInt32(presentacionComboBox.SelectedValue));
+                        this.MensajeOk("Se actualizó de forma correcta el registro");
                     }
-
-                    if (rpta.Equals("OK"))
-                    {
-                        if (this.IsNuevo)
-                        {
-                            this.MensajeOk("Se insertó de forma correcta el registro");
-                        }
-                        else
-                        {
-                            this.MensajeOk("Se actualizó de forma correcta el registro");
-                        }
-                    }
-                    else
-                    {
-                        this.MensajeError(rpta);
-                    }
-
-                    this.IsNuevo = false;
-                    this.IsEditar = false;
-                    this.Botones();
-                    this.Limpiar();
-                    this.Mostrar();
                 }
+                else
+                {
+                    this.MensajeError(rpta);
+                }
+
+                this.IsNuevo = false;
+                this.IsEditar = false;
+                this.Botones();
+                this.Limpiar();
+                this.Mostrar();
+                PersonalizarGrilla();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private void PersonalizarGrilla()
+        {
+            listadoDataGridView.Columns["Eliminar"].HeaderText = "Eliminar";
+            listadoDataGridView.Columns["Eliminar"].Width = 60;
+            listadoDataGridView.Columns["Eliminar"].ReadOnly = false;
+
+            listadoDataGridView.Columns["CodigoArticulo"].HeaderText = "Código";
+            listadoDataGridView.Columns["CodigoArticulo"].Width = 80;
+            listadoDataGridView.Columns["CodigoArticulo"].ReadOnly = false;
+
+            listadoDataGridView.Columns["NombreArticulo"].HeaderText = "Nombre Artículo";
+            listadoDataGridView.Columns["NombreArticulo"].Width = 250;
+            listadoDataGridView.Columns["NombreArticulo"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Referencia"].HeaderText = "Referencia";
+            listadoDataGridView.Columns["Referencia"].Width = 100;
+            listadoDataGridView.Columns["Referencia"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Talla"].HeaderText = "Talla";
+            listadoDataGridView.Columns["Talla"].Width = 80;
+            listadoDataGridView.Columns["Talla"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Categoria"].HeaderText = "Categoría";
+            listadoDataGridView.Columns["Categoria"].Width = 100;
+            listadoDataGridView.Columns["Categoria"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Presentacion"].HeaderText = "Presentación";
+            listadoDataGridView.Columns["Presentacion"].Width = 100;
+            listadoDataGridView.Columns["Presentacion"].ReadOnly = false;
+
+            listadoDataGridView.EnableHeadersVisualStyles = false;
+            listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
+        }
+
+        private bool ValidarCampos()
+        {
+            if (string.IsNullOrEmpty(nombreTextBox.Text))
+            {
+                errorProvider1.SetError(nombreTextBox, "Debe ingresar un nombre de Artículo");
+                nombreTextBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
+
+            if(string.IsNullOrEmpty(codigoTextBox.Text))
+            {
+                errorProvider1.SetError(codigoTextBox, "Debe ingresar un código de Artículo");
+                codigoTextBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
+
+            if (string.IsNullOrEmpty(categoriaTextBox.Text))
+            {
+                errorProvider1.SetError(categoriaTextBox, "Debe ingresar una categoría");
+                categoriaTextBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
+
+            if (presentacionComboBox.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(presentacionComboBox, "Debe Seleccionar una presentación");
+                presentacionComboBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
+
+            return true;
         }
 
         private void editarButton_Click(object sender, EventArgs e)
@@ -275,7 +354,8 @@ namespace CapaPresentacion
             this.IsEditar = false;
             this.Botones();
             this.Limpiar();
-            this.Habilitar(false);  
+            this.Habilitar(false);
+            PersonalizarGrilla();
         }
 
         private void listadoDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -294,7 +374,10 @@ namespace CapaPresentacion
             idArticuloTextBox.Text = listadoDataGridView.CurrentRow.Cells["IdArticulo"].Value.ToString();
             codigoTextBox.Text = listadoDataGridView.CurrentRow.Cells["CodigoArticulo"].Value.ToString();
             nombreTextBox.Text = listadoDataGridView.CurrentRow.Cells["NombreArticulo"].Value.ToString();
+            referenciaTextBox.Text = listadoDataGridView.CurrentRow.Cells["Referencia"].Value.ToString();
+            tallaTextBox.Text = listadoDataGridView.CurrentRow.Cells["Talla"].Value.ToString();
             descripcionTextBox.Text = listadoDataGridView.CurrentRow.Cells["DescripcionArticulo"].Value.ToString();
+
 
             byte[] imagenBuffer = (byte[])this.listadoDataGridView.CurrentRow.Cells["ImagenArticulo"].Value;
             MemoryStream memoryStream = new MemoryStream(imagenBuffer);
@@ -320,6 +403,7 @@ namespace CapaPresentacion
             {
                 this.listadoDataGridView.Columns[0].Visible = false;
             }
+            PersonalizarGrilla();
         }
 
         private void eliminarButton_Click(object sender, EventArgs e)
@@ -349,6 +433,7 @@ namespace CapaPresentacion
                         }
                     }
                     this.Mostrar();
+                    PersonalizarGrilla();
                 }
             }
             catch (Exception ex)
@@ -367,6 +452,11 @@ namespace CapaPresentacion
         {
             frmReporteArticulos miForm = new frmReporteArticulos();
             miForm.ShowDialog();
+        }
+
+        private void frmArticulo_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            _Instancia = null;
         }
     }
 }

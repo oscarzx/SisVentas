@@ -37,6 +37,7 @@ namespace CapaPresentacion
         public void SetArticulo(string iddetalle_ingreso, string nombre,
             decimal precio_compra, decimal precio_venta, int stock, DateTime fecha_vencimiento)
         {
+            //Aquí se le está pasando por parametro el IdArticuloa al IdDetalleIngreso
             this.idArticuloTextBox.Text = iddetalle_ingreso;
             this.articuloTextBox.Text = nombre;
             this.precioCompraTextBox.Text = precio_compra.ToString();
@@ -209,11 +210,14 @@ namespace CapaPresentacion
         {
             this.Top = 0;
             this.Left = 0;
-            
+            idClienteTextBox.Visible = false;
+            idArticuloTextBox.Visible = false;
+
             this.Habilitar(false);
             this.Botones();
             this.CrearTabla();
             this.Mostrar();
+            PersonalizarGrillaListado();
         }
 
         private void eliminarButton_Click(object sender, EventArgs e)
@@ -243,6 +247,7 @@ namespace CapaPresentacion
                         }
                     }
                     this.Mostrar();
+                    PersonalizarGrillaListado();
                 }
             }
             catch (Exception ex)
@@ -256,7 +261,7 @@ namespace CapaPresentacion
         {
             //Columnas del [spmostrar_venta]
             this.idVentaTextBox.Text = this.listadoDataGridView.CurrentRow.Cells["IdVenta"].Value.ToString();
-            this.clienteTextBox.Text = this.listadoDataGridView.CurrentRow.Cells["Nombre_cliente"].Value.ToString();
+            this.clienteTextBox.Text = this.listadoDataGridView.CurrentRow.Cells["Cliente"].Value.ToString();
             this.fechaIngresodateTimePicker.Value =
                 Convert.ToDateTime(this.listadoDataGridView.CurrentRow.Cells["Fecha"].Value);
             this.comprobanteComboBox.Text = this.listadoDataGridView.CurrentRow.Cells["Tipo_comprobante"].Value.ToString();
@@ -265,6 +270,7 @@ namespace CapaPresentacion
             this.totalRegistrosLabel.Text = this.listadoDataGridView.CurrentRow.Cells["Total"].Value.ToString();
             this.MostrarDetalle();
             this.tabControl1.SelectedIndex = 1;
+            PersonalizarGrillaListado();
         }
 
         private void eliminarCheckBox_CheckedChanged(object sender, EventArgs e)
@@ -277,6 +283,7 @@ namespace CapaPresentacion
             {
                 this.listadoDataGridView.Columns[0].Visible = false;
             }
+            PersonalizarGrillaListado();
         }
 
         private void listadoDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -296,7 +303,7 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(true);
-            this.serieTextBox.Focus();
+            this.comprobanteComboBox.Focus();
         }
 
         private void cancelarButton_Click(object sender, EventArgs e)
@@ -305,60 +312,104 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(false);
+            Mostrar();
+            PersonalizarGrillaListado();
         }
 
         private void guardarButton_Click(object sender, EventArgs e)
         {
+            if (!ValidarCampos()) return;
+
             try
             {
                 string rpta = "";
-                if (idClienteTextBox.Text == string.Empty ||
-                    serieTextBox.Text == string.Empty ||
-                    correlativoTextBox.Text == string.Empty ||
-                    ivaTextBox.Text == string.Empty||
-                    comprobanteComboBox.SelectedIndex == -1)
+
+                if (this.IsNuevo)
                 {
-                    MensajeError("Falta ingresar algunos datos, serán remarcados");
-                    errorProvider1.SetError(idClienteTextBox, "Ingrese un valor");
-                    errorProvider1.SetError(serieTextBox, "Ingrese un valor");
-                    errorProvider1.SetError(ivaTextBox, "Ingrese un valor");
-                    errorProvider1.SetError(correlativoTextBox, "Ingrese un valor");
-                    errorProvider1.SetError(comprobanteComboBox, "Ingrese un valor");
+                    rpta = NVenta.Insertar(Convert.ToInt32(idClienteTextBox.Text.Trim()), IdEmpleado,
+                        fechaIngresodateTimePicker.Value, comprobanteComboBox.Text,
+                        serieTextBox.Text, correlativoTextBox.Text, Convert.ToDecimal(ivaTextBox.Text), dtDetalle);
                 }
-                else
+
+
+                if (rpta.Equals("OK"))
                 {
                     if (this.IsNuevo)
                     {
-                        rpta = NVenta.Insertar(Convert.ToInt32(idClienteTextBox.Text.Trim()), IdEmpleado,
-                            fechaIngresodateTimePicker.Value, comprobanteComboBox.Text,
-                            serieTextBox.Text, correlativoTextBox.Text, Convert.ToDecimal(ivaTextBox.Text), dtDetalle);
+                        this.MensajeOk("Se insertó de forma correcta el registro");
                     }
 
-
-                    if (rpta.Equals("OK"))
-                    {
-                        if (this.IsNuevo)
-                        {
-                            this.MensajeOk("Se insertó de forma correcta el registro");
-                        }
-
-                    }
-                    else
-                    {
-                        this.MensajeError(rpta);
-                    }
-
-                    this.IsNuevo = false;
-                    this.Botones();
-                    this.Limpiar();
-                    this.LimpiarDetalle();
-                    this.Mostrar();
                 }
+                else
+                {
+                    this.MensajeError(rpta);
+                }
+
+                this.IsNuevo = false;
+                this.Botones();
+                this.Limpiar();
+                this.LimpiarDetalle();
+                this.Mostrar();
+                PersonalizarGrillaListado();
+
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message + ex.StackTrace);
             }
+        }
+
+        private bool ValidarCampos()
+        {
+            if (comprobanteComboBox.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(comprobanteComboBox, "Debe seleccionar un comprpobante de ingreso");
+                comprobanteComboBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
+
+            if (string.IsNullOrEmpty(clienteTextBox.Text))
+            {
+                errorProvider1.SetError(clienteTextBox, "Debe seleccionar un proveedor");
+                clienteTextBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
+
+            if (string.IsNullOrEmpty(serieTextBox.Text))
+            {
+                errorProvider1.SetError(serieTextBox, "Debe ingresar una serie");
+                serieTextBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
+
+            if (string.IsNullOrEmpty(correlativoTextBox.Text))
+            {
+                errorProvider1.SetError(correlativoTextBox, "Debe ingresar un correlativo");
+                correlativoTextBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
+
+            if (string.IsNullOrEmpty(ivaTextBox.Text))
+            {
+                errorProvider1.SetError(ivaTextBox, "Debe ingresar un impuesto");
+                ivaTextBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
+
+            if (listadoDetalleDataGridView.Rows.Count == 0)
+            {
+                MessageBox.Show("No ha ingresado artículos");
+                articuloTextBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
+
+            return true;
         }
 
         private void agregarButton_Click(object sender, EventArgs e)
@@ -446,6 +497,72 @@ namespace CapaPresentacion
             frmReporteFactura miForm = new frmReporteFactura();
             miForm.IdVenta = Convert.ToInt32(listadoDataGridView.CurrentRow.Cells["IdVenta"].Value);
             miForm.ShowDialog();
+        }
+
+        private void PersonalizarGrillaListado()
+        {
+            listadoDataGridView.Columns["Eliminar"].HeaderText = "Eliminar";
+            listadoDataGridView.Columns["Eliminar"].Width = 60;
+            listadoDataGridView.Columns["Eliminar"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Empleado"].HeaderText = "Empleado";
+            listadoDataGridView.Columns["Empleado"].Width = 150;
+            listadoDataGridView.Columns["Empleado"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Cliente"].HeaderText = "Cliente";
+            listadoDataGridView.Columns["Cliente"].Width = 150;
+            listadoDataGridView.Columns["Cliente"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Fecha"].HeaderText = "Fecha";
+            listadoDataGridView.Columns["Fecha"].Width = 80;
+            listadoDataGridView.Columns["Fecha"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Tipo_comprobante"].HeaderText = "Tipo Comprobante";
+            listadoDataGridView.Columns["Tipo_comprobante"].Width = 100;
+            listadoDataGridView.Columns["Tipo_comprobante"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Serie"].HeaderText = "Serie";
+            listadoDataGridView.Columns["Serie"].Width = 50;
+            listadoDataGridView.Columns["Serie"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Serie"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Correlativo"].HeaderText = "Correlativo";
+            listadoDataGridView.Columns["Correlativo"].Width = 80;
+            listadoDataGridView.Columns["Correlativo"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Correlativo"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Impuesto"].HeaderText = "Impuesto";
+            listadoDataGridView.Columns["Impuesto"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Impuesto"].DefaultCellStyle.Format = "C2";
+            listadoDataGridView.Columns["Impuesto"].Width = 80;
+            listadoDataGridView.Columns["Impuesto"].ReadOnly = true;
+
+            listadoDataGridView.Columns["Total"].HeaderText = "Total";
+            listadoDataGridView.Columns["Total"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Total"].DefaultCellStyle.Format = "C2";
+            listadoDataGridView.Columns["Total"].Width = 100;
+            listadoDataGridView.Columns["Total"].ReadOnly = true;
+
+            listadoDataGridView.EnableHeadersVisualStyles = false;
+            listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
+        }
+
+        private void buscarButton_Click(object sender, EventArgs e)
+        {
+            this.listadoDataGridView.DataSource =
+                NVenta.BuscarFechas(this.fechaInicioDateTimePicker.Value.ToString("yyyy/MM/dd"),
+                this.fechaFinalDateTimePicker.Value.ToString("yyyy/MM/dd"));
+            this.OcultarColumnas();
+            totalRegistrosLabel.Text = $"Total registros: {Convert.ToString(listadoDataGridView.Rows.Count)}";
+            PersonalizarGrillaListado();
         }
     }
 }

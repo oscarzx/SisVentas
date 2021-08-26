@@ -30,10 +30,11 @@ namespace CapaPresentacion
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmIngreso));
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.buscarProveedorButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.listadoDetalleDataGridView = new System.Windows.Forms.DataGridView();
             this.fechaIngresodateTimePicker = new System.Windows.Forms.DateTimePicker();
@@ -42,8 +43,6 @@ namespace CapaPresentacion
             this.fechaProduccionDateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.precioVentaTextBox = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
-            this.borrarButton = new System.Windows.Forms.Button();
-            this.agregarButton = new System.Windows.Forms.Button();
             this.precioCompraTextBox = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
@@ -52,7 +51,6 @@ namespace CapaPresentacion
             this.label14 = new System.Windows.Forms.Label();
             this.articuloTextBox = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
-            this.buscarArticuloButton = new System.Windows.Forms.Button();
             this.idArticuloTextBox = new System.Windows.Forms.TextBox();
             this.comprobanteComboBox = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -81,11 +79,15 @@ namespace CapaPresentacion
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.totalRegistrosLabel = new System.Windows.Forms.Label();
             this.anularCheckBox = new System.Windows.Forms.CheckBox();
-            this.imprimirButton = new System.Windows.Forms.Button();
-            this.anularButton = new System.Windows.Forms.Button();
-            this.buscarButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.anularButton = new System.Windows.Forms.Button();
+            this.buscarButton = new System.Windows.Forms.Button();
+            this.borrarButton = new System.Windows.Forms.Button();
+            this.agregarButton = new System.Windows.Forms.Button();
+            this.buscarArticuloButton = new System.Windows.Forms.Button();
+            this.buscarProveedorButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDetalleDataGridView)).BeginInit();
@@ -94,6 +96,7 @@ namespace CapaPresentacion
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDataGridView)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // ttMensaje
@@ -102,10 +105,11 @@ namespace CapaPresentacion
             // 
             // label1
             // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(791, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(221, 29);
             this.label1.TabIndex = 0;
@@ -115,20 +119,8 @@ namespace CapaPresentacion
             // 
             this.errorProvider1.ContainerControl = this;
             // 
-            // buscarProveedorButton
-            // 
-            this.buscarProveedorButton.Location = new System.Drawing.Point(585, 42);
-            this.buscarProveedorButton.Name = "buscarProveedorButton";
-            this.buscarProveedorButton.Size = new System.Drawing.Size(75, 23);
-            this.buscarProveedorButton.TabIndex = 8;
-            this.buscarProveedorButton.Text = "Buscar";
-            this.buscarProveedorButton.UseVisualStyleBackColor = true;
-            this.buscarProveedorButton.Click += new System.EventHandler(this.buscarProveedorButton_Click);
-            // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
             this.groupBox1.Controls.Add(this.listadoDetalleDataGridView);
             this.groupBox1.Controls.Add(this.fechaIngresodateTimePicker);
             this.groupBox1.Controls.Add(this.groupBox2);
@@ -139,11 +131,8 @@ namespace CapaPresentacion
             this.groupBox1.Controls.Add(this.label7);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.proveedorTextBox);
-            this.groupBox1.Controls.Add(this.cancelarButton);
             this.groupBox1.Controls.Add(this.totalPagadoLabel);
             this.groupBox1.Controls.Add(this.label19);
-            this.groupBox1.Controls.Add(this.guardarButton);
-            this.groupBox1.Controls.Add(this.nuevoButton);
             this.groupBox1.Controls.Add(this.idProveedorTextBox);
             this.groupBox1.Controls.Add(this.correlativoTextBox);
             this.groupBox1.Controls.Add(this.ivaTextBox);
@@ -154,7 +143,7 @@ namespace CapaPresentacion
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(954, 542);
+            this.groupBox1.Size = new System.Drawing.Size(954, 521);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Ingresos  Almacén";
@@ -169,7 +158,7 @@ namespace CapaPresentacion
             this.listadoDetalleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listadoDetalleDataGridView.Location = new System.Drawing.Point(18, 235);
             this.listadoDetalleDataGridView.Name = "listadoDetalleDataGridView";
-            this.listadoDetalleDataGridView.Size = new System.Drawing.Size(923, 258);
+            this.listadoDetalleDataGridView.Size = new System.Drawing.Size(923, 237);
             this.listadoDetalleDataGridView.TabIndex = 18;
             // 
             // fechaIngresodateTimePicker
@@ -218,7 +207,7 @@ namespace CapaPresentacion
             // 
             // precioVentaTextBox
             // 
-            this.precioVentaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.precioVentaTextBox.BackColor = System.Drawing.Color.White;
             this.precioVentaTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.precioVentaTextBox.Location = new System.Drawing.Point(445, 68);
             this.precioVentaTextBox.Name = "precioVentaTextBox";
@@ -234,29 +223,9 @@ namespace CapaPresentacion
             this.label16.TabIndex = 7;
             this.label16.Text = "Precio Venta";
             // 
-            // borrarButton
-            // 
-            this.borrarButton.Location = new System.Drawing.Point(829, 67);
-            this.borrarButton.Name = "borrarButton";
-            this.borrarButton.Size = new System.Drawing.Size(75, 23);
-            this.borrarButton.TabIndex = 14;
-            this.borrarButton.Text = "Borrar";
-            this.borrarButton.UseVisualStyleBackColor = true;
-            this.borrarButton.Click += new System.EventHandler(this.borrarButton_Click);
-            // 
-            // agregarButton
-            // 
-            this.agregarButton.Location = new System.Drawing.Point(829, 38);
-            this.agregarButton.Name = "agregarButton";
-            this.agregarButton.Size = new System.Drawing.Size(75, 23);
-            this.agregarButton.TabIndex = 13;
-            this.agregarButton.Text = "Agregar";
-            this.agregarButton.UseVisualStyleBackColor = true;
-            this.agregarButton.Click += new System.EventHandler(this.agregarButton_Click);
-            // 
             // precioCompraTextBox
             // 
-            this.precioCompraTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.precioCompraTextBox.BackColor = System.Drawing.Color.White;
             this.precioCompraTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.precioCompraTextBox.Location = new System.Drawing.Point(445, 39);
             this.precioCompraTextBox.Name = "precioCompraTextBox";
@@ -292,7 +261,7 @@ namespace CapaPresentacion
             // 
             // stockInicialTextBox
             // 
-            this.stockInicialTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.stockInicialTextBox.BackColor = System.Drawing.Color.White;
             this.stockInicialTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.stockInicialTextBox.Location = new System.Drawing.Point(83, 68);
             this.stockInicialTextBox.Name = "stockInicialTextBox";
@@ -310,11 +279,11 @@ namespace CapaPresentacion
             // 
             // articuloTextBox
             // 
-            this.articuloTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.articuloTextBox.BackColor = System.Drawing.Color.White;
             this.articuloTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.articuloTextBox.Location = new System.Drawing.Point(83, 39);
             this.articuloTextBox.Name = "articuloTextBox";
-            this.articuloTextBox.Size = new System.Drawing.Size(188, 20);
+            this.articuloTextBox.Size = new System.Drawing.Size(170, 20);
             this.articuloTextBox.TabIndex = 1;
             // 
             // label13
@@ -326,19 +295,9 @@ namespace CapaPresentacion
             this.label13.TabIndex = 0;
             this.label13.Text = "Artículo";
             // 
-            // buscarArticuloButton
-            // 
-            this.buscarArticuloButton.Location = new System.Drawing.Point(277, 38);
-            this.buscarArticuloButton.Name = "buscarArticuloButton";
-            this.buscarArticuloButton.Size = new System.Drawing.Size(75, 23);
-            this.buscarArticuloButton.TabIndex = 2;
-            this.buscarArticuloButton.Text = "Buscar";
-            this.buscarArticuloButton.UseVisualStyleBackColor = true;
-            this.buscarArticuloButton.Click += new System.EventHandler(this.buscarArticuloButton_Click);
-            // 
             // idArticuloTextBox
             // 
-            this.idArticuloTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.idArticuloTextBox.BackColor = System.Drawing.Color.White;
             this.idArticuloTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.idArticuloTextBox.Location = new System.Drawing.Point(847, 49);
             this.idArticuloTextBox.Name = "idArticuloTextBox";
@@ -387,7 +346,7 @@ namespace CapaPresentacion
             // 
             // proveedorTextBox
             // 
-            this.proveedorTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.proveedorTextBox.BackColor = System.Drawing.Color.White;
             this.proveedorTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.proveedorTextBox.Location = new System.Drawing.Point(335, 45);
             this.proveedorTextBox.Name = "proveedorTextBox";
@@ -396,20 +355,29 @@ namespace CapaPresentacion
             // 
             // cancelarButton
             // 
-            this.cancelarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cancelarButton.Location = new System.Drawing.Point(866, 499);
+            this.cancelarButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cancelarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.cancelarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.cancelarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.cancelarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelarButton.ForeColor = System.Drawing.Color.White;
+            this.cancelarButton.Image = global::CapaPresentacion.Properties.Resources.Cancel1;
+            this.cancelarButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cancelarButton.Location = new System.Drawing.Point(862, 533);
             this.cancelarButton.Name = "cancelarButton";
-            this.cancelarButton.Size = new System.Drawing.Size(75, 23);
+            this.cancelarButton.Size = new System.Drawing.Size(98, 39);
             this.cancelarButton.TabIndex = 0;
             this.cancelarButton.Text = "&Cancelar";
-            this.cancelarButton.UseVisualStyleBackColor = true;
+            this.cancelarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cancelarButton.UseVisualStyleBackColor = false;
             this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // totalPagadoLabel
             // 
             this.totalPagadoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalPagadoLabel.AutoSize = true;
-            this.totalPagadoLabel.Location = new System.Drawing.Point(104, 504);
+            this.totalPagadoLabel.Location = new System.Drawing.Point(104, 483);
             this.totalPagadoLabel.Name = "totalPagadoLabel";
             this.totalPagadoLabel.Size = new System.Drawing.Size(22, 13);
             this.totalPagadoLabel.TabIndex = 20;
@@ -419,7 +387,7 @@ namespace CapaPresentacion
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(15, 504);
+            this.label19.Location = new System.Drawing.Point(15, 483);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(83, 13);
             this.label19.TabIndex = 19;
@@ -427,29 +395,47 @@ namespace CapaPresentacion
             // 
             // guardarButton
             // 
-            this.guardarButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.guardarButton.Location = new System.Drawing.Point(776, 499);
+            this.guardarButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.guardarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.guardarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.guardarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.guardarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.guardarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guardarButton.ForeColor = System.Drawing.Color.White;
+            this.guardarButton.Image = global::CapaPresentacion.Properties.Resources.Guardar1;
+            this.guardarButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.guardarButton.Location = new System.Drawing.Point(758, 533);
             this.guardarButton.Name = "guardarButton";
-            this.guardarButton.Size = new System.Drawing.Size(75, 23);
+            this.guardarButton.Size = new System.Drawing.Size(98, 39);
             this.guardarButton.TabIndex = 22;
             this.guardarButton.Text = "&Guardar";
-            this.guardarButton.UseVisualStyleBackColor = true;
+            this.guardarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.guardarButton.UseVisualStyleBackColor = false;
             this.guardarButton.Click += new System.EventHandler(this.guardarButton_Click);
             // 
             // nuevoButton
             // 
-            this.nuevoButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.nuevoButton.Location = new System.Drawing.Point(684, 499);
+            this.nuevoButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.nuevoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.nuevoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.nuevoButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.nuevoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nuevoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nuevoButton.ForeColor = System.Drawing.Color.White;
+            this.nuevoButton.Image = global::CapaPresentacion.Properties.Resources.nuevo1;
+            this.nuevoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nuevoButton.Location = new System.Drawing.Point(654, 533);
             this.nuevoButton.Name = "nuevoButton";
-            this.nuevoButton.Size = new System.Drawing.Size(75, 23);
+            this.nuevoButton.Size = new System.Drawing.Size(98, 39);
             this.nuevoButton.TabIndex = 21;
             this.nuevoButton.Text = "&Nuevo";
-            this.nuevoButton.UseVisualStyleBackColor = true;
+            this.nuevoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.nuevoButton.UseVisualStyleBackColor = false;
             this.nuevoButton.Click += new System.EventHandler(this.nuevoButton_Click);
             // 
             // idProveedorTextBox
             // 
-            this.idProveedorTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.idProveedorTextBox.BackColor = System.Drawing.Color.White;
             this.idProveedorTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.idProveedorTextBox.Location = new System.Drawing.Point(847, 25);
             this.idProveedorTextBox.Name = "idProveedorTextBox";
@@ -458,16 +444,16 @@ namespace CapaPresentacion
             // 
             // correlativoTextBox
             // 
-            this.correlativoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.correlativoTextBox.BackColor = System.Drawing.Color.White;
             this.correlativoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.correlativoTextBox.Location = new System.Drawing.Point(388, 70);
+            this.correlativoTextBox.Location = new System.Drawing.Point(392, 70);
             this.correlativoTextBox.Name = "correlativoTextBox";
-            this.correlativoTextBox.Size = new System.Drawing.Size(93, 20);
+            this.correlativoTextBox.Size = new System.Drawing.Size(76, 20);
             this.correlativoTextBox.TabIndex = 11;
             // 
             // ivaTextBox
             // 
-            this.ivaTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.ivaTextBox.BackColor = System.Drawing.Color.White;
             this.ivaTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ivaTextBox.Location = new System.Drawing.Point(519, 70);
             this.ivaTextBox.Name = "ivaTextBox";
@@ -476,7 +462,7 @@ namespace CapaPresentacion
             // 
             // serieTextBox
             // 
-            this.serieTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.serieTextBox.BackColor = System.Drawing.Color.White;
             this.serieTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.serieTextBox.Location = new System.Drawing.Point(335, 70);
             this.serieTextBox.Name = "serieTextBox";
@@ -494,7 +480,7 @@ namespace CapaPresentacion
             // 
             // ingresoTextBox
             // 
-            this.ingresoTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            this.ingresoTextBox.BackColor = System.Drawing.Color.White;
             this.ingresoTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ingresoTextBox.Location = new System.Drawing.Point(106, 25);
             this.ingresoTextBox.Name = "ingresoTextBox";
@@ -521,36 +507,36 @@ namespace CapaPresentacion
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.tabPage2.Controls.Add(this.groupBox1);
+            this.tabPage2.Controls.Add(this.nuevoButton);
+            this.tabPage2.Controls.Add(this.guardarButton);
+            this.tabPage2.Controls.Add(this.cancelarButton);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(972, 560);
+            this.tabPage2.Size = new System.Drawing.Size(972, 582);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Mantenimiento";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(17, 57);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(980, 586);
+            this.tabControl1.Size = new System.Drawing.Size(980, 608);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
+            this.tabPage1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.tabPage1.Controls.Add(this.fechaFinalDateTimePicker);
             this.tabPage1.Controls.Add(this.fechaInicioDateTimePicker);
             this.tabPage1.Controls.Add(this.listadoDataGridView);
             this.tabPage1.Controls.Add(this.totalRegistrosLabel);
             this.tabPage1.Controls.Add(this.anularCheckBox);
-            this.tabPage1.Controls.Add(this.imprimirButton);
             this.tabPage1.Controls.Add(this.anularButton);
             this.tabPage1.Controls.Add(this.buscarButton);
             this.tabPage1.Controls.Add(this.label9);
@@ -558,23 +544,22 @@ namespace CapaPresentacion
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(972, 560);
+            this.tabPage1.Size = new System.Drawing.Size(972, 582);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Listado";
-            this.tabPage1.UseVisualStyleBackColor = true;
             // 
             // fechaFinalDateTimePicker
             // 
-            this.fechaFinalDateTimePicker.Location = new System.Drawing.Point(155, 31);
+            this.fechaFinalDateTimePicker.Location = new System.Drawing.Point(184, 31);
             this.fechaFinalDateTimePicker.Name = "fechaFinalDateTimePicker";
-            this.fechaFinalDateTimePicker.Size = new System.Drawing.Size(113, 20);
+            this.fechaFinalDateTimePicker.Size = new System.Drawing.Size(142, 20);
             this.fechaFinalDateTimePicker.TabIndex = 3;
             // 
             // fechaInicioDateTimePicker
             // 
             this.fechaInicioDateTimePicker.Location = new System.Drawing.Point(23, 31);
             this.fechaInicioDateTimePicker.Name = "fechaInicioDateTimePicker";
-            this.fechaInicioDateTimePicker.Size = new System.Drawing.Size(113, 20);
+            this.fechaInicioDateTimePicker.Size = new System.Drawing.Size(142, 20);
             this.fechaInicioDateTimePicker.TabIndex = 1;
             // 
             // listadoDataGridView
@@ -582,9 +567,6 @@ namespace CapaPresentacion
             this.listadoDataGridView.AllowUserToAddRows = false;
             this.listadoDataGridView.AllowUserToDeleteRows = false;
             this.listadoDataGridView.AllowUserToOrderColumns = true;
-            this.listadoDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.listadoDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listadoDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Eliminar});
@@ -592,6 +574,14 @@ namespace CapaPresentacion
             this.listadoDataGridView.MultiSelect = false;
             this.listadoDataGridView.Name = "listadoDataGridView";
             this.listadoDataGridView.ReadOnly = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listadoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.listadoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listadoDataGridView.Size = new System.Drawing.Size(960, 460);
             this.listadoDataGridView.TabIndex = 9;
@@ -607,7 +597,7 @@ namespace CapaPresentacion
             // totalRegistrosLabel
             // 
             this.totalRegistrosLabel.AutoSize = true;
-            this.totalRegistrosLabel.Location = new System.Drawing.Point(481, 75);
+            this.totalRegistrosLabel.Location = new System.Drawing.Point(861, 72);
             this.totalRegistrosLabel.Name = "totalRegistrosLabel";
             this.totalRegistrosLabel.Size = new System.Drawing.Size(35, 13);
             this.totalRegistrosLabel.TabIndex = 8;
@@ -616,7 +606,7 @@ namespace CapaPresentacion
             // anularCheckBox
             // 
             this.anularCheckBox.AutoSize = true;
-            this.anularCheckBox.Location = new System.Drawing.Point(23, 71);
+            this.anularCheckBox.Location = new System.Drawing.Point(6, 71);
             this.anularCheckBox.Name = "anularCheckBox";
             this.anularCheckBox.Size = new System.Drawing.Size(56, 17);
             this.anularCheckBox.TabIndex = 7;
@@ -624,39 +614,10 @@ namespace CapaPresentacion
             this.anularCheckBox.UseVisualStyleBackColor = true;
             this.anularCheckBox.CheckedChanged += new System.EventHandler(this.anularCheckBox_CheckedChanged);
             // 
-            // imprimirButton
-            // 
-            this.imprimirButton.Location = new System.Drawing.Point(445, 28);
-            this.imprimirButton.Name = "imprimirButton";
-            this.imprimirButton.Size = new System.Drawing.Size(75, 23);
-            this.imprimirButton.TabIndex = 6;
-            this.imprimirButton.Text = "&Imprimir";
-            this.imprimirButton.UseVisualStyleBackColor = true;
-            // 
-            // anularButton
-            // 
-            this.anularButton.Location = new System.Drawing.Point(364, 28);
-            this.anularButton.Name = "anularButton";
-            this.anularButton.Size = new System.Drawing.Size(75, 23);
-            this.anularButton.TabIndex = 5;
-            this.anularButton.Text = "&Anular";
-            this.anularButton.UseVisualStyleBackColor = true;
-            this.anularButton.Click += new System.EventHandler(this.anularButton_Click);
-            // 
-            // buscarButton
-            // 
-            this.buscarButton.Location = new System.Drawing.Point(283, 28);
-            this.buscarButton.Name = "buscarButton";
-            this.buscarButton.Size = new System.Drawing.Size(75, 23);
-            this.buscarButton.TabIndex = 4;
-            this.buscarButton.Text = "&Buscar";
-            this.buscarButton.UseVisualStyleBackColor = true;
-            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
-            // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(152, 12);
+            this.label9.Location = new System.Drawing.Point(181, 12);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(65, 13);
             this.label9.TabIndex = 2;
@@ -671,14 +632,117 @@ namespace CapaPresentacion
             this.label2.TabIndex = 0;
             this.label2.Text = "Fecha Inicio:";
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1012, 40);
+            this.panel1.TabIndex = 2;
+            // 
+            // anularButton
+            // 
+            this.anularButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.anularButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Delete1;
+            this.anularButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.anularButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.anularButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.anularButton.ForeColor = System.Drawing.Color.Black;
+            this.anularButton.Location = new System.Drawing.Point(381, 30);
+            this.anularButton.Name = "anularButton";
+            this.anularButton.Size = new System.Drawing.Size(43, 23);
+            this.anularButton.TabIndex = 5;
+            this.ttMensaje.SetToolTip(this.anularButton, "Anular Ingreso");
+            this.anularButton.UseVisualStyleBackColor = false;
+            this.anularButton.Click += new System.EventHandler(this.anularButton_Click);
+            // 
+            // buscarButton
+            // 
+            this.buscarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.buscarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
+            this.buscarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buscarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.buscarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buscarButton.ForeColor = System.Drawing.Color.Black;
+            this.buscarButton.Location = new System.Drawing.Point(332, 30);
+            this.buscarButton.Name = "buscarButton";
+            this.buscarButton.Size = new System.Drawing.Size(43, 23);
+            this.buscarButton.TabIndex = 4;
+            this.ttMensaje.SetToolTip(this.buscarButton, "Buscar Ingreso");
+            this.buscarButton.UseVisualStyleBackColor = false;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
+            // 
+            // borrarButton
+            // 
+            this.borrarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.borrarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.minimazar;
+            this.borrarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.borrarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.borrarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.borrarButton.Location = new System.Drawing.Point(829, 67);
+            this.borrarButton.Name = "borrarButton";
+            this.borrarButton.Size = new System.Drawing.Size(43, 23);
+            this.borrarButton.TabIndex = 14;
+            this.ttMensaje.SetToolTip(this.borrarButton, "Borrar Artículo");
+            this.borrarButton.UseVisualStyleBackColor = false;
+            this.borrarButton.Click += new System.EventHandler(this.borrarButton_Click);
+            // 
+            // agregarButton
+            // 
+            this.agregarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.agregarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.agregar;
+            this.agregarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.agregarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.agregarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.agregarButton.Location = new System.Drawing.Point(829, 38);
+            this.agregarButton.Name = "agregarButton";
+            this.agregarButton.Size = new System.Drawing.Size(43, 23);
+            this.agregarButton.TabIndex = 13;
+            this.ttMensaje.SetToolTip(this.agregarButton, "Agregar Artículo");
+            this.agregarButton.UseVisualStyleBackColor = false;
+            this.agregarButton.Click += new System.EventHandler(this.agregarButton_Click);
+            // 
+            // buscarArticuloButton
+            // 
+            this.buscarArticuloButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.buscarArticuloButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
+            this.buscarArticuloButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buscarArticuloButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.buscarArticuloButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buscarArticuloButton.Location = new System.Drawing.Point(277, 38);
+            this.buscarArticuloButton.Name = "buscarArticuloButton";
+            this.buscarArticuloButton.Size = new System.Drawing.Size(43, 23);
+            this.buscarArticuloButton.TabIndex = 2;
+            this.ttMensaje.SetToolTip(this.buscarArticuloButton, "Buscar Artículo");
+            this.buscarArticuloButton.UseVisualStyleBackColor = false;
+            this.buscarArticuloButton.Click += new System.EventHandler(this.buscarArticuloButton_Click);
+            // 
+            // buscarProveedorButton
+            // 
+            this.buscarProveedorButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.buscarProveedorButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
+            this.buscarProveedorButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buscarProveedorButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.buscarProveedorButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buscarProveedorButton.Location = new System.Drawing.Point(598, 42);
+            this.buscarProveedorButton.Name = "buscarProveedorButton";
+            this.buscarProveedorButton.Size = new System.Drawing.Size(43, 23);
+            this.buscarProveedorButton.TabIndex = 8;
+            this.ttMensaje.SetToolTip(this.buscarProveedorButton, "Buscar Proveedor");
+            this.buscarProveedorButton.UseVisualStyleBackColor = false;
+            this.buscarProveedorButton.Click += new System.EventHandler(this.buscarProveedorButton_Click);
+            // 
             // frmIngreso
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(1012, 655);
-            this.Controls.Add(this.label1);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.ClientSize = new System.Drawing.Size(1012, 676);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.tabControl1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmIngreso";
             this.Text = "Ingreso";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmIngreso_FormClosing);
@@ -694,8 +758,9 @@ namespace CapaPresentacion
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDataGridView)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -712,7 +777,6 @@ namespace CapaPresentacion
         private System.Windows.Forms.DataGridViewCheckBoxColumn Eliminar;
         private System.Windows.Forms.Label totalRegistrosLabel;
         private System.Windows.Forms.CheckBox anularCheckBox;
-        private System.Windows.Forms.Button imprimirButton;
         private System.Windows.Forms.Button anularButton;
         private System.Windows.Forms.Button buscarButton;
         private System.Windows.Forms.Label label9;
@@ -757,5 +821,6 @@ namespace CapaPresentacion
         private System.Windows.Forms.TextBox idArticuloTextBox;
         private System.Windows.Forms.Label totalPagadoLabel;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Panel panel1;
     }
 }

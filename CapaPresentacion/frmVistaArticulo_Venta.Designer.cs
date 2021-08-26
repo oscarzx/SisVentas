@@ -165,7 +165,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmVistaArticulo_Venta";
-            this.Text = "frmVistaArticulo_Venta";
+            this.Text = "Venta Artículo";
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

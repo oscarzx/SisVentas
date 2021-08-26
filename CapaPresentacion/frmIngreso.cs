@@ -45,11 +45,11 @@ namespace CapaPresentacion
         public frmIngreso()
         {
             InitializeComponent();
-            this.ttMensaje.SetToolTip(this.proveedorTextBox, "Seleccione el proveedor");
-            this.ttMensaje.SetToolTip(this.serieTextBox, "Ingrese la serie del comprobante");
-            this.ttMensaje.SetToolTip(this.serieTextBox, "Ingrese el número del comprobante");
-            this.ttMensaje.SetToolTip(this.stockInicialTextBox, "Ingrese la cantidad de compra");
-            this.ttMensaje.SetToolTip(this.articuloTextBox, "Seleccione el artículo de compra");
+            //this.ttMensaje.SetToolTip(this.proveedorTextBox, "Seleccione el proveedor");
+            //this.ttMensaje.SetToolTip(this.serieTextBox, "Ingrese la serie del comprobante");
+            //this.ttMensaje.SetToolTip(this.serieTextBox, "Ingrese el número del comprobante");
+            //this.ttMensaje.SetToolTip(this.stockInicialTextBox, "Ingrese la cantidad de compra");
+            //this.ttMensaje.SetToolTip(this.articuloTextBox, "Seleccione el artículo de compra");
             this.idProveedorTextBox.Visible = false;
             this.idArticuloTextBox.Visible = false;
             this.proveedorTextBox.ReadOnly = true;
@@ -138,8 +138,6 @@ namespace CapaPresentacion
         {
             this.listadoDataGridView.Columns[0].Visible = false;
             this.listadoDataGridView.Columns[1].Visible = false;
-            //this.listadoDataGridView.Columns[6].Visible = false;
-            //this.listadoDataGridView.Columns[8].Visible = false;
         }
 
         //Método mostrar
@@ -154,8 +152,8 @@ namespace CapaPresentacion
         private void BuscarFechas()
         {
             this.listadoDataGridView.DataSource = 
-                NIngreso.BuscarFechas(this.fechaInicioDateTimePicker.Value.ToString("dd/MM/yyyy"),
-                this.fechaFinalDateTimePicker.Value.ToString("dd/MM/yyyy"));
+                NIngreso.BuscarFechas(this.fechaInicioDateTimePicker.Value.ToString("yyyy/MM/dd"),
+                this.fechaFinalDateTimePicker.Value.ToString("yyyy/MM/dd"));
             this.OcultarColumnas();
             totalRegistrosLabel.Text = $"Total registros: {Convert.ToString(listadoDataGridView.Rows.Count)}";
         }
@@ -263,6 +261,7 @@ namespace CapaPresentacion
 
         private void CrearTabla()
         {
+            //Crea el detalle de la venta
             this.dtDetalle = new DataTable("Detalle");
             this.dtDetalle.Columns.Add("idarticulo", System.Type.GetType("System.Int32"));
             this.dtDetalle.Columns.Add("articulo", System.Type.GetType("System.String"));
@@ -284,6 +283,8 @@ namespace CapaPresentacion
             this.Botones();
             this.Limpiar();
             this.Habilitar(false);
+            Mostrar();
+            PersonalizarGrillaListado();
         }
 
         private void guardarButton_Click(object sender, EventArgs e)
@@ -331,13 +332,19 @@ namespace CapaPresentacion
 
         private bool ValidarCampos()
         {
-            bool respuesta = true;
+            if (comprobanteComboBox.SelectedIndex == -1)
+            {
+                errorProvider1.SetError(comprobanteComboBox, "Debe seleccionar un comprpobante de ingreso");
+                comprobanteComboBox.Focus();
+                return false;
+            }
+            errorProvider1.Clear();
 
             if (string.IsNullOrEmpty(proveedorTextBox.Text))
             {
                 errorProvider1.SetError(proveedorTextBox, "Debe seleccionar un proveedor");
                 proveedorTextBox.Focus();
-                respuesta = false;
+                return false;
             }
             errorProvider1.Clear();
 
@@ -345,7 +352,7 @@ namespace CapaPresentacion
             {
                 errorProvider1.SetError(serieTextBox, "Debe ingresar una serie");
                 serieTextBox.Focus();
-                respuesta = false;
+                return false;
             }
             errorProvider1.Clear();
 
@@ -353,15 +360,7 @@ namespace CapaPresentacion
             {
                 errorProvider1.SetError(correlativoTextBox, "Debe ingresar un correlativo");
                 correlativoTextBox.Focus();
-                respuesta = false;
-            }
-            errorProvider1.Clear();
-
-            if (comprobanteComboBox.SelectedIndex == -1)
-            {
-                errorProvider1.SetError(comprobanteComboBox, "Debe seleccionar un comprpobante de ingreso");
-                comprobanteComboBox.Focus();
-                respuesta = false;
+                return false;
             }
             errorProvider1.Clear();
 
@@ -369,11 +368,18 @@ namespace CapaPresentacion
             {
                 errorProvider1.SetError(ivaTextBox, "Debe ingresar un impuesto");
                 ivaTextBox.Focus();
-                respuesta = false;
+                return false;
             }
             errorProvider1.Clear();
 
-            return respuesta;
+            if (listadoDetalleDataGridView.Rows.Count == 0)
+            {
+                MessageBox.Show("No ha ingresado artículos");
+                articuloTextBox.Focus();
+                return false;
+            }
+                
+            return true;
         }
 
         private void nuevoButton_Click(object sender, EventArgs e)
@@ -406,6 +412,7 @@ namespace CapaPresentacion
                 {
                     bool registrar = true;
 
+                    //Comprueba si el artículo está en la lista del ingreso
                     foreach (DataRow row in dtDetalle.Rows)
                     {
                         if(Convert.ToInt32(row["idarticulo"]) == Convert.ToInt32(this.idArticuloTextBox.Text))
@@ -479,6 +486,7 @@ namespace CapaPresentacion
             this.totalRegistrosLabel.Text = this.listadoDataGridView.CurrentRow.Cells["Total"].Value.ToString();
             this.MostrarDetalle();
             this.tabControl1.SelectedIndex = 1;
+            PersonalizarGrillaListado();
         }
 
         private void PersonalizarGrillaListado()
@@ -539,10 +547,11 @@ namespace CapaPresentacion
 
             listadoDataGridView.EnableHeadersVisualStyles = false;
             listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
-            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
             listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
             listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
                 new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
         }
     }
 }
