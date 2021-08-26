@@ -23,7 +23,7 @@ namespace CapaPresentacion
         {
 
             this.listadoDataGridView.Columns[0].Visible = false;
-            this.listadoDataGridView.Columns[1].Visible = false;
+            this.listadoDataGridView.Columns[9].Visible = false;
         }
 
         
@@ -50,6 +50,8 @@ namespace CapaPresentacion
 
         private void buscarButton_Click(object sender, EventArgs e)
         {
+            if (buscarComboBox.SelectedIndex == -1) return;
+
             if (buscarComboBox.Text.Equals("Codigo"))
             {
                 this.MostrarArticulo_Venta_Codigo();
@@ -58,6 +60,7 @@ namespace CapaPresentacion
             {
                 this.MostrarArticulo_Venta_Nombre();
             }
+            PersonalizarGrilla();
         }
 
         private void listadoDataGridView_DoubleClick(object sender, EventArgs e)
@@ -77,6 +80,80 @@ namespace CapaPresentacion
 
             miForm.SetArticulo(par1, par2, par3, par4, par5, par6);
             this.Hide();
+        }
+
+        private void PersonalizarGrilla()
+        {
+            listadoDataGridView.Columns["Eliminar"].HeaderText = "Eliminar";
+            listadoDataGridView.Columns["Eliminar"].Width = 60;
+            listadoDataGridView.Columns["Eliminar"].ReadOnly = false;
+
+            listadoDataGridView.Columns["IdDetalle_ingreso"].HeaderText = "Id D.Ingreso";
+            listadoDataGridView.Columns["IdDetalle_ingreso"].Width = 70;
+            listadoDataGridView.Columns["IdDetalle_ingreso"].ReadOnly = false;
+
+            listadoDataGridView.Columns["CodigoArticulo"].HeaderText = "Código";
+            listadoDataGridView.Columns["CodigoArticulo"].Width = 80;
+            listadoDataGridView.Columns["CodigoArticulo"].ReadOnly = false;
+
+            listadoDataGridView.Columns["NombreArticulo"].HeaderText = "Nombre Artículo";
+            listadoDataGridView.Columns["NombreArticulo"].Width = 200;
+            listadoDataGridView.Columns["NombreArticulo"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Referencia"].HeaderText = "Referencia";
+            listadoDataGridView.Columns["Referencia"].Width = 70;
+            listadoDataGridView.Columns["Referencia"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Talla"].HeaderText = "Talla";
+            listadoDataGridView.Columns["Talla"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter;
+            listadoDataGridView.Columns["Talla"].Width = 40;
+            listadoDataGridView.Columns["Talla"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Categoria"].HeaderText = "Categoría";
+            listadoDataGridView.Columns["Categoria"].Width = 70;
+            listadoDataGridView.Columns["Categoria"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Presentacion"].HeaderText = "Presentación";
+            listadoDataGridView.Columns["Presentacion"].Width = 90;
+            listadoDataGridView.Columns["Presentacion"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Stock_actual"].HeaderText = "Stock";
+            listadoDataGridView.Columns["Stock_actual"].Width = 50;
+            listadoDataGridView.Columns["Stock_actual"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Stock_actual"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Precio_compra"].HeaderText = "Precio Compra";
+            listadoDataGridView.Columns["Precio_compra"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Precio_compra"].DefaultCellStyle.Format = "C2";
+            listadoDataGridView.Columns["Precio_compra"].Width = 100;
+            listadoDataGridView.Columns["Precio_compra"].ReadOnly = true;
+
+            listadoDataGridView.Columns["Precio_venta"].HeaderText = "Precio Venta";
+            listadoDataGridView.Columns["Precio_venta"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDataGridView.Columns["Precio_venta"].DefaultCellStyle.Format = "C2";
+            listadoDataGridView.Columns["Precio_venta"].Width = 80;
+            listadoDataGridView.Columns["Precio_venta"].ReadOnly = true;
+
+            listadoDataGridView.Columns["Fecha_vencimiento"].HeaderText = "F. Vencimiento";
+            listadoDataGridView.Columns["Fecha_vencimiento"].Width = 100;
+            listadoDataGridView.Columns["Fecha_vencimiento"].ReadOnly = false;
+
+            listadoDataGridView.EnableHeadersVisualStyles = false;
+            listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
+        }
+
+        private void frmVistaArticulo_Venta_Load(object sender, EventArgs e)
+        {
+            //PersonalizarGrilla();
         }
     }
 }

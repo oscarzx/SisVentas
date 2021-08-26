@@ -61,7 +61,7 @@ namespace CapaPresentacion
         //Habilitar los controles del formulario
         private void Habilitar(bool valor)
         {
-            this.idClienteTextBox.ReadOnly = !valor;
+            this.idClienteTextBox.ReadOnly = true;
             this.nombreTextBox.ReadOnly = !valor;
             this.apellidosTextBox.ReadOnly = !valor;
             this.direccionTextBox.ReadOnly = !valor;
@@ -133,6 +133,7 @@ namespace CapaPresentacion
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
+            PersonalizarGrilla();
         }
 
         private void buscarButton_Click(object sender, EventArgs e)
@@ -145,6 +146,7 @@ namespace CapaPresentacion
             {
                 this.BuscarCliente_Documento();
             }
+            PersonalizarGrilla();
         }
 
         private void eliminarButton_Click(object sender, EventArgs e)
@@ -174,6 +176,7 @@ namespace CapaPresentacion
                         }
                     }
                     this.Mostrar();
+                    PersonalizarGrilla();
                 }
             }
             catch (Exception ex)
@@ -192,6 +195,7 @@ namespace CapaPresentacion
             {
                 this.listadoDataGridView.Columns[0].Visible = false;
             }
+            PersonalizarGrilla();
         }
 
         private void listadoDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -296,6 +300,7 @@ namespace CapaPresentacion
                     this.Botones();
                     this.Limpiar();
                     this.Mostrar();
+                    PersonalizarGrilla();
                 }
             }
             catch (Exception ex)
@@ -326,7 +331,62 @@ namespace CapaPresentacion
             this.Botones();
             this.Habilitar(false);
             this.Limpiar();
+            PersonalizarGrilla();
             this.idClienteTextBox.Text = string.Empty;
         }
+
+        private void PersonalizarGrilla()
+        {
+            listadoDataGridView.Columns["Eliminar"].HeaderText = "Eliminar";
+            listadoDataGridView.Columns["Eliminar"].Width = 60;
+            listadoDataGridView.Columns["Eliminar"].ReadOnly = false;
+
+            listadoDataGridView.Columns["IdCliente"].HeaderText = "Id";
+            listadoDataGridView.Columns["IdCliente"].Width = 50;
+            listadoDataGridView.Columns["IdCliente"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Nombre_cliente"].HeaderText = "Nombre";
+            listadoDataGridView.Columns["Nombre_cliente"].Width = 150;
+            listadoDataGridView.Columns["Nombre_cliente"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Apellido_cliente"].HeaderText = "Apellido";
+            listadoDataGridView.Columns["Apellido_cliente"].Width = 150;
+            listadoDataGridView.Columns["Apellido_cliente"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Genero"].HeaderText = "Género";
+            listadoDataGridView.Columns["Genero"].Width = 50;
+            listadoDataGridView.Columns["Genero"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter;
+            listadoDataGridView.Columns["Genero"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Tipo_documento"].HeaderText = "Tipo Documento";
+            listadoDataGridView.Columns["Tipo_documento"].Width = 80;
+            listadoDataGridView.Columns["Tipo_documento"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Numero_documento"].HeaderText = "N. Documento";
+            listadoDataGridView.Columns["Numero_documento"].Width = 80;
+            listadoDataGridView.Columns["Numero_documento"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Direccion"].HeaderText = "Dirección";
+            listadoDataGridView.Columns["Direccion"].Width = 100;
+            listadoDataGridView.Columns["Direccion"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Telefono"].HeaderText = "Teléfono";
+            listadoDataGridView.Columns["Telefono"].Width = 80;
+            listadoDataGridView.Columns["Telefono"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Email"].HeaderText = "Email";
+            listadoDataGridView.Columns["Email"].Width = 80;
+            listadoDataGridView.Columns["Email"].ReadOnly = false;
+
+            listadoDataGridView.EnableHeadersVisualStyles = false;
+            listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
+        }
+
     }
 }

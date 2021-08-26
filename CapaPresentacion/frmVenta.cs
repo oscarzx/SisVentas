@@ -106,12 +106,13 @@ namespace CapaPresentacion
         //Habilitar los controles del formulario
         private void Habilitar(bool valor)
         {
-            this.idVentaTextBox.ReadOnly = !valor;
+            this.idVentaTextBox.ReadOnly = true;
             this.serieTextBox.ReadOnly = !valor;
             this.correlativoTextBox.ReadOnly = !valor;
             this.ivaTextBox.ReadOnly = !valor;
             this.fechaIngresodateTimePicker.Enabled = valor;
             this.comprobanteComboBox.Enabled = valor;
+            this.comprobanteComboBox.SelectedIndex = -1;
             this.cantidadTextBox.ReadOnly = !valor;
             this.stockActualTextBox.ReadOnly = !valor;
             this.precioCompraTextBox.ReadOnly = !valor;
@@ -464,6 +465,7 @@ namespace CapaPresentacion
                     {
                         MensajeError("No hay Stock suficiente");
                     }
+                    PersonalizarGrillaProducto();
                 }
             }
             catch (Exception ex)
@@ -490,10 +492,12 @@ namespace CapaPresentacion
             {
                 MensajeError("No hay fila para remover");
             }
+            PersonalizarGrillaProducto();
         }
 
         private void comprobanteButton_Click(object sender, EventArgs e)
         {
+            if (listadoDataGridView.Rows.Count == 0) return;
             frmReporteFactura miForm = new frmReporteFactura();
             miForm.IdVenta = Convert.ToInt32(listadoDataGridView.CurrentRow.Cells["IdVenta"].Value);
             miForm.ShowDialog();
@@ -549,10 +553,11 @@ namespace CapaPresentacion
 
             listadoDataGridView.EnableHeadersVisualStyles = false;
             listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
-            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
             listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
             listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
                 new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
         }
 
         private void buscarButton_Click(object sender, EventArgs e)
@@ -564,5 +569,53 @@ namespace CapaPresentacion
             totalRegistrosLabel.Text = $"Total registros: {Convert.ToString(listadoDataGridView.Rows.Count)}";
             PersonalizarGrillaListado();
         }
+
+        private void PersonalizarGrillaProducto()
+        {
+            listadoDetalleDataGridView.Columns["iddetalle_ingreso"].HeaderText = "Id Ingreso";
+            listadoDetalleDataGridView.Columns["iddetalle_ingreso"].Width = 60;
+            listadoDetalleDataGridView.Columns["iddetalle_ingreso"].ReadOnly = false;
+
+            listadoDetalleDataGridView.Columns["articulo"].HeaderText = "Artículo";
+            listadoDetalleDataGridView.Columns["articulo"].Width = 150;
+            listadoDetalleDataGridView.Columns["articulo"].ReadOnly = false;
+
+            listadoDetalleDataGridView.Columns["cantidad"].HeaderText = "Cantidad";
+            listadoDetalleDataGridView.Columns["cantidad"].Width = 150;
+            listadoDetalleDataGridView.Columns["cantidad"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDetalleDataGridView.Columns["cantidad"].ReadOnly = false;
+
+            listadoDetalleDataGridView.Columns["precio_venta"].HeaderText = "Precio Venta";
+            listadoDetalleDataGridView.Columns["precio_venta"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDetalleDataGridView.Columns["precio_venta"].DefaultCellStyle.Format = "C2";
+            listadoDetalleDataGridView.Columns["precio_venta"].Width = 100;
+            listadoDetalleDataGridView.Columns["precio_venta"].ReadOnly = true;
+
+            listadoDetalleDataGridView.Columns["descuento"].HeaderText = "% Descuento";
+            listadoDetalleDataGridView.Columns["descuento"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDetalleDataGridView.Columns["descuento"].DefaultCellStyle.Format = "C2";
+            listadoDetalleDataGridView.Columns["descuento"].Width = 100;
+            listadoDetalleDataGridView.Columns["descuento"].ReadOnly = true;
+
+            listadoDetalleDataGridView.Columns["subtotal"].HeaderText = "SubTotal";
+            listadoDetalleDataGridView.Columns["subtotal"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDetalleDataGridView.Columns["subtotal"].DefaultCellStyle.Format = "C2";
+            listadoDetalleDataGridView.Columns["subtotal"].Width = 100;
+            listadoDetalleDataGridView.Columns["subtotal"].ReadOnly = true;
+
+            listadoDetalleDataGridView.EnableHeadersVisualStyles = false;
+            listadoDetalleDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDetalleDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            listadoDetalleDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDetalleDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDetalleDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
+        }
+
+
     }
 }

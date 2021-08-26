@@ -96,12 +96,13 @@ namespace CapaPresentacion
         //Habilitar los controles del formulario
         private void Habilitar(bool valor)
         {
-            this.ingresoTextBox.ReadOnly = !valor;
+            this.ingresoTextBox.ReadOnly = true;
             this.serieTextBox.ReadOnly = !valor;
             this.correlativoTextBox.ReadOnly = !valor;
             this.ivaTextBox.ReadOnly = !valor;
             this.fechaIngresodateTimePicker.Enabled = valor;
             this.comprobanteComboBox.Enabled = valor;
+            this.comprobanteComboBox.SelectedIndex = -1;
             this.stockInicialTextBox.ReadOnly = !valor;
             this.precioCompraTextBox.ReadOnly = !valor;
             this.precioVentaTextBox.ReadOnly = !valor;
@@ -444,6 +445,8 @@ namespace CapaPresentacion
                         this.LimpiarDetalle();
                     }
                 }
+
+                this.PersonalizarGrillaProducto();
             }
             catch (Exception ex)
             {
@@ -470,6 +473,8 @@ namespace CapaPresentacion
             {
                 MensajeError("No hay fila para remover");
             }
+
+            this.PersonalizarGrillaProducto();
         }
 
         private void listadoDataGridView_DoubleClick(object sender, EventArgs e)
@@ -552,6 +557,60 @@ namespace CapaPresentacion
             listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
                 new Font(listadoDataGridView.Font, FontStyle.Bold);
             listadoDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
+        }
+
+        private void PersonalizarGrillaProducto()
+        {
+            listadoDetalleDataGridView.Columns["idarticulo"].HeaderText = "Id Artículo";
+            listadoDetalleDataGridView.Columns["idarticulo"].Width = 60;
+            listadoDetalleDataGridView.Columns["idarticulo"].ReadOnly = false;
+
+            listadoDetalleDataGridView.Columns["articulo"].HeaderText = "Artículo";
+            listadoDetalleDataGridView.Columns["articulo"].Width = 150;
+            listadoDetalleDataGridView.Columns["articulo"].ReadOnly = false;
+
+            listadoDetalleDataGridView.Columns["precio_compra"].HeaderText = "Precio Compra";
+            listadoDetalleDataGridView.Columns["precio_compra"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDetalleDataGridView.Columns["precio_compra"].DefaultCellStyle.Format = "C2";
+            listadoDetalleDataGridView.Columns["precio_compra"].Width = 100;
+            listadoDetalleDataGridView.Columns["precio_compra"].ReadOnly = true;
+
+            listadoDetalleDataGridView.Columns["precio_venta"].HeaderText = "Precio Venta";
+            listadoDetalleDataGridView.Columns["precio_venta"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDetalleDataGridView.Columns["precio_venta"].DefaultCellStyle.Format = "C2";
+            listadoDetalleDataGridView.Columns["precio_venta"].Width = 100;
+            listadoDetalleDataGridView.Columns["precio_venta"].ReadOnly = true;
+
+            listadoDetalleDataGridView.Columns["stock_inicial"].HeaderText = "Stock Inicial";
+            listadoDetalleDataGridView.Columns["stock_inicial"].Width = 80;
+            listadoDetalleDataGridView.Columns["stock_inicial"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDetalleDataGridView.Columns["stock_inicial"].ReadOnly = false;
+
+            listadoDetalleDataGridView.Columns["fecha_produccion"].HeaderText = "Fecha Producción";
+            listadoDetalleDataGridView.Columns["fecha_produccion"].Width = 150;
+            listadoDetalleDataGridView.Columns["fecha_produccion"].ReadOnly = false;
+
+            listadoDetalleDataGridView.Columns["fecha_vencimiento"].HeaderText = "Fecha Vencimiento";
+            listadoDetalleDataGridView.Columns["fecha_vencimiento"].Width = 150;
+            listadoDetalleDataGridView.Columns["fecha_vencimiento"].ReadOnly = false;
+
+            listadoDetalleDataGridView.Columns["subtotal"].HeaderText = "SubTotal";
+            listadoDetalleDataGridView.Columns["subtotal"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleRight;
+            listadoDetalleDataGridView.Columns["subtotal"].DefaultCellStyle.Format = "C2";
+            listadoDetalleDataGridView.Columns["subtotal"].Width = 100;
+            listadoDetalleDataGridView.Columns["subtotal"].ReadOnly = true;
+
+            listadoDetalleDataGridView.EnableHeadersVisualStyles = false;
+            listadoDetalleDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDetalleDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            listadoDetalleDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDetalleDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDetalleDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
         }
     }
 }

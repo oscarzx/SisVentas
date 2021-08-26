@@ -38,18 +38,11 @@ namespace CapaPresentacion
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.totalLabel = new System.Windows.Forms.Label();
             this.eliminarCheckBox = new System.Windows.Forms.CheckBox();
-            this.imprimirButton = new System.Windows.Forms.Button();
-            this.eliminarButton = new System.Windows.Forms.Button();
-            this.buscarButton = new System.Windows.Forms.Button();
             this.buscarTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.presentacionComboBox = new System.Windows.Forms.ComboBox();
-            this.limpiarImagenButton = new System.Windows.Forms.Button();
-            this.buscarCategoriaButton = new System.Windows.Forms.Button();
-            this.cargarButton = new System.Windows.Forms.Button();
-            this.imagenPictureBox = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
@@ -66,26 +59,35 @@ namespace CapaPresentacion
             this.label9 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.nuevoButton = new System.Windows.Forms.Button();
-            this.guardarButton = new System.Windows.Forms.Button();
-            this.editarButton = new System.Windows.Forms.Button();
-            this.cancelarButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.tituloPanel = new System.Windows.Forms.Panel();
+            this.imprimirButton = new System.Windows.Forms.Button();
+            this.eliminarButton = new System.Windows.Forms.Button();
+            this.buscarButton = new System.Windows.Forms.Button();
+            this.limpiarImagenButton = new System.Windows.Forms.Button();
+            this.buscarCategoriaButton = new System.Windows.Forms.Button();
+            this.cargarButton = new System.Windows.Forms.Button();
+            this.imagenPictureBox = new System.Windows.Forms.PictureBox();
+            this.nuevoButton = new System.Windows.Forms.Button();
+            this.guardarButton = new System.Windows.Forms.Button();
+            this.editarButton = new System.Windows.Forms.Button();
+            this.cancelarButton = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDataGridView)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imagenPictureBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tituloPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imagenPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Location = new System.Drawing.Point(11, 46);
@@ -167,53 +169,6 @@ namespace CapaPresentacion
             this.eliminarCheckBox.UseVisualStyleBackColor = true;
             this.eliminarCheckBox.CheckedChanged += new System.EventHandler(this.eliminarCheckBox_CheckedChanged);
             // 
-            // imprimirButton
-            // 
-            this.imprimirButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.imprimirButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.printer_;
-            this.imprimirButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.imprimirButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.imprimirButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.imprimirButton.ForeColor = System.Drawing.Color.Black;
-            this.imprimirButton.Location = new System.Drawing.Point(283, 16);
-            this.imprimirButton.Name = "imprimirButton";
-            this.imprimirButton.Size = new System.Drawing.Size(43, 23);
-            this.imprimirButton.TabIndex = 4;
-            this.ttMensaje.SetToolTip(this.imprimirButton, "Listado Artículos");
-            this.imprimirButton.UseVisualStyleBackColor = false;
-            this.imprimirButton.Click += new System.EventHandler(this.imprimirButton_Click);
-            // 
-            // eliminarButton
-            // 
-            this.eliminarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.eliminarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Delete1;
-            this.eliminarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.eliminarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.eliminarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.eliminarButton.Location = new System.Drawing.Point(234, 16);
-            this.eliminarButton.Name = "eliminarButton";
-            this.eliminarButton.Size = new System.Drawing.Size(43, 23);
-            this.eliminarButton.TabIndex = 3;
-            this.ttMensaje.SetToolTip(this.eliminarButton, "Eliminar Artículo");
-            this.eliminarButton.UseVisualStyleBackColor = false;
-            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
-            // 
-            // buscarButton
-            // 
-            this.buscarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.buscarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
-            this.buscarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buscarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.buscarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buscarButton.ForeColor = System.Drawing.Color.Black;
-            this.buscarButton.Location = new System.Drawing.Point(185, 16);
-            this.buscarButton.Name = "buscarButton";
-            this.buscarButton.Size = new System.Drawing.Size(43, 23);
-            this.buscarButton.TabIndex = 2;
-            this.ttMensaje.SetToolTip(this.buscarButton, "Buscar Artículo");
-            this.buscarButton.UseVisualStyleBackColor = false;
-            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
-            // 
             // buscarTextBox
             // 
             this.buscarTextBox.Location = new System.Drawing.Point(70, 19);
@@ -283,61 +238,6 @@ namespace CapaPresentacion
             this.presentacionComboBox.Name = "presentacionComboBox";
             this.presentacionComboBox.Size = new System.Drawing.Size(124, 21);
             this.presentacionComboBox.TabIndex = 18;
-            // 
-            // limpiarImagenButton
-            // 
-            this.limpiarImagenButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.limpiarImagenButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.x_mark_2_48;
-            this.limpiarImagenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.limpiarImagenButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.limpiarImagenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.limpiarImagenButton.Location = new System.Drawing.Point(528, 157);
-            this.limpiarImagenButton.Name = "limpiarImagenButton";
-            this.limpiarImagenButton.Size = new System.Drawing.Size(43, 23);
-            this.limpiarImagenButton.TabIndex = 20;
-            this.ttMensaje.SetToolTip(this.limpiarImagenButton, "Limpiar Imagen");
-            this.limpiarImagenButton.UseVisualStyleBackColor = false;
-            this.limpiarImagenButton.Click += new System.EventHandler(this.limpiarImagenButton_Click);
-            // 
-            // buscarCategoriaButton
-            // 
-            this.buscarCategoriaButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.buscarCategoriaButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
-            this.buscarCategoriaButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buscarCategoriaButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.buscarCategoriaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buscarCategoriaButton.Location = new System.Drawing.Point(528, 74);
-            this.buscarCategoriaButton.Name = "buscarCategoriaButton";
-            this.buscarCategoriaButton.Size = new System.Drawing.Size(43, 23);
-            this.buscarCategoriaButton.TabIndex = 14;
-            this.ttMensaje.SetToolTip(this.buscarCategoriaButton, "Buscar Categoría");
-            this.buscarCategoriaButton.UseVisualStyleBackColor = false;
-            this.buscarCategoriaButton.Click += new System.EventHandler(this.buscarCategoriaButton_Click);
-            // 
-            // cargarButton
-            // 
-            this.cargarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.cargarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
-            this.cargarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.cargarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.cargarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cargarButton.Location = new System.Drawing.Point(528, 128);
-            this.cargarButton.Name = "cargarButton";
-            this.cargarButton.Size = new System.Drawing.Size(43, 23);
-            this.cargarButton.TabIndex = 19;
-            this.ttMensaje.SetToolTip(this.cargarButton, "Buscar Imagen");
-            this.cargarButton.UseVisualStyleBackColor = false;
-            this.cargarButton.Click += new System.EventHandler(this.cargarButton_Click);
-            // 
-            // imagenPictureBox
-            // 
-            this.imagenPictureBox.BackColor = System.Drawing.Color.White;
-            this.imagenPictureBox.BackgroundImage = global::CapaPresentacion.Properties.Resources.ImagenBlanco;
-            this.imagenPictureBox.Location = new System.Drawing.Point(398, 128);
-            this.imagenPictureBox.Name = "imagenPictureBox";
-            this.imagenPictureBox.Size = new System.Drawing.Size(124, 73);
-            this.imagenPictureBox.TabIndex = 12;
-            this.imagenPictureBox.TabStop = false;
             // 
             // label8
             // 
@@ -485,6 +385,138 @@ namespace CapaPresentacion
             this.label3.TabIndex = 0;
             this.label3.Text = "Id";
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(702, 6);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(114, 29);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Artículos";
+            // 
+            // errorProvider1
+            // 
+            this.errorProvider1.ContainerControl = this;
+            // 
+            // ttMensaje
+            // 
+            this.ttMensaje.IsBalloon = true;
+            // 
+            // tituloPanel
+            // 
+            this.tituloPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.tituloPanel.Controls.Add(this.label1);
+            this.tituloPanel.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tituloPanel.Location = new System.Drawing.Point(0, 0);
+            this.tituloPanel.Name = "tituloPanel";
+            this.tituloPanel.Size = new System.Drawing.Size(828, 40);
+            this.tituloPanel.TabIndex = 2;
+            // 
+            // imprimirButton
+            // 
+            this.imprimirButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.imprimirButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.printer_;
+            this.imprimirButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.imprimirButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.imprimirButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.imprimirButton.ForeColor = System.Drawing.Color.Black;
+            this.imprimirButton.Location = new System.Drawing.Point(283, 16);
+            this.imprimirButton.Name = "imprimirButton";
+            this.imprimirButton.Size = new System.Drawing.Size(43, 23);
+            this.imprimirButton.TabIndex = 4;
+            this.ttMensaje.SetToolTip(this.imprimirButton, "Listado Artículos");
+            this.imprimirButton.UseVisualStyleBackColor = false;
+            this.imprimirButton.Click += new System.EventHandler(this.imprimirButton_Click);
+            // 
+            // eliminarButton
+            // 
+            this.eliminarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.eliminarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Delete1;
+            this.eliminarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.eliminarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.eliminarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.eliminarButton.Location = new System.Drawing.Point(234, 16);
+            this.eliminarButton.Name = "eliminarButton";
+            this.eliminarButton.Size = new System.Drawing.Size(43, 23);
+            this.eliminarButton.TabIndex = 3;
+            this.ttMensaje.SetToolTip(this.eliminarButton, "Eliminar Artículo");
+            this.eliminarButton.UseVisualStyleBackColor = false;
+            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
+            // 
+            // buscarButton
+            // 
+            this.buscarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.buscarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
+            this.buscarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buscarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.buscarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buscarButton.ForeColor = System.Drawing.Color.Black;
+            this.buscarButton.Location = new System.Drawing.Point(185, 16);
+            this.buscarButton.Name = "buscarButton";
+            this.buscarButton.Size = new System.Drawing.Size(43, 23);
+            this.buscarButton.TabIndex = 2;
+            this.ttMensaje.SetToolTip(this.buscarButton, "Buscar Artículo");
+            this.buscarButton.UseVisualStyleBackColor = false;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
+            // 
+            // limpiarImagenButton
+            // 
+            this.limpiarImagenButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.limpiarImagenButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.x_mark_2_48;
+            this.limpiarImagenButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.limpiarImagenButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.limpiarImagenButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.limpiarImagenButton.Location = new System.Drawing.Point(528, 157);
+            this.limpiarImagenButton.Name = "limpiarImagenButton";
+            this.limpiarImagenButton.Size = new System.Drawing.Size(43, 23);
+            this.limpiarImagenButton.TabIndex = 20;
+            this.ttMensaje.SetToolTip(this.limpiarImagenButton, "Limpiar Imagen");
+            this.limpiarImagenButton.UseVisualStyleBackColor = false;
+            this.limpiarImagenButton.Click += new System.EventHandler(this.limpiarImagenButton_Click);
+            // 
+            // buscarCategoriaButton
+            // 
+            this.buscarCategoriaButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.buscarCategoriaButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
+            this.buscarCategoriaButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buscarCategoriaButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.buscarCategoriaButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buscarCategoriaButton.Location = new System.Drawing.Point(528, 74);
+            this.buscarCategoriaButton.Name = "buscarCategoriaButton";
+            this.buscarCategoriaButton.Size = new System.Drawing.Size(43, 23);
+            this.buscarCategoriaButton.TabIndex = 14;
+            this.ttMensaje.SetToolTip(this.buscarCategoriaButton, "Buscar Categoría");
+            this.buscarCategoriaButton.UseVisualStyleBackColor = false;
+            this.buscarCategoriaButton.Click += new System.EventHandler(this.buscarCategoriaButton_Click);
+            // 
+            // cargarButton
+            // 
+            this.cargarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.cargarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
+            this.cargarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.cargarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.cargarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cargarButton.Location = new System.Drawing.Point(528, 128);
+            this.cargarButton.Name = "cargarButton";
+            this.cargarButton.Size = new System.Drawing.Size(43, 23);
+            this.cargarButton.TabIndex = 19;
+            this.ttMensaje.SetToolTip(this.cargarButton, "Buscar Imagen");
+            this.cargarButton.UseVisualStyleBackColor = false;
+            this.cargarButton.Click += new System.EventHandler(this.cargarButton_Click);
+            // 
+            // imagenPictureBox
+            // 
+            this.imagenPictureBox.BackColor = System.Drawing.Color.White;
+            this.imagenPictureBox.BackgroundImage = global::CapaPresentacion.Properties.Resources.ImagenBlanco;
+            this.imagenPictureBox.Location = new System.Drawing.Point(398, 128);
+            this.imagenPictureBox.Name = "imagenPictureBox";
+            this.imagenPictureBox.Size = new System.Drawing.Size(124, 73);
+            this.imagenPictureBox.TabIndex = 12;
+            this.imagenPictureBox.TabStop = false;
+            // 
             // nuevoButton
             // 
             this.nuevoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
@@ -561,36 +593,6 @@ namespace CapaPresentacion
             this.cancelarButton.UseVisualStyleBackColor = false;
             this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(714, 6);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(114, 29);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Artículos";
-            // 
-            // errorProvider1
-            // 
-            this.errorProvider1.ContainerControl = this;
-            // 
-            // ttMensaje
-            // 
-            this.ttMensaje.IsBalloon = true;
-            // 
-            // tituloPanel
-            // 
-            this.tituloPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.tituloPanel.Controls.Add(this.label1);
-            this.tituloPanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tituloPanel.Location = new System.Drawing.Point(0, 0);
-            this.tituloPanel.Name = "tituloPanel";
-            this.tituloPanel.Size = new System.Drawing.Size(828, 40);
-            this.tituloPanel.TabIndex = 2;
-            // 
             // frmArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -611,10 +613,10 @@ namespace CapaPresentacion
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imagenPictureBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             this.tituloPanel.ResumeLayout(false);
             this.tituloPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imagenPictureBox)).EndInit();
             this.ResumeLayout(false);
 
         }

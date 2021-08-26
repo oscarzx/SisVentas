@@ -57,11 +57,8 @@ namespace CapaPresentacion
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.proveedorTextBox = new System.Windows.Forms.TextBox();
-            this.cancelarButton = new System.Windows.Forms.Button();
             this.totalPagadoLabel = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
-            this.guardarButton = new System.Windows.Forms.Button();
-            this.nuevoButton = new System.Windows.Forms.Button();
             this.idProveedorTextBox = new System.Windows.Forms.TextBox();
             this.correlativoTextBox = new System.Windows.Forms.TextBox();
             this.ivaTextBox = new System.Windows.Forms.TextBox();
@@ -88,6 +85,9 @@ namespace CapaPresentacion
             this.agregarButton = new System.Windows.Forms.Button();
             this.buscarArticuloButton = new System.Windows.Forms.Button();
             this.buscarProveedorButton = new System.Windows.Forms.Button();
+            this.nuevoButton = new System.Windows.Forms.Button();
+            this.guardarButton = new System.Windows.Forms.Button();
+            this.cancelarButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDetalleDataGridView)).BeginInit();
@@ -109,7 +109,7 @@ namespace CapaPresentacion
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(791, 6);
+            this.label1.Location = new System.Drawing.Point(779, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(221, 29);
             this.label1.TabIndex = 0;
@@ -152,12 +152,15 @@ namespace CapaPresentacion
             // 
             this.listadoDetalleDataGridView.AllowUserToAddRows = false;
             this.listadoDetalleDataGridView.AllowUserToDeleteRows = false;
+            this.listadoDetalleDataGridView.AllowUserToOrderColumns = true;
             this.listadoDetalleDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listadoDetalleDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.listadoDetalleDataGridView.Location = new System.Drawing.Point(18, 235);
             this.listadoDetalleDataGridView.Name = "listadoDetalleDataGridView";
+            this.listadoDetalleDataGridView.ReadOnly = true;
+            this.listadoDetalleDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listadoDetalleDataGridView.Size = new System.Drawing.Size(923, 237);
             this.listadoDetalleDataGridView.TabIndex = 18;
             // 
@@ -353,33 +356,14 @@ namespace CapaPresentacion
             this.proveedorTextBox.Size = new System.Drawing.Size(244, 20);
             this.proveedorTextBox.TabIndex = 7;
             // 
-            // cancelarButton
-            // 
-            this.cancelarButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.cancelarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.cancelarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.cancelarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.cancelarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cancelarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cancelarButton.ForeColor = System.Drawing.Color.White;
-            this.cancelarButton.Image = global::CapaPresentacion.Properties.Resources.Cancel1;
-            this.cancelarButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.cancelarButton.Location = new System.Drawing.Point(862, 533);
-            this.cancelarButton.Name = "cancelarButton";
-            this.cancelarButton.Size = new System.Drawing.Size(98, 39);
-            this.cancelarButton.TabIndex = 0;
-            this.cancelarButton.Text = "&Cancelar";
-            this.cancelarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cancelarButton.UseVisualStyleBackColor = false;
-            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
-            // 
             // totalPagadoLabel
             // 
             this.totalPagadoLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.totalPagadoLabel.AutoSize = true;
-            this.totalPagadoLabel.Location = new System.Drawing.Point(104, 483);
+            this.totalPagadoLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalPagadoLabel.Location = new System.Drawing.Point(164, 483);
             this.totalPagadoLabel.Name = "totalPagadoLabel";
-            this.totalPagadoLabel.Size = new System.Drawing.Size(22, 13);
+            this.totalPagadoLabel.Size = new System.Drawing.Size(45, 25);
             this.totalPagadoLabel.TabIndex = 20;
             this.totalPagadoLabel.Text = "0.0";
             // 
@@ -387,51 +371,12 @@ namespace CapaPresentacion
             // 
             this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label19.Location = new System.Drawing.Point(15, 483);
             this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(83, 13);
+            this.label19.Size = new System.Drawing.Size(143, 24);
             this.label19.TabIndex = 19;
-            this.label19.Text = "Total Pagado: $";
-            // 
-            // guardarButton
-            // 
-            this.guardarButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.guardarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.guardarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.guardarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.guardarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.guardarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guardarButton.ForeColor = System.Drawing.Color.White;
-            this.guardarButton.Image = global::CapaPresentacion.Properties.Resources.Guardar1;
-            this.guardarButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.guardarButton.Location = new System.Drawing.Point(758, 533);
-            this.guardarButton.Name = "guardarButton";
-            this.guardarButton.Size = new System.Drawing.Size(98, 39);
-            this.guardarButton.TabIndex = 22;
-            this.guardarButton.Text = "&Guardar";
-            this.guardarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.guardarButton.UseVisualStyleBackColor = false;
-            this.guardarButton.Click += new System.EventHandler(this.guardarButton_Click);
-            // 
-            // nuevoButton
-            // 
-            this.nuevoButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.nuevoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.nuevoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.nuevoButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.nuevoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.nuevoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nuevoButton.ForeColor = System.Drawing.Color.White;
-            this.nuevoButton.Image = global::CapaPresentacion.Properties.Resources.nuevo1;
-            this.nuevoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.nuevoButton.Location = new System.Drawing.Point(654, 533);
-            this.nuevoButton.Name = "nuevoButton";
-            this.nuevoButton.Size = new System.Drawing.Size(98, 39);
-            this.nuevoButton.TabIndex = 21;
-            this.nuevoButton.Text = "&Nuevo";
-            this.nuevoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.nuevoButton.UseVisualStyleBackColor = false;
-            this.nuevoButton.Click += new System.EventHandler(this.nuevoButton_Click);
+            this.label19.Text = "Total Compra: $";
             // 
             // idProveedorTextBox
             // 
@@ -733,6 +678,66 @@ namespace CapaPresentacion
             this.ttMensaje.SetToolTip(this.buscarProveedorButton, "Buscar Proveedor");
             this.buscarProveedorButton.UseVisualStyleBackColor = false;
             this.buscarProveedorButton.Click += new System.EventHandler(this.buscarProveedorButton_Click);
+            // 
+            // nuevoButton
+            // 
+            this.nuevoButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.nuevoButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.nuevoButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.nuevoButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.nuevoButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.nuevoButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nuevoButton.ForeColor = System.Drawing.Color.White;
+            this.nuevoButton.Image = global::CapaPresentacion.Properties.Resources.nuevo1;
+            this.nuevoButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.nuevoButton.Location = new System.Drawing.Point(654, 533);
+            this.nuevoButton.Name = "nuevoButton";
+            this.nuevoButton.Size = new System.Drawing.Size(98, 39);
+            this.nuevoButton.TabIndex = 21;
+            this.nuevoButton.Text = "&Nuevo";
+            this.nuevoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.nuevoButton.UseVisualStyleBackColor = false;
+            this.nuevoButton.Click += new System.EventHandler(this.nuevoButton_Click);
+            // 
+            // guardarButton
+            // 
+            this.guardarButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.guardarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.guardarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.guardarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.guardarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.guardarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.guardarButton.ForeColor = System.Drawing.Color.White;
+            this.guardarButton.Image = global::CapaPresentacion.Properties.Resources.Guardar1;
+            this.guardarButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.guardarButton.Location = new System.Drawing.Point(758, 533);
+            this.guardarButton.Name = "guardarButton";
+            this.guardarButton.Size = new System.Drawing.Size(98, 39);
+            this.guardarButton.TabIndex = 22;
+            this.guardarButton.Text = "&Guardar";
+            this.guardarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.guardarButton.UseVisualStyleBackColor = false;
+            this.guardarButton.Click += new System.EventHandler(this.guardarButton_Click);
+            // 
+            // cancelarButton
+            // 
+            this.cancelarButton.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.cancelarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.cancelarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.cancelarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.cancelarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cancelarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cancelarButton.ForeColor = System.Drawing.Color.White;
+            this.cancelarButton.Image = global::CapaPresentacion.Properties.Resources.Cancel1;
+            this.cancelarButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cancelarButton.Location = new System.Drawing.Point(862, 533);
+            this.cancelarButton.Name = "cancelarButton";
+            this.cancelarButton.Size = new System.Drawing.Size(98, 39);
+            this.cancelarButton.TabIndex = 0;
+            this.cancelarButton.Text = "&Cancelar";
+            this.cancelarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cancelarButton.UseVisualStyleBackColor = false;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // frmIngreso
             // 

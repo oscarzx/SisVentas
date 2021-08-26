@@ -44,11 +44,13 @@ namespace CapaPresentacion
         private void buscarTextBox_TextChanged(object sender, EventArgs e)
         {
             this.BuscarNombre();
+            PersonalizarGrilla();
         }
 
         private void frmVista_Load(object sender, EventArgs e)
         {
             this.Mostrar();
+            PersonalizarGrilla();
         }
 
         private void listadoDataGridView_DoubleClick(object sender, EventArgs e)
@@ -60,6 +62,31 @@ namespace CapaPresentacion
             par2 = this.listadoDataGridView.CurrentRow.Cells["Nombre"].Value.ToString();
             form.SetCategoria(par1, par2);
             this.Hide();
+        }
+
+        private void PersonalizarGrilla()
+        {
+            listadoDataGridView.Columns["Nombre"].HeaderText = "Nombre";
+            listadoDataGridView.Columns["Nombre"].Width = 100;
+            listadoDataGridView.Columns["Nombre"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Descripcion"].HeaderText = "Descripción";
+            listadoDataGridView.Columns["Descripcion"].Width = 150;
+            listadoDataGridView.Columns["Descripcion"].ReadOnly = true;
+
+            listadoDataGridView.EnableHeadersVisualStyles = false;
+            listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
+        }
+
+        private void buscarButton_Click(object sender, EventArgs e)
+        {
+            //Falta crear el spBuscar_categoria_nombre
+            PersonalizarGrilla();
         }
     }
 }

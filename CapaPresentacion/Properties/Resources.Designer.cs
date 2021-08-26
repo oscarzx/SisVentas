@@ -173,6 +173,16 @@ namespace CapaPresentacion.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap view_details_32 {
+            get {
+                object obj = ResourceManager.GetObject("view-details-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap x_mark_2_48 {
             get {
                 object obj = ResourceManager.GetObject("x-mark-2-48", resourceCulture);

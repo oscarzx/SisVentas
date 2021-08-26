@@ -305,6 +305,7 @@
     <None Include="Resources\Cancel1.png" />
     <None Include="Resources\agregar.png" />
     <None Include="Resources\minimazar.png" />
+    <None Include="Resources\view-details-32.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

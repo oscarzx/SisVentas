@@ -32,14 +32,14 @@ namespace CapaPresentacion
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPresentacion));
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
+            this.eliminarButton = new System.Windows.Forms.Button();
+            this.buscarButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.listadoDataGridView = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.totalLabel = new System.Windows.Forms.Label();
             this.eliminarCheckBox = new System.Windows.Forms.CheckBox();
-            this.eliminarButton = new System.Windows.Forms.Button();
-            this.buscarButton = new System.Windows.Forms.Button();
             this.buscarTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.cancelarButton = new System.Windows.Forms.Button();
@@ -69,6 +69,36 @@ namespace CapaPresentacion
             // ttMensaje
             // 
             this.ttMensaje.IsBalloon = true;
+            // 
+            // eliminarButton
+            // 
+            this.eliminarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.eliminarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Delete1;
+            this.eliminarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.eliminarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.eliminarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.eliminarButton.Location = new System.Drawing.Point(229, 17);
+            this.eliminarButton.Name = "eliminarButton";
+            this.eliminarButton.Size = new System.Drawing.Size(43, 23);
+            this.eliminarButton.TabIndex = 3;
+            this.ttMensaje.SetToolTip(this.eliminarButton, "Eliminar Presentación");
+            this.eliminarButton.UseVisualStyleBackColor = false;
+            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
+            // 
+            // buscarButton
+            // 
+            this.buscarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.buscarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
+            this.buscarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buscarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.buscarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buscarButton.Location = new System.Drawing.Point(180, 17);
+            this.buscarButton.Name = "buscarButton";
+            this.buscarButton.Size = new System.Drawing.Size(43, 23);
+            this.buscarButton.TabIndex = 2;
+            this.ttMensaje.SetToolTip(this.buscarButton, "Buscar Presentación");
+            this.buscarButton.UseVisualStyleBackColor = false;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // label3
             // 
@@ -139,36 +169,6 @@ namespace CapaPresentacion
             this.eliminarCheckBox.Text = "Eliminar";
             this.eliminarCheckBox.UseVisualStyleBackColor = true;
             this.eliminarCheckBox.CheckedChanged += new System.EventHandler(this.eliminarCheckBox_CheckedChanged);
-            // 
-            // eliminarButton
-            // 
-            this.eliminarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.eliminarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Delete1;
-            this.eliminarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.eliminarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.eliminarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.eliminarButton.Location = new System.Drawing.Point(229, 17);
-            this.eliminarButton.Name = "eliminarButton";
-            this.eliminarButton.Size = new System.Drawing.Size(43, 23);
-            this.eliminarButton.TabIndex = 3;
-            this.ttMensaje.SetToolTip(this.eliminarButton, "Eliminar Presentación");
-            this.eliminarButton.UseVisualStyleBackColor = false;
-            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
-            // 
-            // buscarButton
-            // 
-            this.buscarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.buscarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
-            this.buscarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buscarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.buscarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buscarButton.Location = new System.Drawing.Point(180, 17);
-            this.buscarButton.Name = "buscarButton";
-            this.buscarButton.Size = new System.Drawing.Size(43, 23);
-            this.buscarButton.TabIndex = 2;
-            this.ttMensaje.SetToolTip(this.buscarButton, "Buscar Presentación");
-            this.buscarButton.UseVisualStyleBackColor = false;
-            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // buscarTextBox
             // 
@@ -360,7 +360,7 @@ namespace CapaPresentacion
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(321, 6);
+            this.label1.Location = new System.Drawing.Point(309, 6);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(166, 29);
             this.label1.TabIndex = 2;

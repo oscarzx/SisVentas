@@ -53,6 +53,7 @@ namespace CapaPresentacion
         private void frmVistaProveedor_Ingreso_Load(object sender, EventArgs e)
         {
             this.Mostrar();
+            PersonalizarGrilla();
         }
 
         private void buscarButton_Click(object sender, EventArgs e)
@@ -65,6 +66,7 @@ namespace CapaPresentacion
             {
                 this.BuscarNum_Documento();
             }
+            PersonalizarGrilla();
         }
 
         private void listadoDataGridView_DoubleClick(object sender, EventArgs e)
@@ -76,7 +78,54 @@ namespace CapaPresentacion
 
             miForm.SetProveedor(par1, par2);
             this.Hide();
-
         }
+
+        private void PersonalizarGrilla()
+        {
+            listadoDataGridView.Columns["Eliminar"].HeaderText = "Eliminar";
+            listadoDataGridView.Columns["Eliminar"].Width = 60;
+            listadoDataGridView.Columns["Eliminar"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Razon_social"].HeaderText = "Razón Social";
+            listadoDataGridView.Columns["Razon_social"].Width = 150;
+            listadoDataGridView.Columns["Razon_social"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Sector_comercial"].HeaderText = "Sector Comercial";
+            listadoDataGridView.Columns["Sector_comercial"].Width = 80;
+            listadoDataGridView.Columns["Sector_comercial"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Tipo_documento"].HeaderText = "Tipo Documento";
+            listadoDataGridView.Columns["Tipo_documento"].Width = 80;
+            listadoDataGridView.Columns["Tipo_documento"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Num_documento"].HeaderText = "N. Documento";
+            listadoDataGridView.Columns["Num_documento"].Width = 100;
+            listadoDataGridView.Columns["Num_documento"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Direccion_proveedor"].HeaderText = "Dirección";
+            listadoDataGridView.Columns["Direccion_proveedor"].Width = 200;
+            listadoDataGridView.Columns["Direccion_proveedor"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Telefono"].HeaderText = "Teléfono";
+            listadoDataGridView.Columns["Telefono"].Width = 100;
+            listadoDataGridView.Columns["Telefono"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Email"].HeaderText = "Email";
+            listadoDataGridView.Columns["Email"].Width = 100;
+            listadoDataGridView.Columns["Email"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Url"].HeaderText = "Url";
+            listadoDataGridView.Columns["Url"].Width = 100;
+            listadoDataGridView.Columns["Url"].ReadOnly = false;
+
+            listadoDataGridView.EnableHeadersVisualStyles = false;
+            listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
+        }
+
     }
 }

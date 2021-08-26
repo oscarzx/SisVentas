@@ -61,7 +61,7 @@ namespace CapaPresentacion
         //Habilitar los controles del formulario
         private void Habilitar(bool valor)
         {
-            this.idEmpleadoTextBox.ReadOnly = !valor;
+            this.idEmpleadoTextBox.ReadOnly = true;
             this.nombreTextBox.ReadOnly = !valor;
             this.apellidosTextBox.ReadOnly = !valor;
             this.direccionTextBox.ReadOnly = !valor;
@@ -137,10 +137,13 @@ namespace CapaPresentacion
             this.Mostrar();
             this.Habilitar(false);
             this.Botones();
+            PersonalizarGrilla();
         }
 
         private void buscarButton_Click(object sender, EventArgs e)
         {
+            if (buscarComboBox.SelectedIndex == -1) return;
+
             if (buscarComboBox.Text.Equals("Documento"))
             {
                 BuscarEmpleado_Documento();
@@ -149,6 +152,7 @@ namespace CapaPresentacion
             {
                 BuscarApellido();
             }
+            PersonalizarGrilla();
         }
 
         private void eliminarButton_Click(object sender, EventArgs e)
@@ -178,6 +182,7 @@ namespace CapaPresentacion
                         }
                     }
                     this.Mostrar();
+                    PersonalizarGrilla();
                 }
             }
             catch (Exception ex)
@@ -306,6 +311,7 @@ namespace CapaPresentacion
                     this.Botones();
                     this.Limpiar();
                     this.Mostrar();
+                    PersonalizarGrilla();
                 }
             }
             catch (Exception ex)
@@ -336,7 +342,74 @@ namespace CapaPresentacion
             this.Botones();
             this.Habilitar(false);
             this.Limpiar();
+            PersonalizarGrilla();
             this.idEmpleadoTextBox.Text = string.Empty;
         }
+
+        private void PersonalizarGrilla()
+        {
+            listadoDataGridView.Columns["Eliminar"].HeaderText = "Eliminar";
+            listadoDataGridView.Columns["Eliminar"].Width = 60;
+            listadoDataGridView.Columns["Eliminar"].ReadOnly = false;
+
+            listadoDataGridView.Columns["IdEmprelado"].HeaderText = "Id";
+            listadoDataGridView.Columns["IdEmprelado"].Width = 50;
+            listadoDataGridView.Columns["IdEmprelado"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Nombre_empleado"].HeaderText = "Nombre";
+            listadoDataGridView.Columns["Nombre_empleado"].Width = 150;
+            listadoDataGridView.Columns["Nombre_empleado"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Apellidos_empleado"].HeaderText = "Apellido";
+            listadoDataGridView.Columns["Apellidos_empleado"].Width = 150;
+            listadoDataGridView.Columns["Apellidos_empleado"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Genero"].HeaderText = "Género";
+            listadoDataGridView.Columns["Genero"].Width = 50;
+            listadoDataGridView.Columns["Genero"].DefaultCellStyle.Alignment =
+                DataGridViewContentAlignment.MiddleCenter;
+            listadoDataGridView.Columns["Genero"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Fehca_naciemiento"].HeaderText = "Fecha Nacimiento";
+            listadoDataGridView.Columns["Fehca_naciemiento"].Width = 80;
+            listadoDataGridView.Columns["Fehca_naciemiento"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Numero_documento"].HeaderText = "N. Documento";
+            listadoDataGridView.Columns["Numero_documento"].Width = 80;
+            listadoDataGridView.Columns["Numero_documento"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Direccion"].HeaderText = "Dirección";
+            listadoDataGridView.Columns["Direccion"].Width = 100;
+            listadoDataGridView.Columns["Direccion"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Telefono"].HeaderText = "Teléfono";
+            listadoDataGridView.Columns["Telefono"].Width = 80;
+            listadoDataGridView.Columns["Telefono"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Email"].HeaderText = "Email";
+            listadoDataGridView.Columns["Email"].Width = 80;
+            listadoDataGridView.Columns["Email"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Acceso"].HeaderText = "Acceso";
+            listadoDataGridView.Columns["Acceso"].Width = 80;
+            listadoDataGridView.Columns["Acceso"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Usuario"].HeaderText = "Usuario";
+            listadoDataGridView.Columns["Usuario"].Width = 80;
+            listadoDataGridView.Columns["Usuario"].ReadOnly = false;
+
+            listadoDataGridView.Columns["Password"].HeaderText = "Password";
+            listadoDataGridView.Columns["Password"].Width = 80;
+            listadoDataGridView.Columns["Password"].ReadOnly = false;
+
+            listadoDataGridView.EnableHeadersVisualStyles = false;
+            listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
+            listadoDataGridView.AlternatingRowsDefaultCellStyle.BackColor = Color.White;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Lavender;
+            listadoDataGridView.ColumnHeadersDefaultCellStyle.Font =
+                new Font(listadoDataGridView.Font, FontStyle.Bold);
+            listadoDataGridView.RowsDefaultCellStyle.SelectionBackColor = Color.Black;
+        }
+
     }
 }
