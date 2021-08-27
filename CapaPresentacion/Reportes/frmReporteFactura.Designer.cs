@@ -29,10 +29,19 @@ namespace CapaPresentacion.Reportes
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteFactura));
+            this.SuspendLayout();
+            // 
+            // frmReporteFactura
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "frmReporteFactura";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "frmReporteFactura";
+            this.Text = "Reporte Factura";
+            this.ResumeLayout(false);
+
         }
 
         #endregion

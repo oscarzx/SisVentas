@@ -51,7 +51,7 @@ namespace CapaPresentacion
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.SlateBlue;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
             this.pictureBox1.Location = new System.Drawing.Point(-1, -1);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(675, 86);
@@ -60,8 +60,8 @@ namespace CapaPresentacion
             // 
             // pictureBox2
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.SlateBlue;
-            this.pictureBox2.Location = new System.Drawing.Point(-1, 275);
+            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.pictureBox2.Location = new System.Drawing.Point(-1, 276);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(675, 50);
             this.pictureBox2.TabIndex = 0;
@@ -70,14 +70,14 @@ namespace CapaPresentacion
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.SlateBlue;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label1.Location = new System.Drawing.Point(188, 25);
+            this.label1.Location = new System.Drawing.Point(188, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(258, 31);
+            this.label1.Size = new System.Drawing.Size(297, 31);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Sistema de Ventas";
+            this.label1.Text = "Sistema de Inventario";
             // 
             // groupBox1
             // 
@@ -97,30 +97,37 @@ namespace CapaPresentacion
             // 
             // salirButton
             // 
-            this.salirButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salirButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.salirButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.salirButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.salirButton.ForeColor = System.Drawing.Color.White;
             this.salirButton.Location = new System.Drawing.Point(216, 128);
             this.salirButton.Name = "salirButton";
             this.salirButton.Size = new System.Drawing.Size(89, 30);
             this.salirButton.TabIndex = 6;
             this.salirButton.Text = "Salir";
-            this.salirButton.UseVisualStyleBackColor = true;
+            this.salirButton.UseVisualStyleBackColor = false;
             this.salirButton.Click += new System.EventHandler(this.salirButton_Click);
             // 
             // ingresarButton
             // 
-            this.ingresarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ingresarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.ingresarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ingresarButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ingresarButton.ForeColor = System.Drawing.Color.White;
             this.ingresarButton.Location = new System.Drawing.Point(109, 128);
             this.ingresarButton.Name = "ingresarButton";
             this.ingresarButton.Size = new System.Drawing.Size(89, 30);
             this.ingresarButton.TabIndex = 5;
             this.ingresarButton.Text = "Ingresar";
-            this.ingresarButton.UseVisualStyleBackColor = true;
+            this.ingresarButton.UseVisualStyleBackColor = false;
             this.ingresarButton.Click += new System.EventHandler(this.ingresarButton_Click);
             // 
             // passwordTextBox
             // 
             this.passwordTextBox.Location = new System.Drawing.Point(109, 90);
             this.passwordTextBox.Name = "passwordTextBox";
+            this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(238, 20);
             this.passwordTextBox.TabIndex = 4;
             // 

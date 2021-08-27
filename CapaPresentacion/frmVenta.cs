@@ -346,11 +346,24 @@ namespace CapaPresentacion
                     this.MensajeError(rpta);
                 }
 
+
+                frmReporteFactura miForm = new frmReporteFactura();
+                
+                DataTable dataTable = NVenta.GetUltimpIdVenta();
+                int idVenta = 0;
+
+                foreach (DataRow item in dataTable.Rows)
+                {
+                    idVenta = (int)item["IdVenta"];
+                }
+
                 this.IsNuevo = false;
                 this.Botones();
                 this.Limpiar();
                 this.LimpiarDetalle();
                 this.Mostrar();
+                miForm.IdVenta = idVenta;
+                miForm.ShowDialog();
                 PersonalizarGrillaListado();
 
             }

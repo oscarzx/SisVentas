@@ -76,6 +76,13 @@ namespace CapaNegocio
             return new DArticulo().StockArticulo();
         }
 
-        
+        public static DataTable StockArticuloNombre(string textoBuscar)
+        {
+            DArticulo Obj = new DArticulo();
+            Obj.TextoBuscar = textoBuscar;
+            return Obj.StockArticuloNombre(Obj);
+        }
+
+
     }
 }

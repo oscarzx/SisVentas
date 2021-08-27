@@ -31,6 +31,7 @@ namespace CapaPresentacion
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmVenta));
             this.idArticuloTextBox = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
@@ -82,16 +83,16 @@ namespace CapaPresentacion
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.totalRegistrosLabel = new System.Windows.Forms.Label();
             this.eliminarCheckBox = new System.Windows.Forms.CheckBox();
+            this.comprobanteButton = new System.Windows.Forms.Button();
             this.imprimirButton = new System.Windows.Forms.Button();
+            this.eliminarButton = new System.Windows.Forms.Button();
+            this.buscarButton = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comprobanteButton = new System.Windows.Forms.Button();
-            this.eliminarButton = new System.Windows.Forms.Button();
-            this.buscarButton = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listadoDetalleDataGridView)).BeginInit();
@@ -652,6 +653,14 @@ namespace CapaPresentacion
             this.listadoDataGridView.MultiSelect = false;
             this.listadoDataGridView.Name = "listadoDataGridView";
             this.listadoDataGridView.ReadOnly = true;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listadoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.listadoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listadoDataGridView.Size = new System.Drawing.Size(964, 460);
             this.listadoDataGridView.TabIndex = 10;
@@ -684,6 +693,21 @@ namespace CapaPresentacion
             this.eliminarCheckBox.UseVisualStyleBackColor = true;
             this.eliminarCheckBox.CheckedChanged += new System.EventHandler(this.eliminarCheckBox_CheckedChanged);
             // 
+            // comprobanteButton
+            // 
+            this.comprobanteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.comprobanteButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.view_details_32;
+            this.comprobanteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.comprobanteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.comprobanteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.comprobanteButton.Location = new System.Drawing.Point(372, 30);
+            this.comprobanteButton.Name = "comprobanteButton";
+            this.comprobanteButton.Size = new System.Drawing.Size(43, 23);
+            this.comprobanteButton.TabIndex = 6;
+            this.ttMensaje.SetToolTip(this.comprobanteButton, "Comprobante");
+            this.comprobanteButton.UseVisualStyleBackColor = false;
+            this.comprobanteButton.Click += new System.EventHandler(this.comprobanteButton_Click);
+            // 
             // imprimirButton
             // 
             this.imprimirButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
@@ -697,6 +721,36 @@ namespace CapaPresentacion
             this.imprimirButton.TabIndex = 7;
             this.ttMensaje.SetToolTip(this.imprimirButton, "Imprimir Documento");
             this.imprimirButton.UseVisualStyleBackColor = false;
+            // 
+            // eliminarButton
+            // 
+            this.eliminarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.eliminarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Delete1;
+            this.eliminarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.eliminarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.eliminarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.eliminarButton.Location = new System.Drawing.Point(323, 30);
+            this.eliminarButton.Name = "eliminarButton";
+            this.eliminarButton.Size = new System.Drawing.Size(43, 23);
+            this.eliminarButton.TabIndex = 5;
+            this.ttMensaje.SetToolTip(this.eliminarButton, "Eliminar Documento");
+            this.eliminarButton.UseVisualStyleBackColor = false;
+            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
+            // 
+            // buscarButton
+            // 
+            this.buscarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.buscarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
+            this.buscarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buscarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.buscarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buscarButton.Location = new System.Drawing.Point(274, 30);
+            this.buscarButton.Name = "buscarButton";
+            this.buscarButton.Size = new System.Drawing.Size(43, 23);
+            this.buscarButton.TabIndex = 4;
+            this.ttMensaje.SetToolTip(this.buscarButton, "Buscar Documento");
+            this.buscarButton.UseVisualStyleBackColor = false;
+            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // label9
             // 
@@ -745,51 +799,6 @@ namespace CapaPresentacion
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1004, 40);
             this.panel1.TabIndex = 2;
-            // 
-            // comprobanteButton
-            // 
-            this.comprobanteButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.comprobanteButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.view_details_32;
-            this.comprobanteButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.comprobanteButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.comprobanteButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comprobanteButton.Location = new System.Drawing.Point(372, 30);
-            this.comprobanteButton.Name = "comprobanteButton";
-            this.comprobanteButton.Size = new System.Drawing.Size(43, 23);
-            this.comprobanteButton.TabIndex = 6;
-            this.ttMensaje.SetToolTip(this.comprobanteButton, "Comprobante");
-            this.comprobanteButton.UseVisualStyleBackColor = false;
-            this.comprobanteButton.Click += new System.EventHandler(this.comprobanteButton_Click);
-            // 
-            // eliminarButton
-            // 
-            this.eliminarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.eliminarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Delete1;
-            this.eliminarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.eliminarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.eliminarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.eliminarButton.Location = new System.Drawing.Point(323, 30);
-            this.eliminarButton.Name = "eliminarButton";
-            this.eliminarButton.Size = new System.Drawing.Size(43, 23);
-            this.eliminarButton.TabIndex = 5;
-            this.ttMensaje.SetToolTip(this.eliminarButton, "Eliminar Documento");
-            this.eliminarButton.UseVisualStyleBackColor = false;
-            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
-            // 
-            // buscarButton
-            // 
-            this.buscarButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
-            this.buscarButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
-            this.buscarButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.buscarButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
-            this.buscarButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buscarButton.Location = new System.Drawing.Point(274, 30);
-            this.buscarButton.Name = "buscarButton";
-            this.buscarButton.Size = new System.Drawing.Size(43, 23);
-            this.buscarButton.TabIndex = 4;
-            this.ttMensaje.SetToolTip(this.buscarButton, "Buscar Documento");
-            this.buscarButton.UseVisualStyleBackColor = false;
-            this.buscarButton.Click += new System.EventHandler(this.buscarButton_Click);
             // 
             // frmVenta
             // 

@@ -31,13 +31,24 @@ namespace CapaPresentacion
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.principalDataSet = new CapaPresentacion.principalDataSet();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteArticulos));
             this.spmostrar_articuloBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.principalDataSet = new CapaPresentacion.principalDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.spmostrar_articuloTableAdapter = new CapaPresentacion.principalDataSetTableAdapters.spmostrar_articuloTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.principalDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spmostrar_articuloBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.principalDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // spmostrar_articuloBindingSource
+            // 
+            this.spmostrar_articuloBindingSource.DataMember = "spmostrar_articulo";
+            this.spmostrar_articuloBindingSource.DataSource = this.principalDataSet;
+            // 
+            // principalDataSet
+            // 
+            this.principalDataSet.DataSetName = "principalDataSet";
+            this.principalDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -52,16 +63,6 @@ namespace CapaPresentacion
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // principalDataSet
-            // 
-            this.principalDataSet.DataSetName = "principalDataSet";
-            this.principalDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // spmostrar_articuloBindingSource
-            // 
-            this.spmostrar_articuloBindingSource.DataMember = "spmostrar_articulo";
-            this.spmostrar_articuloBindingSource.DataSource = this.principalDataSet;
-            // 
             // spmostrar_articuloTableAdapter
             // 
             this.spmostrar_articuloTableAdapter.ClearBeforeFill = true;
@@ -73,11 +74,12 @@ namespace CapaPresentacion
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmReporteArticulos";
-            this.Text = "Reporte de Productos";
+            this.Text = "Reporte de Artículos";
             this.Load += new System.EventHandler(this.frmReporteArticulos_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.principalDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spmostrar_articuloBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.principalDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }

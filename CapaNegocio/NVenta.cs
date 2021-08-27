@@ -44,6 +44,11 @@ namespace CapaNegocio
             return Obj.Eliminar(Obj);
         }
 
+        public static DataTable GetUltimpIdVenta()
+        {
+
+            return new DVenta().GetUltimoIdVenta();
+        }
 
         public static DataTable Mostrar()
         {

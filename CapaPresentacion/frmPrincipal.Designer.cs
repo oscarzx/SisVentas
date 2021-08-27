@@ -250,19 +250,19 @@ namespace CapaPresentacion
             // ventasPorFechaToolStripMenuItem
             // 
             this.ventasPorFechaToolStripMenuItem.Name = "ventasPorFechaToolStripMenuItem";
-            this.ventasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ventasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.ventasPorFechaToolStripMenuItem.Text = "Ventas por Fecha";
             // 
             // comprasPorFechaToolStripMenuItem
             // 
             this.comprasPorFechaToolStripMenuItem.Name = "comprasPorFechaToolStripMenuItem";
-            this.comprasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.comprasPorFechaToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.comprasPorFechaToolStripMenuItem.Text = "Compras por Fecha";
             // 
             // stockDeArtículosToolStripMenuItem
             // 
             this.stockDeArtículosToolStripMenuItem.Name = "stockDeArtículosToolStripMenuItem";
-            this.stockDeArtículosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stockDeArtículosToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
             this.stockDeArtículosToolStripMenuItem.Text = "Stock de Artículos";
             this.stockDeArtículosToolStripMenuItem.Click += new System.EventHandler(this.stockDeArtículosToolStripMenuItem_Click);
             // 
@@ -442,6 +442,7 @@ namespace CapaPresentacion
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.toolStrip);
             this.Controls.Add(this.menuStrip);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "frmPrincipal";

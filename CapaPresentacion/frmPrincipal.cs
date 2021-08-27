@@ -154,6 +154,10 @@ namespace CapaPresentacion
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            helpMenu.Visible = false;
+            windowsMenu.Visible = false;
+            herramientasMenu.Visible = false;
+            toolStrip.Visible = false;
             GestionPermisoUsuario();
         }
 

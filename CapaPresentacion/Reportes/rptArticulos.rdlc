@@ -6,19 +6,19 @@
         <TablixBody>
           <TablixColumns>
             <TablixColumn>
-              <Width>3.99974cm</Width>
+              <Width>3.55524cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.99974cm</Width>
+              <Width>3.55524cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.99974cm</Width>
+              <Width>3.55524cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.99974cm</Width>
+              <Width>3.55524cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.99974cm</Width>
+              <Width>3.55524cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -37,6 +37,7 @@
                               <Value>Código</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -49,6 +50,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#00447f</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -69,6 +71,7 @@
                               <Value>Producto</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -81,6 +84,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#00447f</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -101,6 +105,7 @@
                               <Value>Descripción</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -113,6 +118,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#00447f</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -133,6 +139,7 @@
                               <Value>Categoría</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -145,6 +152,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#00447f</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -165,6 +173,7 @@
                               <Value>Presentación</Value>
                               <Style>
                                 <FontWeight>Bold</FontWeight>
+                                <Color>White</Color>
                               </Style>
                             </TextRun>
                           </TextRuns>
@@ -177,6 +186,7 @@
                           <Color>LightGrey</Color>
                           <Style>Solid</Style>
                         </Border>
+                        <BackgroundColor>#00447f</BackgroundColor>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
                         <PaddingTop>2pt</PaddingTop>
@@ -209,8 +219,7 @@
                       <rd:DefaultName>CodigoArticulo</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -239,8 +248,7 @@
                       <rd:DefaultName>NombreArticulo</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -269,8 +277,7 @@
                       <rd:DefaultName>DescripcionArticulo</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -299,8 +306,7 @@
                       <rd:DefaultName>Categoria</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -329,8 +335,7 @@
                       <rd:DefaultName>Presentacion</rd:DefaultName>
                       <Style>
                         <Border>
-                          <Color>LightGrey</Color>
-                          <Style>Solid</Style>
+                          <Style>None</Style>
                         </Border>
                         <PaddingLeft>2pt</PaddingLeft>
                         <PaddingRight>2pt</PaddingRight>
@@ -364,10 +369,10 @@
           </TablixMembers>
         </TablixRowHierarchy>
         <DataSetName>DataSet1</DataSetName>
-        <Top>0.7112cm</Top>
-        <Left>0.59562cm</Left>
+        <Top>0.34078cm</Top>
+        <Left>1.70688cm</Left>
         <Height>1.2cm</Height>
-        <Width>19.9987cm</Width>
+        <Width>17.7762cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -381,24 +386,10 @@
   <Width>21.59cm</Width>
   <Page>
     <PageHeader>
-      <Height>2.54cm</Height>
+      <Height>2.72521cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Image Name="Image1">
-          <Source>Embedded</Source>
-          <Value>zebralogo5</Value>
-          <Sizing>FitProportional</Sizing>
-          <Top>0.55812cm</Top>
-          <Left>0.59562cm</Left>
-          <Height>1.65875cm</Height>
-          <Width>4.59562cm</Width>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </Image>
         <Textbox Name="Textbox39">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -419,11 +410,10 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox39</rd:DefaultName>
-          <Top>0.98187cm</Top>
-          <Left>5.49042cm</Left>
+          <Top>1.19354cm</Top>
+          <Left>1.70687cm</Left>
           <Height>1.235cm</Height>
           <Width>3.25375cm</Width>
-          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -453,11 +443,11 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox2</rd:DefaultName>
-          <Top>1.61687cm</Top>
-          <Left>15.76599cm</Left>
+          <Top>1.82854cm</Top>
+          <Left>14.65474cm</Left>
           <Height>0.6cm</Height>
           <Width>4.82833cm</Width>
-          <ZIndex>2</ZIndex>
+          <ZIndex>1</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
@@ -479,6 +469,7 @@
                   <Style>
                     <FontSize>12pt</FontSize>
                     <FontWeight>Bold</FontWeight>
+                    <Color>White</Color>
                   </Style>
                 </TextRun>
               </TextRuns>
@@ -488,15 +479,16 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox14</rd:DefaultName>
-          <Top>0.84049cm</Top>
-          <Left>16.00412cm</Left>
+          <Top>1.05216cm</Top>
+          <Left>14.89287cm</Left>
           <Height>0.6cm</Height>
           <Width>4.59021cm</Width>
-          <ZIndex>3</ZIndex>
+          <ZIndex>2</ZIndex>
           <Style>
             <Border>
               <Style>None</Style>
             </Border>
+            <BackgroundColor>#00447f</BackgroundColor>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
             <PaddingTop>2pt</PaddingTop>
@@ -532,8 +524,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>Textbox3</rd:DefaultName>
-          <Top>1.19058cm</Top>
-          <Left>18.09433cm</Left>
+          <Top>0.926cm</Top>
+          <Left>16.98308cm</Left>
           <Height>0.6cm</Height>
           <Width>2.5cm</Width>
           <Style>

@@ -94,6 +94,37 @@ namespace CapaDatos
         }
 
         //Métodos
+        public DataTable GetUltimoIdVenta()
+        {
+            SqlConnection SqlCon = new SqlConnection();
+            DataTable dataTable = new DataTable("Venta");
+
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCon.Open();
+
+                //Establecer comando
+                SqlCommand Sqlcmd = new SqlCommand();
+                Sqlcmd.Connection = SqlCon;
+                Sqlcmd.CommandText = "spGetUltimoIdVenta";
+                Sqlcmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(Sqlcmd);
+                SqlDat.Fill(dataTable);
+
+            }
+            catch (Exception ex)
+            {
+                dataTable = null;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open) SqlCon.Close();
+            }
+            return dataTable;
+        }
+
         public string DisminuirStock(int idDetalle_ingreso, float cantidad)
         {
             string rpta = "";
@@ -141,6 +172,7 @@ namespace CapaDatos
         public string Insertar(DVenta Venta, List<DDetalle_venta> Detalle)
         {
             string rpta = "";
+            
             SqlConnection SqlCon = new SqlConnection();
             try
             {
@@ -211,7 +243,7 @@ namespace CapaDatos
                 ParIva.Value = Venta.Iva;
                 Sqlcmd.Parameters.Add(ParIva);
 
-                
+
 
                 //Ejecutamos nuestro comando
                 rpta = Sqlcmd.ExecuteNonQuery() == 1 ? "OK" : "No se ingresó el registro";
@@ -220,6 +252,7 @@ namespace CapaDatos
                 {
                     //Obtener el código del ingreso generado
                     this.IdVenta = Convert.ToInt32(Sqlcmd.Parameters["@idventa"].Value);
+
 
                     foreach (DDetalle_venta item in Detalle)
                     {
@@ -262,7 +295,6 @@ namespace CapaDatos
             }
             return rpta;
         }
-
 
         //Eliminar
         public string Eliminar(DVenta Venta)

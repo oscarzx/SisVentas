@@ -31,13 +31,24 @@ namespace CapaPresentacion
         {
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.principalDataSet = new CapaPresentacion.principalDataSet();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmReporteFactura));
             this.spreporte_facturaBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.principalDataSet = new CapaPresentacion.principalDataSet();
+            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.spreporte_facturaTableAdapter = new CapaPresentacion.principalDataSetTableAdapters.spreporte_facturaTableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.principalDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.spreporte_facturaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.principalDataSet)).BeginInit();
             this.SuspendLayout();
+            // 
+            // spreporte_facturaBindingSource
+            // 
+            this.spreporte_facturaBindingSource.DataMember = "spreporte_factura";
+            this.spreporte_facturaBindingSource.DataSource = this.principalDataSet;
+            // 
+            // principalDataSet
+            // 
+            this.principalDataSet.DataSetName = "principalDataSet";
+            this.principalDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // reportViewer1
             // 
@@ -52,16 +63,6 @@ namespace CapaPresentacion
             this.reportViewer1.Size = new System.Drawing.Size(800, 450);
             this.reportViewer1.TabIndex = 0;
             // 
-            // principalDataSet
-            // 
-            this.principalDataSet.DataSetName = "principalDataSet";
-            this.principalDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // spreporte_facturaBindingSource
-            // 
-            this.spreporte_facturaBindingSource.DataMember = "spreporte_factura";
-            this.spreporte_facturaBindingSource.DataSource = this.principalDataSet;
-            // 
             // spreporte_facturaTableAdapter
             // 
             this.spreporte_facturaTableAdapter.ClearBeforeFill = true;
@@ -72,11 +73,12 @@ namespace CapaPresentacion
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.reportViewer1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmReporteFactura";
-            this.Text = "frmReporteFactura";
+            this.Text = "Reporte Factura";
             this.Load += new System.EventHandler(this.frmReporteFactura_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.principalDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.spreporte_facturaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.principalDataSet)).EndInit();
             this.ResumeLayout(false);
 
         }
