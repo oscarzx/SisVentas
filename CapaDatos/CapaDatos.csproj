@@ -44,6 +44,8 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Conexion.cs" />
     <Compile Include="DArticulo.cs" />
+    <Compile Include="DCaja.cs" />
+    <Compile Include="DCajaCierre.cs" />
     <Compile Include="DCategoria.cs" />
     <Compile Include="DCliente.cs" />
     <Compile Include="DDetalle_Ingreso.cs" />

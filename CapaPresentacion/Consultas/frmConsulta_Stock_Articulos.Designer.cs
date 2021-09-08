@@ -30,19 +30,20 @@ namespace CapaPresentacion.Consultas
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsulta_Stock_Articulos));
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.buscarComboBox = new System.Windows.Forms.ComboBox();
+            this.buscarTextBox = new System.Windows.Forms.TextBox();
             this.listadoDataGridView = new System.Windows.Forms.DataGridView();
             this.Eliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.totalLabel = new System.Windows.Forms.Label();
             this.buscarButton = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.buscarComboBox = new System.Windows.Forms.ComboBox();
-            this.buscarTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -96,6 +97,24 @@ namespace CapaPresentacion.Consultas
             this.tabPage1.Text = "Listado";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // buscarComboBox
+            // 
+            this.buscarComboBox.FormattingEnabled = true;
+            this.buscarComboBox.Items.AddRange(new object[] {
+            "Nombre",
+            "Codigo"});
+            this.buscarComboBox.Location = new System.Drawing.Point(25, 34);
+            this.buscarComboBox.Name = "buscarComboBox";
+            this.buscarComboBox.Size = new System.Drawing.Size(121, 21);
+            this.buscarComboBox.TabIndex = 8;
+            // 
+            // buscarTextBox
+            // 
+            this.buscarTextBox.Location = new System.Drawing.Point(152, 34);
+            this.buscarTextBox.Name = "buscarTextBox";
+            this.buscarTextBox.Size = new System.Drawing.Size(100, 20);
+            this.buscarTextBox.TabIndex = 9;
+            // 
             // listadoDataGridView
             // 
             this.listadoDataGridView.AllowUserToAddRows = false;
@@ -110,6 +129,14 @@ namespace CapaPresentacion.Consultas
             this.listadoDataGridView.MultiSelect = false;
             this.listadoDataGridView.Name = "listadoDataGridView";
             this.listadoDataGridView.ReadOnly = true;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.listadoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.listadoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listadoDataGridView.Size = new System.Drawing.Size(623, 189);
             this.listadoDataGridView.TabIndex = 7;
@@ -152,24 +179,6 @@ namespace CapaPresentacion.Consultas
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(667, 40);
             this.panel1.TabIndex = 3;
-            // 
-            // buscarComboBox
-            // 
-            this.buscarComboBox.FormattingEnabled = true;
-            this.buscarComboBox.Items.AddRange(new object[] {
-            "Nombre",
-            "Codigo"});
-            this.buscarComboBox.Location = new System.Drawing.Point(25, 34);
-            this.buscarComboBox.Name = "buscarComboBox";
-            this.buscarComboBox.Size = new System.Drawing.Size(121, 21);
-            this.buscarComboBox.TabIndex = 8;
-            // 
-            // buscarTextBox
-            // 
-            this.buscarTextBox.Location = new System.Drawing.Point(152, 34);
-            this.buscarTextBox.Name = "buscarTextBox";
-            this.buscarTextBox.Size = new System.Drawing.Size(100, 20);
-            this.buscarTextBox.TabIndex = 9;
             // 
             // frmConsulta_Stock_Articulos
             // 
