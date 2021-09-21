@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="NArticulo.cs" />
+    <Compile Include="NCaja.cs" />
     <Compile Include="NCategoria.cs" />
     <Compile Include="NCliente.cs" />
     <Compile Include="NEmpleado.cs" />

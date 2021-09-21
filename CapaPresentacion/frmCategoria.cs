@@ -20,7 +20,7 @@ namespace CapaPresentacion
         public frmCategoria()
         {
             InitializeComponent();
-            this.ttMensaje.SetToolTip(this.nombreTextBox, "Ingrse el nombre de la categoría");
+            this.ttMensaje.SetToolTip(this.nombreTextBox, "Ingrese el nombre de la categoría");
         }
 
         //Mostrar mensaje de confirmación

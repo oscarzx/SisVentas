@@ -223,5 +223,58 @@ namespace CapaDatos
             }
             return rpta;
         }
+
+        public DataTable Mostrar()
+        {
+            DataTable dtResultado = new DataTable("Caja");
+            SqlConnection sqlCon = new SqlConnection();
+
+            try
+            {
+                sqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.Connection = sqlCon;
+                sqlCmd.CommandText = "spMostrar_caja";
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
+                adapter.Fill(dtResultado);
+            }
+            catch (Exception)
+            {
+                dtResultado = null;
+            }
+            return dtResultado;
+        }
+
+        public DataTable BuscarCajaNombre(DCaja Caja)
+        {
+            DataTable dtResultado = new DataTable("Caja");
+            SqlConnection sqlCon = new SqlConnection();
+
+            try
+            {
+                sqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand sqlCmd = new SqlCommand();
+                sqlCmd.Connection = sqlCon;
+                sqlCmd.CommandText = "spMostrar_caja_nombre";
+                sqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parBuscarCaja = new SqlParameter();
+                parBuscarCaja.ParameterName = "@nombreCaj";
+                parBuscarCaja.SqlDbType = SqlDbType.VarChar;
+                parBuscarCaja.Size = 50;
+                parBuscarCaja.Value = Caja.Descripcion;
+                sqlCmd.Parameters.Add(parBuscarCaja);
+
+                SqlDataAdapter adapter = new SqlDataAdapter(sqlCmd);
+                adapter.Fill(dtResultado);
+            }
+            catch (Exception ex)
+            {
+                dtResultado = null;
+            }
+            return dtResultado;
+        }
     }
 }
