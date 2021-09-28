@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Management;
 
 namespace CapaPresentacion
 {
@@ -46,9 +47,12 @@ namespace CapaPresentacion
         //Habilitar los controles del formulario
         private void Habilitar(bool valor)
         {
+            this.idCajaTextBox.ReadOnly = true;
             this.descripcionTextBox.ReadOnly = !valor;
             this.serialTextBox.ReadOnly = !valor;
-            this.idCajaTextBox.ReadOnly = !valor;
+            //this.idCajaTextBox.ReadOnly = !valor;
+            this.impresoraPosTextBox.ReadOnly = !valor;
+            this.impresoraReporteTextBox.ReadOnly = !valor;
         }
 
         //Habilitar los botones 
@@ -61,6 +65,7 @@ namespace CapaPresentacion
                 this.guardarButton.Enabled = true;
                 this.editarButton.Enabled = false;
                 this.cancelarButton.Enabled = true;
+                this.buscarSerialPCButton.Enabled = true;
             }
             else
             {
@@ -69,6 +74,7 @@ namespace CapaPresentacion
                 this.guardarButton.Enabled = false;
                 this.editarButton.Enabled = true;
                 this.cancelarButton.Enabled = false;
+                this.buscarSerialPCButton.Enabled = false;
             }
         }
 
@@ -82,7 +88,7 @@ namespace CapaPresentacion
         //Método mostrar
         private void Mostrar()
         {
-            this.listadoDataGridView.DataSource = NCaja.Mostrar();
+            this.listadoDataGridView.DataSource = NCaja.MostrarListado();
             this.OcultarColumnas();
             totalLabel.Text = $"Total registros: {Convert.ToString(listadoDataGridView.Rows.Count)}";
         }
@@ -117,13 +123,13 @@ namespace CapaPresentacion
             listadoDataGridView.Columns["Eliminar"].Width = 60;
             listadoDataGridView.Columns["Eliminar"].ReadOnly = false;
 
-            listadoDataGridView.Columns["Nombre"].HeaderText = "Nombre Categoría";
-            listadoDataGridView.Columns["Nombre"].Width = 150;
-            listadoDataGridView.Columns["Nombre"].ReadOnly = false;
-
             listadoDataGridView.Columns["Descripcion"].HeaderText = "Descripción";
-            listadoDataGridView.Columns["Descripcion"].Width = 300;
+            listadoDataGridView.Columns["Descripcion"].Width = 150;
             listadoDataGridView.Columns["Descripcion"].ReadOnly = false;
+
+            //listadoDataGridView.Columns["Descripcion"].HeaderText = "Descripción";
+            //listadoDataGridView.Columns["Descripcion"].Width = 300;
+            //listadoDataGridView.Columns["Descripcion"].ReadOnly = false;
 
             listadoDataGridView.EnableHeadersVisualStyles = false;
             listadoDataGridView.RowsDefaultCellStyle.BackColor = Color.CornflowerBlue;
@@ -161,7 +167,7 @@ namespace CapaPresentacion
                 {
                     rpta = NCaja.Editar(Convert.ToInt32(idCajaTextBox.Text),
                         descripcionTextBox.Text.Trim().ToUpper(), serialTextBox.Text.Trim(),
-                        impresoraPosTextBox.Text.Trim(), impresoraReporteTextBox.Text.Trim()1);
+                        impresoraPosTextBox.Text.Trim(), impresoraReporteTextBox.Text.Trim());
                 }
 
                 if (rpta.Equals("OK"))
@@ -215,11 +221,144 @@ namespace CapaPresentacion
 
         private void listadoDataGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == listadoDataGridView.Columns["Eliminar"].Index)
+            {
+                DataGridViewCheckBoxCell chkEliminar =
+                    (DataGridViewCheckBoxCell)listadoDataGridView.Rows[e.RowIndex].Cells["Eliminar"];
+
+                chkEliminar.Value = !Convert.ToBoolean(chkEliminar.Value);
+            }
+        }
+
+        private void editarButton_Click(object sender, EventArgs e)
+        {
+            if (!this.idCajaTextBox.Text.Equals(""))
+            {
+                this.IsEditar = true;
+                this.Botones();
+                this.Habilitar(true);
+            }
+            else
+            {
+                this.MensajeError("Debe seleccionar primero el registro a modificar");
+            }
+        }
+
+        private void cancelarButton_Click(object sender, EventArgs e)
+        {
+            this.IsNuevo = false;
+            this.IsEditar = false;
+            this.Botones();
+            this.Limpiar();
+            this.Habilitar(false);
+            PersonalizarGrilla();
+        }
+
+        private void eliminarCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            if (eliminarCheckBox.Checked)
+            {
+                this.listadoDataGridView.Columns[0].Visible = true;
+            }
+            else
+            {
+                this.listadoDataGridView.Columns[0].Visible = false;
+            }
+            PersonalizarGrilla();
+        }
+
+        private void listadoDataGridView_DoubleClick(object sender, EventArgs e)
+        {
             idCajaTextBox.Text = listadoDataGridView.CurrentRow.Cells["IdCaja"].Value.ToString();
+            //nombreTextBox.Text = listadoDataGridView.CurrentRow.Cells["Nombre"].Value.ToString();
             descripcionTextBox.Text = listadoDataGridView.CurrentRow.Cells["Descripcion"].Value.ToString();
-            //descripcionTextBox.Text = listadoDataGridView.CurrentRow.Cells["Descripcion"].Value.ToString();
 
             this.tabControl1.SelectedIndex = 1;
+        }
+
+        private void eliminarButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult dialogResult;
+                dialogResult = MessageBox.Show("realmente desea eliminar los registros?", "Sistema de Ventas",
+                    MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.OK)
+                {
+                    string codigo;
+                    string rpta = "";
+
+                    foreach (DataGridViewRow row in listadoDataGridView.Rows)
+                    {
+                        if (Convert.ToBoolean(row.Cells[0].Value))
+                        {
+                            codigo = row.Cells[1].Value.ToString();
+                            rpta = NCaja.Eliminar(Convert.ToInt32(codigo));
+
+                            if (rpta.Equals("OK"))
+                                this.MensajeOk("Se eliminó correctamente el registro");
+                            else
+                                this.MensajeError(rpta);
+                        }
+                    }
+                    this.Mostrar();
+                    PersonalizarGrilla();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+
+        }
+
+        private void buscarSerialPCButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                //ManagementObjectSearcher mos = new ManagementObjectSearcher("root\\CIMV2", "SELECT * FROM Win32_BaseBoard");
+
+                //foreach (ManagementObject getSerial in mos.Get())
+                //{
+                //    serialTextBox.Text = getSerial.GetPropertyValue("Manufacturer").ToString();
+                //}
+
+                string modelNo = identifier("Win32_DiskDrive", "Model");
+                string manufatureID = identifier("Win32_DiskDrive", "Manufacturer");
+                string signature = identifier("Win32_DiskDrive", "Signature");
+                string totalHeads = identifier("Win32_DiskDrive", "TotalHeads");
+                string serial = identifier("Win32_DiskDrive", "SerialNumber");
+                serialTextBox.Text = serial;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message + ex.StackTrace);
+            }
+        }
+
+        private string identifier(string wmiClass, string wmiProperty)
+        //Return a hardware identifier
+        {
+            string result = "";
+            System.Management.ManagementClass mc = new System.Management.ManagementClass(wmiClass);
+            System.Management.ManagementObjectCollection moc = mc.GetInstances();
+            foreach (System.Management.ManagementObject mo in moc)
+            {
+                //Only get the first one
+                if (result == "")
+                {
+                    try
+                    {
+                        result = mo[wmiProperty].ToString();
+                        break;
+                    }
+                    catch
+                    {
+                    }
+                }
+            }
+            return result;
         }
     }
 }

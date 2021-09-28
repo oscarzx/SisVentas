@@ -138,9 +138,9 @@ namespace CapaDatos
             this.TotalReal = _totalReal;
         }
 
-        public string Insertar(DCajaCierre CajaCierre)
-        {
+        //public string Insertar(DCajaCierre CajaCierre)
+        //{
 
-        }
+        //}
     }
 }

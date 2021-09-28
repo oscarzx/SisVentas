@@ -239,5 +239,12 @@ namespace CapaPresentacion
             miForm.MdiParent = this;
             miForm.Show();
         }
+
+        private void cajaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCaja miForm = new frmCaja();
+            miForm.MdiParent = this;
+            miForm.Show();
+        }
     }
 }

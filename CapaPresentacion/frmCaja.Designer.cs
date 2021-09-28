@@ -44,6 +44,7 @@ namespace CapaPresentacion
             this.ttMensaje = new System.Windows.Forms.ToolTip(this.components);
             this.buscarButton = new System.Windows.Forms.Button();
             this.eliminarButton = new System.Windows.Forms.Button();
+            this.buscarSerialPCButton = new System.Windows.Forms.Button();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.cancelarButton = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -79,7 +80,7 @@ namespace CapaPresentacion
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(495, 40);
-            this.panel1.TabIndex = 4;
+            this.panel1.TabIndex = 0;
             // 
             // label1
             // 
@@ -104,7 +105,7 @@ namespace CapaPresentacion
             this.serialTextBox.Location = new System.Drawing.Point(115, 90);
             this.serialTextBox.Name = "serialTextBox";
             this.serialTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.serialTextBox.Size = new System.Drawing.Size(197, 20);
+            this.serialTextBox.Size = new System.Drawing.Size(148, 20);
             this.serialTextBox.TabIndex = 5;
             // 
             // descripcionTextBox
@@ -114,7 +115,7 @@ namespace CapaPresentacion
             this.descripcionTextBox.Location = new System.Drawing.Point(115, 57);
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.Size = new System.Drawing.Size(197, 20);
-            this.descripcionTextBox.TabIndex = 4;
+            this.descripcionTextBox.TabIndex = 3;
             // 
             // idCajaTextBox
             // 
@@ -123,7 +124,7 @@ namespace CapaPresentacion
             this.idCajaTextBox.Location = new System.Drawing.Point(115, 24);
             this.idCajaTextBox.Name = "idCajaTextBox";
             this.idCajaTextBox.Size = new System.Drawing.Size(100, 20);
-            this.idCajaTextBox.TabIndex = 3;
+            this.idCajaTextBox.TabIndex = 1;
             // 
             // label5
             // 
@@ -131,7 +132,7 @@ namespace CapaPresentacion
             this.label5.Location = new System.Drawing.Point(59, 94);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(50, 13);
-            this.label5.TabIndex = 2;
+            this.label5.TabIndex = 4;
             this.label5.Text = "Serial PC";
             // 
             // label4
@@ -140,7 +141,7 @@ namespace CapaPresentacion
             this.label4.Location = new System.Drawing.Point(65, 61);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(44, 13);
-            this.label4.TabIndex = 1;
+            this.label4.TabIndex = 2;
             this.label4.Text = "Nombre";
             // 
             // label3
@@ -183,6 +184,22 @@ namespace CapaPresentacion
             this.eliminarButton.TabIndex = 3;
             this.ttMensaje.SetToolTip(this.eliminarButton, "Eliminar Categoría");
             this.eliminarButton.UseVisualStyleBackColor = false;
+            this.eliminarButton.Click += new System.EventHandler(this.eliminarButton_Click);
+            // 
+            // buscarSerialPCButton
+            // 
+            this.buscarSerialPCButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(68)))), ((int)(((byte)(127)))));
+            this.buscarSerialPCButton.BackgroundImage = global::CapaPresentacion.Properties.Resources.Buscar;
+            this.buscarSerialPCButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buscarSerialPCButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(48)))));
+            this.buscarSerialPCButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buscarSerialPCButton.Location = new System.Drawing.Point(269, 87);
+            this.buscarSerialPCButton.Name = "buscarSerialPCButton";
+            this.buscarSerialPCButton.Size = new System.Drawing.Size(43, 23);
+            this.buscarSerialPCButton.TabIndex = 6;
+            this.ttMensaje.SetToolTip(this.buscarSerialPCButton, "Buscar Categoría");
+            this.buscarSerialPCButton.UseVisualStyleBackColor = false;
+            this.buscarSerialPCButton.Click += new System.EventHandler(this.buscarSerialPCButton_Click);
             // 
             // tabPage2
             // 
@@ -211,13 +228,15 @@ namespace CapaPresentacion
             this.cancelarButton.Location = new System.Drawing.Point(349, 141);
             this.cancelarButton.Name = "cancelarButton";
             this.cancelarButton.Size = new System.Drawing.Size(98, 39);
-            this.cancelarButton.TabIndex = 9;
+            this.cancelarButton.TabIndex = 4;
             this.cancelarButton.Text = "&Cancelar";
             this.cancelarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cancelarButton.UseVisualStyleBackColor = false;
+            this.cancelarButton.Click += new System.EventHandler(this.cancelarButton_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.buscarSerialPCButton);
             this.groupBox1.Controls.Add(this.impresoraReporteTextBox);
             this.groupBox1.Controls.Add(this.impresoraPosTextBox);
             this.groupBox1.Controls.Add(this.serialTextBox);
@@ -243,7 +262,7 @@ namespace CapaPresentacion
             this.impresoraReporteTextBox.Name = "impresoraReporteTextBox";
             this.impresoraReporteTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.impresoraReporteTextBox.Size = new System.Drawing.Size(197, 20);
-            this.impresoraReporteTextBox.TabIndex = 5;
+            this.impresoraReporteTextBox.TabIndex = 10;
             // 
             // impresoraPosTextBox
             // 
@@ -253,7 +272,7 @@ namespace CapaPresentacion
             this.impresoraPosTextBox.Name = "impresoraPosTextBox";
             this.impresoraPosTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.impresoraPosTextBox.Size = new System.Drawing.Size(197, 20);
-            this.impresoraPosTextBox.TabIndex = 5;
+            this.impresoraPosTextBox.TabIndex = 8;
             // 
             // label7
             // 
@@ -261,7 +280,7 @@ namespace CapaPresentacion
             this.label7.Location = new System.Drawing.Point(15, 152);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(94, 13);
-            this.label7.TabIndex = 2;
+            this.label7.TabIndex = 9;
             this.label7.Text = "Impresora Reporte";
             // 
             // label6
@@ -270,7 +289,7 @@ namespace CapaPresentacion
             this.label6.Location = new System.Drawing.Point(31, 123);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(78, 13);
-            this.label6.TabIndex = 2;
+            this.label6.TabIndex = 7;
             this.label6.Text = "Impresora POS";
             // 
             // editarButton
@@ -285,10 +304,11 @@ namespace CapaPresentacion
             this.editarButton.Location = new System.Drawing.Point(349, 96);
             this.editarButton.Name = "editarButton";
             this.editarButton.Size = new System.Drawing.Size(98, 39);
-            this.editarButton.TabIndex = 8;
+            this.editarButton.TabIndex = 3;
             this.editarButton.Text = "E&ditar";
             this.editarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.editarButton.UseVisualStyleBackColor = false;
+            this.editarButton.Click += new System.EventHandler(this.editarButton_Click);
             // 
             // nuevoButton
             // 
@@ -302,7 +322,7 @@ namespace CapaPresentacion
             this.nuevoButton.Location = new System.Drawing.Point(349, 11);
             this.nuevoButton.Name = "nuevoButton";
             this.nuevoButton.Size = new System.Drawing.Size(98, 39);
-            this.nuevoButton.TabIndex = 6;
+            this.nuevoButton.TabIndex = 1;
             this.nuevoButton.Text = "&Nuevo";
             this.nuevoButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.nuevoButton.UseVisualStyleBackColor = false;
@@ -320,7 +340,7 @@ namespace CapaPresentacion
             this.guardarButton.Location = new System.Drawing.Point(349, 53);
             this.guardarButton.Name = "guardarButton";
             this.guardarButton.Size = new System.Drawing.Size(98, 39);
-            this.guardarButton.TabIndex = 7;
+            this.guardarButton.TabIndex = 2;
             this.guardarButton.Text = "&Guardar";
             this.guardarButton.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.guardarButton.UseVisualStyleBackColor = false;
@@ -350,9 +370,10 @@ namespace CapaPresentacion
             this.eliminarCheckBox.Location = new System.Drawing.Point(6, 71);
             this.eliminarCheckBox.Name = "eliminarCheckBox";
             this.eliminarCheckBox.Size = new System.Drawing.Size(62, 17);
-            this.eliminarCheckBox.TabIndex = 5;
+            this.eliminarCheckBox.TabIndex = 4;
             this.eliminarCheckBox.Text = "Eliminar";
             this.eliminarCheckBox.UseVisualStyleBackColor = true;
+            this.eliminarCheckBox.CheckedChanged += new System.EventHandler(this.eliminarCheckBox_CheckedChanged);
             // 
             // Eliminar
             // 
@@ -382,8 +403,9 @@ namespace CapaPresentacion
             this.listadoDataGridView.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.listadoDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.listadoDataGridView.Size = new System.Drawing.Size(449, 140);
-            this.listadoDataGridView.TabIndex = 7;
+            this.listadoDataGridView.TabIndex = 5;
             this.listadoDataGridView.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.listadoDataGridView_CellContentClick);
+            this.listadoDataGridView.DoubleClick += new System.EventHandler(this.listadoDataGridView_DoubleClick);
             // 
             // tabPage1
             // 
@@ -415,11 +437,11 @@ namespace CapaPresentacion
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(17, 65);
+            this.tabControl1.Location = new System.Drawing.Point(14, 59);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(469, 266);
-            this.tabControl1.TabIndex = 3;
+            this.tabControl1.TabIndex = 1;
             // 
             // frmCaja
             // 
@@ -479,5 +501,6 @@ namespace CapaPresentacion
         private System.Windows.Forms.TextBox impresoraPosTextBox;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button buscarSerialPCButton;
     }
 }

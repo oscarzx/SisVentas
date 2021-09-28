@@ -33,7 +33,7 @@ namespace CapaNegocio
             return obj.EditarCaja(obj);
         }
 
-        public string Eliminar(int idCaja)
+        public static string Eliminar(int idCaja)
         {
             DCaja obj = new DCaja();
             obj.IdCaja = idCaja;
@@ -49,7 +49,12 @@ namespace CapaNegocio
         {
             DCaja obj = new DCaja();
             obj.Descripcion = nombreCaja;
-            return obj.BUscarCajaNombre(obj);
+            return obj.BuscarCajaNombre(obj);
+        }
+
+        public static DataTable MostrarListado()
+        {
+            return new DCaja().MostrarListado();
         }
     }
 }

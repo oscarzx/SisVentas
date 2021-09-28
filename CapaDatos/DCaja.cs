@@ -276,5 +276,28 @@ namespace CapaDatos
             }
             return dtResultado;
         }
+
+        public DataTable MostrarListado()
+        {
+            DataTable DtResultado = new DataTable("Caja");
+            SqlConnection SqlCon = new SqlConnection();
+            try
+            {
+                SqlCon.ConnectionString = Conexion.Cn;
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "spMostrar_Cajas_lista";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+
+            }
+            return DtResultado;
+        }
     }
 }
